@@ -39,14 +39,16 @@ function NavItem({ icon, label, to, children, defaultExpanded = false }: NavItem
           {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
         </button>
         {isExpanded && (
-          <div className="mt-1 flex flex-col space-y-1 ml-4 border-l border-gray-200">
+          <div className="mt-2 grid grid-cols-2 gap-1 px-2">
             {children.map((child, idx) => (
               <NavLink
                 key={idx}
                 to={child.to}
                 className={({ isActive }) => cn(
-                  "block pl-8 pr-4 py-1.5 text-sm rounded-lg transition-colors mx-2",
-                  isActive ? "bg-gray-200/60 font-semibold text-gray-900" : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+                  "block px-2 py-1.5 text-xs rounded-lg transition-colors text-center border border-transparent",
+                  isActive
+                    ? "bg-gray-900 text-white font-semibold"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                 )}
               >
                 {child.label}
@@ -72,8 +74,14 @@ function NavItem({ icon, label, to, children, defaultExpanded = false }: NavItem
   );
 }
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+}
+
+export default function Sidebar({ isOpen }: SidebarProps) {
   const [username, setUsername] = useState('Loading...');
+
+  if (!isOpen) return null;
 
   useEffect(() => {
     async function loadUser() {
@@ -100,14 +108,8 @@ export default function Sidebar() {
   }, []);
 
   return (
-    <aside className="w-[280px] bg-white border-r border-gray-200 flex flex-col h-screen shrink-0 relative">
+    <aside className="w-[280px] bg-white border-r border-gray-200 flex flex-col h-full shrink-0 relative">
       <div className="absolute inset-0 opacity-5 pointer-events-none bg-[url('https://upload.wikimedia.org/wikipedia/commons/4/4e/Ice_hockey_player.svg')] bg-no-repeat bg-bottom bg-cover" />
-
-      <div className="p-6 flex justify-center items-center h-28 border-b border-gray-100">
-        <div className="w-20 h-24 bg-gray-200 rounded flex items-center justify-center relative overflow-hidden">
-           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Groningen_GIJS_Bear_Logo.png/640px-Groningen_GIJS_Bear_Logo.png" alt="GIJS Groningen" className="w-full h-full object-contain" />
-        </div>
-      </div>
 
       <nav className="flex-1 overflow-y-auto p-4 space-y-1 relative z-10 scrollbar-hide">
         <NavItem

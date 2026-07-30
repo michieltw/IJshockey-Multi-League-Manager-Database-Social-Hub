@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import Topbar from '../components/Topbar';
+import PageHeader from '../components/PageHeader';
 
 type Team = { id: string; name: string; division: string };
 
@@ -53,7 +53,7 @@ export default function Scorekeeper() {
 
   return (
     <div className="h-full flex flex-col">
-      <Topbar
+      <PageHeader
         title="Scorekeeper"
         subtitle="Voer wedstrijdresultaten in"
         navItems={[{ label: 'Invoer', to: '/modules/scorekeeper' }]}

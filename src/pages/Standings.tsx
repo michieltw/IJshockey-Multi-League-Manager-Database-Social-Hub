@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import Topbar from '../components/Topbar';
+import PageHeader from '../components/PageHeader';
 import { Search, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import SeedButton from '../components/SeedButton';
 
-type Team = { id: string; name: string; division: string; color: string };
+type Team = { id: string; name: string; division: string; color: string; team_logo_url?: string };
 type Game = { homeTeamId: string; awayTeamId: string; homeScore: number; awayScore: number; isOvertime: boolean };
 type Settings = { pointsForWin: number; pointsForLoss: number; pointsForOTLoss: number };
 
@@ -149,9 +149,13 @@ export default function Standings() {
               <tr key={s.team.id} className="border-b border-gray-50 hover:bg-gray-50/50">
                 <td className="px-6 py-4 text-gray-500 text-center">{idx + 1}</td>
                 <td className="px-6 py-4 font-bold text-gray-900 flex items-center">
-                  <div className={`w-6 h-6 rounded-full ${s.team.color || 'bg-gray-500'} mr-3 border-2 border-white shadow-sm flex items-center justify-center`}>
-                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                  </div>
+                  {s.team.team_logo_url ? (
+                    <img src={s.team.team_logo_url} alt={`${s.team.name} logo`} className="w-6 h-6 mr-3 object-contain" />
+                  ) : (
+                    <div className={`w-6 h-6 rounded-full ${s.team.color || 'bg-gray-500'} mr-3 border-2 border-white shadow-sm flex items-center justify-center`}>
+                      <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                    </div>
+                  )}
                   {s.team.name}
                 </td>
                 <td className="px-4 py-4 text-center">{s.gp}</td>
@@ -176,7 +180,7 @@ export default function Standings() {
 
   return (
     <div className="h-full flex flex-col">
-      <Topbar
+      <PageHeader
         title="Standings"
         subtitle="Groningen House League • Officieel overzicht & Playoff resultaten"
         navItems={topNav}
@@ -203,7 +207,7 @@ export default function Standings() {
             </button>
           </div>
         </div>
-      </Topbar>
+      </PageHeader>
 
       <div className="p-8">
          <div className="flex justify-between items-center mb-6">
