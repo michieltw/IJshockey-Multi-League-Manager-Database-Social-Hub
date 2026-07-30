@@ -1,14 +1,14 @@
 import type { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 
-interface TopbarProps {
+interface PageHeaderProps {
   title: string;
   subtitle: string;
   navItems: { label: string; to: string }[];
   children?: ReactNode;
 }
 
-export default function Topbar({ title, subtitle, navItems, children }: TopbarProps) {
+export default function PageHeader({ title, subtitle, navItems, children }: PageHeaderProps) {
   return (
     <div className="bg-white border-b border-gray-200 px-8 pt-6 pb-4">
       <div className="flex justify-between items-end mb-6">

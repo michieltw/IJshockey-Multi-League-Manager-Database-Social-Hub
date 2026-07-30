@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import Topbar from '../components/Topbar';
+import PageHeader from '../components/PageHeader';
 
 export default function Admin() {
   const [settings, setSettings] = useState({
@@ -49,7 +49,7 @@ export default function Admin() {
 
   return (
     <div className="h-full flex flex-col">
-      <Topbar
+      <PageHeader
         title="Admin Settings"
         subtitle="Competitie instellingen en rekenregels"
         navItems={[{ label: 'Algemeen', to: '/admin' }]}
