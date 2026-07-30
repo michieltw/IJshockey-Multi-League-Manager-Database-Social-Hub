@@ -1,3 +1,4 @@
+{
   "categories": [
     {
       "id": "CAT_POS_TYP",
@@ -4660,6 +4661,10 @@
       "name": "Statistieken Registratieniveau",
       "items": [
         {
+          "id": "-1",
+          "label": "Neem over van competitie"
+        },
+        {
           "id": "0",
           "label": "Basis (Alleen Doelpunten & Straffen)"
         },
@@ -4705,6 +4710,10 @@
       "id": "PENALTY_TYPE",
       "name": "Straf Types",
       "items": [
+        {
+          "id": "abuse_of_officials",
+          "label": "Abuse of officials"
+        },
         {
           "id": "boarding",
           "label": "Boarding"
@@ -4792,6 +4801,10 @@
         {
           "id": "match_penalty",
           "label": "Match Penalty"
+        },
+        {
+          "id": "penalty_shot",
+          "label": "Penalty Shot"
         }
       ]
     },
@@ -4880,6 +4893,10 @@
         {
           "id": "stoppage",
           "label": "Spelonderbreking (Stoppage)"
+        },
+        {
+          "id": "line_change",
+          "label": "Line Change (Wissel)"
         }
       ]
     },
@@ -5028,6 +5045,10 @@
         {
           "id": "poke",
           "label": "Poke / Schop"
+        },
+        {
+          "id": "deflection",
+          "label": "Deflection"
         }
       ]
     }
