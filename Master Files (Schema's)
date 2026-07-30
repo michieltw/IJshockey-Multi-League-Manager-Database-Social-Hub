@@ -6,59 +6,59 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_ytzoa",
+          "id": "id",
           "name": "Persoon ID (bijv. PER_001)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "name_first_4ixo8p",
+          "id": "name_first",
           "name": "Voornaam",
           "key": "name_first",
           "type": "text",
           "required": true
         },
         {
-          "id": "name_last_fnf0cp",
+          "id": "name_last",
           "name": "Achternaam",
           "key": "name_last",
           "type": "text",
           "required": true
         },
         {
-          "id": "name_extra_flags_9e9vn7",
+          "id": "name_extra_flags",
           "name": "Naam Extra Vlaggen (Bitmask)",
           "key": "name_extra_flags",
           "type": "select",
           "required": false,
-          "categoryListId": "NAME_EXTRA_FLAGS"
+          "categoryListId": "CAT_NAME_EXTRA_FLAGS"
         },
         {
-          "id": "gender_6p1gyt",
+          "id": "gender",
           "name": "Geslacht",
           "key": "gender",
           "type": "select",
           "required": false,
-          "categoryListId": "GENDER"
+          "categoryListId": "CAT_GENDER"
         },
         {
-          "id": "nationality_declared_3k9nqh",
+          "id": "nationality_declared",
           "name": "Verklaarde Nationaliteit (NAT_ID)",
           "key": "nationality_declared",
           "type": "text",
           "required": false
         },
         {
-          "id": "language_primary_wgujjb",
+          "id": "language_primary",
           "name": "Primaire Taal",
           "key": "language_primary",
           "type": "select",
           "required": false,
-          "categoryListId": "LANGUAGE"
+          "categoryListId": "CAT_LANGUAGE"
         },
         {
-          "id": "handedness_delgpm",
+          "id": "handedness",
           "name": "Voorkeurshand",
           "key": "handedness",
           "type": "select",
@@ -66,15 +66,15 @@
           "categoryListId": "CAT_HND"
         },
         {
-          "id": "junior_preference_h80459",
+          "id": "junior_preference",
           "name": "Voorkeur Junior",
           "key": "junior_preference",
           "type": "select",
           "required": false,
-          "categoryListId": "JUNIOR_PREFERENCE"
+          "categoryListId": "CAT_JUNIOR_PREFERENCE"
         },
         {
-          "id": "job_primary_fxd4qp",
+          "id": "job_primary",
           "name": "Primaire Functie",
           "key": "job_primary",
           "type": "select",
@@ -82,7 +82,7 @@
           "categoryListId": "CAT_JOB"
         },
         {
-          "id": "staff_classification_8qojb",
+          "id": "staff_classification",
           "name": "Stafclassificatie",
           "key": "staff_classification",
           "type": "select",
@@ -90,15 +90,23 @@
           "categoryListId": "CAT_STF_CLS"
         },
         {
-          "id": "staff_extra_flags_wf6p8c",
+          "id": "staff_extra_flags",
           "name": "Staf Extra Vlaggen (Bitmask)",
           "key": "staff_extra_flags",
           "type": "select",
           "required": false,
-          "categoryListId": "STAFF_EXTRA_FLAGS"
+          "categoryListId": "CAT_STAFF_EXTRA_FLAGS"
+        },
+        {
+          "id": "player_headshot_url",
+          "name": "Speler Profielfoto URL",
+          "key": "player_headshot_url",
+          "type": "text",
+          "required": false
         }
       ],
-      "firestore_strategy": "Root Collection"
+      "firestore_strategy": "Root Collection",
+      "code": "PERS"
     },
     {
       "id": "person_encounters",
@@ -106,29 +114,29 @@
       "group": "SEASONAL",
       "fields": [
         {
-          "id": "id_2dktjl",
+          "id": "id",
           "name": "Ontmoeting ID (bijv. PER_001:SZN_26)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "season_id_s1begtq",
+          "id": "season_id",
           "name": "Seizoen ID",
           "key": "season_id",
           "type": "text",
           "required": true
         },
         {
-          "id": "job_level_nj1114",
+          "id": "job_level",
           "name": "Functieniveau",
           "key": "job_level",
           "type": "select",
           "required": false,
-          "categoryListId": "JOB_LEVEL"
+          "categoryListId": "CAT_JOB_LEVEL"
         },
         {
-          "id": "player_role_csnagq",
+          "id": "player_role",
           "name": "Spelersrol",
           "key": "player_role",
           "type": "select",
@@ -136,7 +144,7 @@
           "categoryListId": "CAT_PLR_ROL"
         },
         {
-          "id": "position_type_ccqfce",
+          "id": "position_type",
           "name": "Positietype",
           "key": "position_type",
           "type": "select",
@@ -144,7 +152,7 @@
           "categoryListId": "CAT_POS_TYP"
         },
         {
-          "id": "team_id_7g41s",
+          "id": "team_id",
           "name": "Team ID (TEA_ID)",
           "key": "team_id",
           "type": "relation",
@@ -152,14 +160,15 @@
           "targetSchemaId": "teams"
         },
         {
-          "id": "jersey_number_yud6u",
+          "id": "jersey_number",
           "name": "Rugnummer",
           "key": "jersey_number",
           "type": "number",
           "required": false
         }
       ],
-      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy",
+      "code": "PENC"
     },
     {
       "id": "organizations",
@@ -167,28 +176,28 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_80aubj",
+          "id": "id",
           "name": "Organisatie ID (bijv. ORG_001)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "name_v6fboi",
+          "id": "name",
           "name": "Organisatienaam",
           "key": "name",
           "type": "text",
           "required": true
         },
         {
-          "id": "short_name_drda9",
+          "id": "short_name",
           "name": "Korte Naam",
           "key": "short_name",
           "type": "text",
           "required": false
         },
         {
-          "id": "professional_status_ykp9jo",
+          "id": "professional_status",
           "name": "Professionele Status",
           "key": "professional_status",
           "type": "select",
@@ -196,28 +205,28 @@
           "categoryListId": "CAT_PRO_STA"
         },
         {
-          "id": "colors_primary_00u69",
+          "id": "colors_primary",
           "name": "Primaire Kleuren (Hex/Str)",
           "key": "colors_primary",
           "type": "text",
           "required": false
         },
         {
-          "id": "colors_secondary_c0iljj",
+          "id": "colors_secondary",
           "name": "Secundaire Kleuren (Hex/Str)",
           "key": "colors_secondary",
           "type": "text",
           "required": false
         },
         {
-          "id": "currency_type_gecz",
+          "id": "currency_type",
           "name": "Valutasoort",
           "key": "currency_type",
           "type": "text",
           "required": false
         },
         {
-          "id": "league_id_pvw5p",
+          "id": "league_id",
           "name": "Competitie ID",
           "key": "league_id",
           "type": "relation",
@@ -225,7 +234,8 @@
           "targetSchemaId": "competitions"
         }
       ],
-      "firestore_strategy": "Root Collection"
+      "firestore_strategy": "Root Collection",
+      "code": "ORGA"
     },
     {
       "id": "org_encounters",
@@ -233,44 +243,45 @@
       "group": "SEASONAL",
       "fields": [
         {
-          "id": "id_au0t5",
+          "id": "id",
           "name": "Ontmoeting ID (bijv. ORG_001:SZN_26)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "season_id_hj42te",
+          "id": "season_id",
           "name": "Seizoen ID",
           "key": "season_id",
           "type": "text",
           "required": true
         },
         {
-          "id": "club_valuation_iksyb",
+          "id": "club_valuation",
           "name": "Clubwaardering",
           "key": "club_valuation",
           "type": "select",
           "required": false,
-          "categoryListId": "CLUB_VALUATION"
+          "categoryListId": "CAT_CLUB_VALUATION"
         },
         {
-          "id": "continental_licence_bglxpp",
+          "id": "continental_licence",
           "name": "Continentale Licentie",
           "key": "continental_licence",
           "type": "select",
           "required": false,
-          "categoryListId": "CONTINENTAL_LICENCE"
+          "categoryListId": "CAT_CONTINENTAL_LICENCE"
         },
         {
-          "id": "affiliation_network_8bnpgc",
+          "id": "affiliation_network",
           "name": "Samenwerkingsnetwerk",
           "key": "affiliation_network",
           "type": "json_array",
           "required": false
         }
       ],
-      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy",
+      "code": "OENC"
     },
     {
       "id": "teams",
@@ -278,14 +289,14 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_w9m6ci",
+          "id": "id",
           "name": "Team ID (bijv. TEA_001)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "org_id_ydeddq",
+          "id": "org_id",
           "name": "Organisatie ID (ORG_ID)",
           "key": "org_id",
           "type": "relation",
@@ -293,22 +304,30 @@
           "targetSchemaId": "organizations"
         },
         {
-          "id": "name_pryw3h",
+          "id": "name",
           "name": "Teamnaam",
           "key": "name",
           "type": "text",
           "required": true
         },
         {
-          "id": "squad_playing_rlflo5",
+          "id": "squad_playing",
           "name": "Spelende Selectie",
           "key": "squad_playing",
           "type": "select",
           "required": false,
-          "categoryListId": "SQUAD_PLAYING"
+          "categoryListId": "CAT_SQUAD_PLAYING"
+        },
+        {
+          "id": "team_logo_url",
+          "name": "Team Logo URL",
+          "key": "team_logo_url",
+          "type": "text",
+          "required": false
         }
       ],
-      "firestore_strategy": "Root Collection"
+      "firestore_strategy": "Root Collection",
+      "code": "TEAM"
     },
     {
       "id": "competitions",
@@ -316,21 +335,21 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_75vgv6",
+          "id": "id",
           "name": "Competitie ID (bijv. CMP_001)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "name_lyg54",
+          "id": "name",
           "name": "Competitienaam",
           "key": "name",
           "type": "text",
           "required": true
         },
         {
-          "id": "comp_type_tozc59",
+          "id": "comp_type",
           "name": "Competitietype",
           "key": "comp_type",
           "type": "select",
@@ -338,7 +357,7 @@
           "categoryListId": "CAT_CMP_TYP"
         },
         {
-          "id": "comp_scope_n1tkv",
+          "id": "comp_scope",
           "name": "Competitiereikwijdte",
           "key": "comp_scope",
           "type": "select",
@@ -346,7 +365,7 @@
           "categoryListId": "CAT_CMP_SCP"
         },
         {
-          "id": "comp_classification_0qlijb",
+          "id": "comp_classification",
           "name": "Competitieclassificatie",
           "key": "comp_classification",
           "type": "select",
@@ -354,22 +373,30 @@
           "categoryListId": "CAT_CMP_CLS"
         },
         {
-          "id": "approximate_region_kho1s",
+          "id": "approximate_region",
           "name": "Geschatte Regio",
           "key": "approximate_region",
           "type": "select",
           "required": false,
-          "categoryListId": "APPROXIMATE_REGION"
+          "categoryListId": "CAT_APPROXIMATE_REGION"
         },
         {
-          "id": "league_selected_h8mox7",
+          "id": "league_selected",
           "name": "Competitie Geselecteerd",
           "key": "league_selected",
           "type": "boolean",
           "required": false
+        },
+        {
+          "id": "league_logo_url",
+          "name": "Competitie Logo URL",
+          "key": "league_logo_url",
+          "type": "text",
+          "required": false
         }
       ],
-      "firestore_strategy": "Root Collection"
+      "firestore_strategy": "Root Collection",
+      "code": "COMP"
     },
     {
       "id": "comp_encounters",
@@ -377,85 +404,85 @@
       "group": "SEASONAL",
       "fields": [
         {
-          "id": "id_qxncfj",
+          "id": "id",
           "name": "Ontmoeting ID (CMP_001:SZN_26)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "season_id_n4klp",
+          "id": "season_id",
           "name": "Seizoen ID",
           "key": "season_id",
           "type": "text",
           "required": true
         },
         {
-          "id": "basic_rules_flags_25vovc",
+          "id": "basic_rules_flags",
           "name": "Basisregels Vlaggen (Bitmask)",
           "key": "basic_rules_flags",
           "type": "select",
           "required": false,
-          "categoryListId": "BASIC_RULES_FLAGS"
+          "categoryListId": "CAT_BASIC_RULES_FLAGS"
         },
         {
-          "id": "match_rules_fngkwp",
+          "id": "match_rules",
           "name": "Wedstrijdregels Vlaggen (Bitmask)",
           "key": "match_rules",
           "type": "select",
           "required": false,
-          "categoryListId": "MATCH_RULES_FLAGS"
+          "categoryListId": "CAT_MATCH_RULES_FLAGS"
         },
         {
-          "id": "stat_tracking_flags_8xq1m",
+          "id": "stat_tracking_flags",
           "name": "Statistieken Registratieniveau (Bitmask)",
           "key": "stat_tracking_flags",
           "type": "select",
           "required": false,
-          "categoryListId": "STAT_TRACKING_FLAGS"
+          "categoryListId": "CAT_STAT_TRACKING_FLAGS"
         },
         {
-          "id": "extra_match_rules_1ij34n",
+          "id": "extra_match_rules",
           "name": "Extra Wedstrijdregels",
           "key": "extra_match_rules",
           "type": "select",
           "required": false,
-          "categoryListId": "EXTRA_MATCH_RULES"
+          "categoryListId": "CAT_EXTRA_MATCH_RULES"
         },
         {
-          "id": "extra_rule_type_eryjym",
+          "id": "extra_rule_type",
           "name": "Extra Regeltype",
           "key": "extra_rule_type",
           "type": "select",
           "required": false,
-          "categoryListId": "EXTRA_RULE_TYPE"
+          "categoryListId": "CAT_EXTRA_RULE_TYPE"
         },
         {
-          "id": "round_rules_5jsyg",
+          "id": "round_rules",
           "name": "Ronderegels",
           "key": "round_rules",
           "type": "select",
           "required": false,
-          "categoryListId": "ROUND_RULES"
+          "categoryListId": "CAT_ROUND_RULES"
         },
         {
-          "id": "team_picking_rules_da0nkj",
+          "id": "team_picking_rules",
           "name": "Teamselectieregels",
           "key": "team_picking_rules",
           "type": "select",
           "required": false,
-          "categoryListId": "TEAM_PICKING_RULES"
+          "categoryListId": "CAT_TEAM_PICKING_RULES"
         },
         {
-          "id": "replay_rules_ptwxl",
+          "id": "replay_rules",
           "name": "Replay-regels",
           "key": "replay_rules",
           "type": "select",
           "required": false,
-          "categoryListId": "REPLAY_RULES"
+          "categoryListId": "CAT_REPLAY_RULES"
         },
         {
-          "id": "sort_rule_sioopa",
+          "id": "sort_rule",
           "name": "Sorteerregel",
           "key": "sort_rule",
           "type": "select",
@@ -463,23 +490,23 @@
           "categoryListId": "CAT_SRT_RUL"
         },
         {
-          "id": "transfer_system_type_q64jm",
+          "id": "transfer_system_type",
           "name": "Transfersysteem",
           "key": "transfer_system_type",
           "type": "select",
           "required": false,
-          "categoryListId": "TRANSFER_SYSTEM_TYPE"
+          "categoryListId": "CAT_TRANSFER_SYSTEM_TYPE"
         },
         {
-          "id": "transfer_rules_flags_dzyr9l",
+          "id": "transfer_rules_flags",
           "name": "Transferregels (Bitmask)",
           "key": "transfer_rules_flags",
           "type": "select",
           "required": false,
-          "categoryListId": "TRANSFER_RULES_FLAGS"
+          "categoryListId": "CAT_TRANSFER_RULES_FLAGS"
         },
         {
-          "id": "salary_cap_type_t8q6zc",
+          "id": "salary_cap_type",
           "name": "Salarisplafond Type",
           "key": "salary_cap_type",
           "type": "select",
@@ -487,7 +514,7 @@
           "categoryListId": "CAT_SAL_CAP"
         },
         {
-          "id": "prize_money_type_7igqur",
+          "id": "prize_money_type",
           "name": "Prijzengeld Type",
           "key": "prize_money_type",
           "type": "select",
@@ -495,7 +522,7 @@
           "categoryListId": "CAT_PRZ_MON"
         },
         {
-          "id": "fighting_penalty_z49tn8",
+          "id": "fighting_penalty",
           "name": "Vechtstraf",
           "key": "fighting_penalty",
           "type": "select",
@@ -503,7 +530,7 @@
           "categoryListId": "CAT_FGT_PEN"
         },
         {
-          "id": "misconduct_accumulator_type_zfxupq",
+          "id": "misconduct_accumulator_type",
           "name": "Accumulator Wangedrag",
           "key": "misconduct_accumulator_type",
           "type": "select",
@@ -511,31 +538,31 @@
           "categoryListId": "CAT_MSC_ACC"
         },
         {
-          "id": "fate_rules_t2krbb",
+          "id": "fate_rules",
           "name": "Lotregels (Resultaat)",
           "key": "fate_rules",
           "type": "select",
           "required": false,
-          "categoryListId": "FATE_RULES"
+          "categoryListId": "CAT_FATE_RULES"
         },
         {
-          "id": "fate_to_draw_from_le38fj",
+          "id": "fate_to_draw_from",
           "name": "Resultatenpool",
           "key": "fate_to_draw_from",
           "type": "select",
           "required": false,
-          "categoryListId": "FATE_TO_DRAW_FROM"
+          "categoryListId": "CAT_FATE_TO_DRAW_FROM"
         },
         {
-          "id": "stats_scope_t26cdf",
+          "id": "stats_scope",
           "name": "Reikwijdte Statistieken",
           "key": "stats_scope",
           "type": "select",
           "required": false,
-          "categoryListId": "STATS_SCOPE"
+          "categoryListId": "CAT_STATS_SCOPE"
         },
         {
-          "id": "win_pct_type_54i2tr",
+          "id": "win_pct_type",
           "name": "Winstpercentage Type",
           "key": "win_pct_type",
           "type": "select",
@@ -543,15 +570,16 @@
           "categoryListId": "CAT_WIN_PCT"
         },
         {
-          "id": "tv_type_d7ohpo",
+          "id": "tv_type",
           "name": "TV-Uitzending Type",
           "key": "tv_type",
           "type": "select",
           "required": false,
-          "categoryListId": "TV_TYPE"
+          "categoryListId": "CAT_TV_TYPE"
         }
       ],
-      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy",
+      "code": "CENC"
     },
     {
       "id": "stages",
@@ -559,60 +587,61 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_aqvprs",
+          "id": "id",
           "name": "Fase ID (bijv. STG_001)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "network_cmp_yaue66",
+          "id": "network_cmp",
           "name": "Competitie ID (CMP_ID)",
           "key": "network_cmp",
           "type": "text",
           "required": true
         },
         {
-          "id": "stage_type_otxppe",
+          "id": "stage_type",
           "name": "Fasetype",
           "key": "stage_type",
           "type": "select",
           "required": false,
-          "categoryListId": "STAGE_TYPE"
+          "categoryListId": "CAT_STAGE_TYPE"
         },
         {
-          "id": "stage_name_extra_w9jprp",
+          "id": "stage_name_extra",
           "name": "Fasenaam Extra",
           "key": "stage_name_extra",
           "type": "text",
           "required": false
         },
         {
-          "id": "round_type_oqqlrp",
+          "id": "round_type",
           "name": "Rondetype",
           "key": "round_type",
           "type": "select",
           "required": false,
-          "categoryListId": "ROUND_TYPE"
+          "categoryListId": "CAT_ROUND_TYPE"
         },
         {
-          "id": "group_type_ecfsyt",
+          "id": "group_type",
           "name": "Groeptype",
           "key": "group_type",
           "type": "select",
           "required": false,
-          "categoryListId": "GROUP"
+          "categoryListId": "CAT_GROUP"
         },
         {
-          "id": "group_membership_e3nn3g",
+          "id": "group_membership",
           "name": "Groepslidmaatschap",
           "key": "group_membership",
           "type": "select",
           "required": false,
-          "categoryListId": "GROUP_MEMBERSHIP"
+          "categoryListId": "CAT_GROUP_MEMBERSHIP"
         }
       ],
-      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy",
+      "code": "STAG"
     },
     {
       "id": "venues",
@@ -620,36 +649,36 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_vdhy2d",
+          "id": "id",
           "name": "Locatie ID (bijv. VEN_001)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "name_ypcsrbw",
+          "id": "name",
           "name": "Locatienaam",
           "key": "name",
           "type": "text",
           "required": true
         },
         {
-          "id": "capacity_kzccmqe",
+          "id": "capacity",
           "name": "Capaciteit (Toeschouwers)",
           "key": "capacity",
           "type": "number",
           "required": false
         },
         {
-          "id": "region_actual_1p2z49",
+          "id": "region_actual",
           "name": "Actuele Regio",
           "key": "region_actual",
           "type": "select",
           "required": false,
-          "categoryListId": "REGION_ACTUAL"
+          "categoryListId": "CAT_REGION_ACTUAL"
         },
         {
-          "id": "arena_rink_size_aylth9",
+          "id": "arena_rink_size",
           "name": "Afmetingen IJsvloer",
           "key": "arena_rink_size",
           "type": "select",
@@ -657,7 +686,8 @@
           "categoryListId": "CAT_RNK_SIZ"
         }
       ],
-      "firestore_strategy": "Root Collection"
+      "firestore_strategy": "Root Collection",
+      "code": "VENU"
     },
     {
       "id": "nations",
@@ -665,59 +695,60 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_rygnb",
+          "id": "id",
           "name": "Natie ID (bijv. NAT_001)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "name_k78uss",
+          "id": "name",
           "name": "Natienaam",
           "key": "name",
           "type": "text",
           "required": true
         },
         {
-          "id": "nation_extra_data_3372do",
+          "id": "nation_extra_data",
           "name": "Natie Extra Data",
           "key": "nation_extra_data",
           "type": "text",
           "required": false
         },
         {
-          "id": "state_extra_data_v22tlc",
+          "id": "state_extra_data",
           "name": "Staat Extra Data",
           "key": "state_extra_data",
           "type": "text",
           "required": false
         },
         {
-          "id": "development_state_on4ik4",
+          "id": "development_state",
           "name": "Ontwikkelingsstatus",
           "key": "development_state",
           "type": "select",
           "required": false,
-          "categoryListId": "DEVELOPMENT_STATE"
+          "categoryListId": "CAT_DEVELOPMENT_STATE"
         },
         {
-          "id": "iihf_senior_division_684hi",
+          "id": "iihf_senior_division",
           "name": "IIHF Senioren Divisie",
           "key": "iihf_senior_division",
           "type": "select",
           "required": false,
-          "categoryListId": "IIHF_SENIOR_DIVISION"
+          "categoryListId": "CAT_IIHF_SENIOR_DIVISION"
         },
         {
-          "id": "iihf_junior_division_dor7x7",
+          "id": "iihf_junior_division",
           "name": "IIHF Junioren Divisie",
           "key": "iihf_junior_division",
           "type": "select",
           "required": false,
-          "categoryListId": "IIHF_JUNIOR_DIVISION"
+          "categoryListId": "CAT_IIHF_JUNIOR_DIVISION"
         }
       ],
-      "firestore_strategy": "Root Collection"
+      "firestore_strategy": "Root Collection",
+      "code": "NATI"
     },
     {
       "id": "ruling_bodies",
@@ -725,43 +756,44 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_vrrad",
+          "id": "id",
           "name": "Bestuursorgaan ID (bijv. RUL_001)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "name_rl7lur",
+          "id": "name",
           "name": "Naam (bijv. IIHF of NIJB)",
-          "key": "NAAM",
+          "key": "name",
           "type": "text",
           "required": true
         },
         {
-          "id": "ruling_body_type_723zpc",
+          "id": "ruling_body_type",
           "name": "Niveau Bestuursorgaan",
-          "key": "ORG_TYPE",
+          "key": "ruling_body_type",
           "type": "select",
           "required": false,
           "categoryListId": "CAT_RUL_BOD"
         },
         {
-          "id": "ruling_body_flags_7o61gl9",
+          "id": "ruling_body_flags",
           "name": "Bestuursorgaan Vlaggen",
-          "key": "ORG_INDI",
+          "key": "ruling_body_flags",
           "type": "select",
           "required": false,
-          "categoryListId": "RULING_BODY_FLAGS"
+          "categoryListId": "CAT_RULING_BODY_FLAGS"
         },
         {
-          "id": "d14264ff-41e0-403d-826f-cf5952d6e28b",
+          "id": "abbreviation",
           "name": "Afkorting Naam",
-          "key": "ORG_AFK",
+          "key": "abbreviation",
           "type": "text"
         }
       ],
-      "firestore_strategy": "Root Collection"
+      "firestore_strategy": "Root Collection",
+      "code": "RULE"
     },
     {
       "id": "medical_injuries",
@@ -769,14 +801,14 @@
       "group": "TRANSACTIONAL",
       "fields": [
         {
-          "id": "id_acj7dq",
+          "id": "id",
           "name": "Blessure ID",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "person_id_bidgwp",
+          "id": "person_id",
           "name": "Persoon ID (PER_ID)",
           "key": "person_id",
           "type": "relation",
@@ -784,28 +816,29 @@
           "targetSchemaId": "persons"
         },
         {
-          "id": "injury_extra_data_6qvpoq",
+          "id": "injury_extra_data",
           "name": "Blessuretype/-Data",
           "key": "injury_extra_data",
           "type": "text",
           "required": false
         },
         {
-          "id": "date_injured_fv99ag",
+          "id": "date_injured",
           "name": "Datum Geblesseerd",
           "key": "date_injured",
           "type": "datetime",
           "required": false
         },
         {
-          "id": "expected_return_jzecibp",
+          "id": "expected_return",
           "name": "Verwachte Terugkeer",
           "key": "expected_return",
           "type": "datetime",
           "required": false
         }
       ],
-      "firestore_strategy": "Sub-Collection"
+      "firestore_strategy": "Sub-Collection",
+      "code": "MEDC"
     },
     {
       "id": "drafts",
@@ -813,21 +846,21 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_aj7k9v",
+          "id": "id",
           "name": "Draft ID",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "year_7j5njp",
+          "id": "year",
           "name": "Draft Jaar",
           "key": "year",
           "type": "number",
           "required": true
         },
         {
-          "id": "league_id_2lqwm",
+          "id": "league_id",
           "name": "Competitie ID",
           "key": "league_id",
           "type": "relation",
@@ -835,29 +868,30 @@
           "targetSchemaId": "competitions"
         },
         {
-          "id": "draft_extra_data_htylf",
+          "id": "draft_extra_data",
           "name": "Draft Extra Data",
           "key": "draft_extra_data",
           "type": "text",
           "required": false
         }
       ],
-      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy",
+      "code": "DRAF"
     },
     {
       "id": "financials",
-      "name": "Financi\u00ebn",
+      "name": "Financiën",
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_t9e775",
-          "name": "Financi\u00ebn ID",
+          "id": "id",
+          "name": "Financiën ID",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "network_org_ny5y8",
+          "id": "network_org",
           "name": "Organisatie ID (ORG_ID)",
           "key": "network_org",
           "type": "relation",
@@ -865,72 +899,74 @@
           "targetSchemaId": "organizations"
         },
         {
-          "id": "bank_balance_start_9wboph",
+          "id": "bank_balance_start",
           "name": "Startsaldo Bank",
           "key": "bank_balance_start",
           "type": "number",
           "required": false
         }
       ],
-      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy",
+      "code": "FINA"
     },
     {
       "id": "ledgers",
-      "name": "Financi\u00ebn Maandelijks",
+      "name": "Financiën Maandelijks",
       "group": "TRANSACTIONAL",
       "fields": [
         {
-          "id": "id_qb9k1",
+          "id": "id",
           "name": "Grootboek ID (bijv. FIN_001:2026-07)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "month_id_rj4tzd",
+          "id": "month_id",
           "name": "Maand",
           "key": "month_id",
           "type": "select",
           "required": false,
-          "categoryListId": "MONTH"
+          "categoryListId": "CAT_MONTH"
         },
         {
-          "id": "total_income_94h1w",
+          "id": "total_income",
           "name": "Totale Inkomsten",
           "key": "total_income",
           "type": "number",
           "required": false
         },
         {
-          "id": "total_expenses_340djh",
+          "id": "total_expenses",
           "name": "Totale Uitgaven",
           "key": "total_expenses",
           "type": "number",
           "required": false
         },
         {
-          "id": "net_profit_loss_615cc",
+          "id": "net_profit_loss",
           "name": "Nettowinst/-verlies",
           "key": "net_profit_loss",
           "type": "number",
           "required": false
         },
         {
-          "id": "income_line_items_yzkkh",
+          "id": "income_line_items",
           "name": "Inkomstenposten",
           "key": "income_line_items",
           "type": "json_array",
           "required": false
         },
         {
-          "id": "expense_line_items_bqyyya",
+          "id": "expense_line_items",
           "name": "Uitgavenposten",
           "key": "expense_line_items",
           "type": "json_array",
           "required": false
         }
       ],
-      "firestore_strategy": "Sub-Collection"
+      "firestore_strategy": "Sub-Collection",
+      "code": "LEDG"
     },
     {
       "id": "games",
@@ -938,21 +974,21 @@
       "group": "SEASONAL",
       "fields": [
         {
-          "id": "id_1jcd8sk",
+          "id": "id",
           "name": "Wedstrijd ID (bijv. GAM_102)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "season_id_g2jkuv",
+          "id": "season_id",
           "name": "Seizoen ID",
           "key": "season_id",
           "type": "text",
           "required": true
         },
         {
-          "id": "league_id_jy0p8d",
+          "id": "league_id",
           "name": "Competitie ID",
           "key": "league_id",
           "type": "relation",
@@ -960,7 +996,7 @@
           "targetSchemaId": "competitions"
         },
         {
-          "id": "ruling_body_id_8fj2k",
+          "id": "ruling_body_id",
           "name": "Bestuursorgaan ID (Bond)",
           "key": "ruling_body_id",
           "type": "relation",
@@ -968,7 +1004,7 @@
           "targetSchemaId": "ruling_bodies"
         },
         {
-          "id": "home_team_id_qrmjnzn",
+          "id": "home_team_id",
           "name": "Thuisploeg ID",
           "key": "home_team_id",
           "type": "relation",
@@ -976,7 +1012,7 @@
           "targetSchemaId": "teams"
         },
         {
-          "id": "away_team_id_enyn29",
+          "id": "away_team_id",
           "name": "Uitploeg ID",
           "key": "away_team_id",
           "type": "relation",
@@ -984,65 +1020,65 @@
           "targetSchemaId": "teams"
         },
         {
-          "id": "record_type_6xm1q",
+          "id": "record_type",
           "name": "Wedstrijdtype/Status (Officieel of Oefen)",
           "key": "record_type",
           "type": "select",
           "required": true,
-          "categoryListId": "RECORD_TYPE"
+          "categoryListId": "CAT_RECORD_TYPE"
         },
         {
-          "id": "game_type_p1l0n",
+          "id": "game_type",
           "name": "Wedstrijd Scope (League/Playoff)",
           "key": "game_type",
           "type": "select",
           "required": false,
-          "categoryListId": "STATS_SCOPE"
+          "categoryListId": "CAT_STATS_SCOPE"
         },
         {
-          "id": "status_a7t76e",
+          "id": "status",
           "name": "Live Status (bijv. gepland, live, afgelopen)",
           "key": "status",
           "type": "text",
           "required": false
         },
         {
-          "id": "clock_running_plk9m",
+          "id": "clock_running",
           "name": "Klok Loopt (Spel Actief)",
           "key": "clock_running",
           "type": "boolean",
           "required": false
         },
         {
-          "id": "current_period_o7xgpw",
+          "id": "current_period",
           "name": "Huidige Periode",
           "key": "current_period",
           "type": "number",
           "required": false
         },
         {
-          "id": "time_remaining_bd00mn",
+          "id": "time_remaining",
           "name": "Resterende Tijd",
           "key": "time_remaining",
           "type": "text",
           "required": false
         },
         {
-          "id": "score_krv0fp",
+          "id": "score",
           "name": "Score (Thuis/Uit)",
           "key": "score",
           "type": "json_array",
           "required": false
         },
         {
-          "id": "shots_on_goal_bnc6u",
+          "id": "shots_on_goal",
           "name": "Schoten op Doel (Thuis/Uit)",
           "key": "shots_on_goal",
           "type": "json_array",
           "required": false
         },
         {
-          "id": "faceoffs_won_8vbn1",
+          "id": "faceoffs_won",
           "name": "Face-offs Gewonnen (Thuis/Uit)",
           "key": "faceoffs_won",
           "type": "json_array",
@@ -1097,22 +1133,22 @@
           "targetSchemaId": "persons"
         },
         {
-          "id": "attendance_3f1nm",
+          "id": "attendance",
           "name": "Aantal Toeschouwers",
           "key": "attendance",
           "type": "number",
           "required": false
         },
         {
-          "id": "broadcast_type_7j2b1",
+          "id": "broadcast_type",
           "name": "Uitzending / TV",
           "key": "broadcast_type",
           "type": "select",
           "required": false,
-          "categoryListId": "TV_TYPE"
+          "categoryListId": "CAT_TV_TYPE"
         },
         {
-          "id": "venue_id_ogj5d",
+          "id": "venue_id",
           "name": "Locatie ID",
           "key": "venue_id",
           "type": "relation",
@@ -1120,7 +1156,7 @@
           "targetSchemaId": "venues"
         },
         {
-          "id": "start_time_4axfbs",
+          "id": "start_time",
           "name": "Starttijd",
           "key": "start_time",
           "type": "datetime",
@@ -1141,15 +1177,16 @@
           "required": false
         },
         {
-          "id": "game_level_stat_tracking",
+          "id": "stat_tracking_override",
           "name": "Game-Level Stat Tracking Override",
           "key": "stat_tracking_override",
           "type": "select",
           "required": false,
-          "categoryListId": "STAT_TRACKING_FLAGS"
+          "categoryListId": "CAT_STAT_TRACKING_FLAGS"
         }
       ],
-      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy",
+      "code": "GAME"
     },
     {
       "id": "game_events",
@@ -1157,43 +1194,43 @@
       "group": "TRANSACTIONAL",
       "fields": [
         {
-          "id": "id_4jkhg6",
+          "id": "id",
           "name": "Gebeurtenis ID",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "game_id_g34pn",
+          "id": "game_id",
           "name": "Wedstrijd ID",
           "key": "game_id",
           "type": "text",
           "required": true
         },
         {
-          "id": "timestamp_r6d5w",
+          "id": "timestamp",
           "name": "Tijdstempel (Real-world)",
           "key": "timestamp",
           "type": "datetime",
           "required": false
         },
         {
-          "id": "event_status_4b2n",
+          "id": "event_status",
           "name": "Status van dit event (Validatie / Undo)",
           "key": "event_status",
           "type": "select",
           "required": true,
-          "categoryListId": "EVENT_STATUS"
+          "categoryListId": "CAT_EVENT_STATUS"
         },
         {
-          "id": "period_wq0al",
+          "id": "period",
           "name": "Periode",
           "key": "period",
           "type": "number",
           "required": false
         },
         {
-          "id": "time_in_period_pgg6eb",
+          "id": "time_in_period",
           "name": "Tijd in Periode (Match clock)",
           "key": "time_in_period",
           "type": "text",
@@ -1214,15 +1251,15 @@
           "required": false
         },
         {
-          "id": "event_type_a1zcg",
+          "id": "event_type",
           "name": "Gebeurtenistype",
           "key": "event_type",
           "type": "select",
           "required": true,
-          "categoryListId": "EVENT_TYPE"
+          "categoryListId": "CAT_EVENT_TYPE"
         },
         {
-          "id": "acting_team_id_45lkn",
+          "id": "acting_team_id",
           "name": "Uitvoerend Team (Acteur)",
           "key": "acting_team_id",
           "type": "relation",
@@ -1230,7 +1267,7 @@
           "targetSchemaId": "teams"
         },
         {
-          "id": "opposing_team_id_11bzn",
+          "id": "opposing_team_id",
           "name": "Tegenstander Team (Doelwit)",
           "key": "opposing_team_id",
           "type": "relation",
@@ -1238,7 +1275,7 @@
           "targetSchemaId": "teams"
         },
         {
-          "id": "primary_person_id_8fj9a",
+          "id": "primary_person_id",
           "name": "Speler (Uitvoerder: Scorer/Schutter/Overtreder)",
           "key": "primary_person_id",
           "type": "relation",
@@ -1246,7 +1283,7 @@
           "targetSchemaId": "persons"
         },
         {
-          "id": "target_person_id_7xq1k",
+          "id": "target_person_id",
           "name": "Speler (Doelwit: Ontvanger hit/Face-off verliezer/Slachtoffer straf)",
           "key": "target_person_id",
           "type": "relation",
@@ -1254,7 +1291,7 @@
           "targetSchemaId": "persons"
         },
         {
-          "id": "secondary_person_id_2mv7b",
+          "id": "secondary_person_id",
           "name": "Assist 1 / Reddende Goalie / Wissel Goalie",
           "key": "secondary_person_id",
           "type": "relation",
@@ -1262,7 +1299,7 @@
           "targetSchemaId": "persons"
         },
         {
-          "id": "tertiary_person_id_5xk1z",
+          "id": "tertiary_person_id",
           "name": "Assist 2",
           "key": "tertiary_person_id",
           "type": "relation",
@@ -1270,81 +1307,81 @@
           "targetSchemaId": "persons"
         },
         {
-          "id": "strength_situation_9wlzv",
+          "id": "strength_situation",
           "name": "Spelsituatie (Sterkte)",
           "key": "strength_situation",
           "type": "select",
           "required": false,
-          "categoryListId": "STRENGTH_SITUATION"
+          "categoryListId": "CAT_STRENGTH_SITUATION"
         },
         {
-          "id": "empty_net_flag_8zpq1",
+          "id": "empty_net",
           "name": "Leeg Doel (Extra Attacker)",
           "key": "empty_net",
           "type": "boolean",
           "required": false
         },
         {
-          "id": "shot_type_6vk2m",
+          "id": "shot_type",
           "name": "Type Schot",
           "key": "shot_type",
           "type": "select",
           "required": false,
-          "categoryListId": "SHOT_TYPE"
+          "categoryListId": "CAT_SHOT_TYPE"
         },
         {
-          "id": "penalty_type_7xj1p",
+          "id": "penalty_type",
           "name": "Type Straf (Reden)",
           "key": "penalty_type",
           "type": "select",
           "required": false,
-          "categoryListId": "PENALTY_TYPE"
+          "categoryListId": "CAT_PENALTY_TYPE"
         },
         {
-          "id": "penalty_minutes_7tb4n",
+          "id": "penalty_minutes",
           "name": "Strafminuten",
           "key": "penalty_minutes",
           "type": "number",
           "required": false
         },
         {
-          "id": "stoppage_reason_8p1x",
+          "id": "stoppage_reason",
           "name": "Reden Spelonderbreking",
           "key": "stoppage_reason",
           "type": "select",
           "required": false,
-          "categoryListId": "STOPPAGE_REASON"
+          "categoryListId": "CAT_STOPPAGE_REASON"
         },
         {
-          "id": "coord_x_9pl2q",
-          "name": "Co\u00f6rdinaat X (Optioneel)",
+          "id": "coord_x",
+          "name": "Coördinaat X (Optioneel)",
           "key": "coord_x",
           "type": "number",
           "required": false
         },
         {
-          "id": "coord_y_3vn8m",
-          "name": "Co\u00f6rdinaat Y (Optioneel)",
+          "id": "coord_y",
+          "name": "Coördinaat Y (Optioneel)",
           "key": "coord_y",
           "type": "number",
           "required": false
         },
         {
-          "id": "players_on_ice_home_4zxc1",
+          "id": "players_on_ice_home",
           "name": "Spelers op ijs Thuisploeg (+/-)",
           "key": "players_on_ice_home",
           "type": "json_array",
           "required": false
         },
         {
-          "id": "players_on_ice_away_9bnm2",
+          "id": "players_on_ice_away",
           "name": "Spelers op ijs Uitploeg (+/-)",
           "key": "players_on_ice_away",
           "type": "json_array",
           "required": false
         },
         {
-          "id": "event_details_y3xhvi",
+          "id": "event_details",
           "name": "Extra JSON Details (Vrij Veld)",
           "key": "event_details",
           "type": "json_array",
@@ -1377,9 +1414,38 @@
           "key": "target_person_jersey",
           "type": "number",
           "required": false
+        },
+        {
+          "id": "secondary_person_name",
+          "name": "Assist 1 / Goalie Naam (Gedenormaliseerd)",
+          "key": "secondary_person_name",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "secondary_person_jersey",
+          "name": "Assist 1 / Goalie Rugnummer (Gedenormaliseerd)",
+          "key": "secondary_person_jersey",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tertiary_person_name",
+          "name": "Assist 2 Naam (Gedenormaliseerd)",
+          "key": "tertiary_person_name",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tertiary_person_jersey",
+          "name": "Assist 2 Rugnummer (Gedenormaliseerd)",
+          "key": "tertiary_person_jersey",
+          "type": "number",
+          "required": false
         }
       ],
-      "firestore_strategy": "Sub-Collection"
+      "firestore_strategy": "Sub-Collection",
+      "code": "GEVT"
     },
     {
       "id": "team_encounters",
@@ -1387,37 +1453,38 @@
       "group": "TRANSACTIONAL",
       "fields": [
         {
-          "id": "id_byfjhl",
+          "id": "id",
           "name": "Ontmoeting ID (TEA_001:GAM_102)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "game_id_24oinm",
+          "id": "game_id",
           "name": "Wedstrijd ID",
           "key": "game_id",
           "type": "text",
           "required": true
         },
         {
-          "id": "tactic_used_gkg2oh",
+          "id": "tactic_used",
           "name": "Gebruikte Tactiek",
           "key": "tactic_used",
           "type": "select",
           "required": false,
-          "categoryListId": "TACTIC"
+          "categoryListId": "CAT_TACTIC"
         },
         {
-          "id": "game_importance_lp2w7",
+          "id": "game_importance",
           "name": "Wedstrijdbelang",
           "key": "game_importance",
           "type": "select",
           "required": false,
-          "categoryListId": "GAME_IMPORTANCE"
+          "categoryListId": "CAT_GAME_IMPORTANCE"
         }
       ],
-      "firestore_strategy": "Sub-Collection"
+      "firestore_strategy": "Sub-Collection",
+      "code": "TENC"
     },
     {
       "id": "developments",
@@ -1425,14 +1492,14 @@
       "group": "STATIC",
       "fields": [
         {
-          "id": "id_mn6gvf",
+          "id": "id",
           "name": "Ontwikkeling ID",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "network_per_1tsfnm",
+          "id": "network_per",
           "name": "Persoon ID (PER_ID)",
           "key": "network_per",
           "type": "relation",
@@ -1440,14 +1507,15 @@
           "targetSchemaId": "persons"
         },
         {
-          "id": "current_potential_ceiling_d2izf9",
+          "id": "current_potential_ceiling",
           "name": "Potentieel Plafond (1-200)",
           "key": "current_potential_ceiling",
           "type": "number",
           "required": false
         }
       ],
-      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy",
+      "code": "DEVL"
     },
     {
       "id": "weekly_plans",
@@ -1455,21 +1523,21 @@
       "group": "TRANSACTIONAL",
       "fields": [
         {
-          "id": "id_nuw65",
+          "id": "id",
           "name": "Schema ID (bijv. DEV_001:WK_32)",
           "key": "id",
           "type": "text",
           "required": true
         },
         {
-          "id": "week_number_kk5wi",
+          "id": "week_number",
           "name": "Weeknummer (1-52)",
           "key": "week_number",
           "type": "number",
           "required": false
         },
         {
-          "id": "network_coach_per_khpdlo",
+          "id": "network_coach_per",
           "name": "Coach ID (PER_ID)",
           "key": "network_coach_per",
           "type": "relation",
@@ -1477,7 +1545,7 @@
           "targetSchemaId": "persons"
         },
         {
-          "id": "focus_area_23o5hi",
+          "id": "focus_area",
           "name": "Trainingsfocus",
           "key": "focus_area",
           "type": "select",
@@ -1485,7 +1553,7 @@
           "categoryListId": "CAT_TRN_FOC"
         },
         {
-          "id": "intensity_98o0a",
+          "id": "intensity",
           "name": "Trainingsintensiteit",
           "key": "intensity",
           "type": "select",
@@ -1493,21 +1561,22 @@
           "categoryListId": "CAT_TRN_INT"
         },
         {
-          "id": "fatigue_level_ubbz2",
+          "id": "fatigue_level",
           "name": "Vermoeidheidsniveau (1-100)",
           "key": "fatigue_level",
           "type": "number",
           "required": false
         },
         {
-          "id": "attribute_changes_5axk3i",
+          "id": "attribute_changes",
           "name": "Attribuutwijzigingen",
           "key": "attribute_changes",
           "type": "json_array",
           "required": false
         }
       ],
-      "firestore_strategy": "Sub-Collection"
+      "firestore_strategy": "Sub-Collection",
+      "code": "WPLN"
     },
     {
       "id": "game_rosters",
@@ -1573,7 +1642,8 @@
           "required": false,
           "categoryListId": "CAT_PLR_ROL"
         }
-      ]
+      ],
+      "code": "ROST"
     }
   ]
 }
