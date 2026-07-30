@@ -97,7 +97,8 @@
           "required": false,
           "categoryListId": "STAFF_EXTRA_FLAGS"
         }
-      ]
+      ],
+      "firestore_strategy": "Root Collection"
     },
     {
       "id": "person_encounters",
@@ -157,7 +158,8 @@
           "type": "number",
           "required": false
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
     },
     {
       "id": "organizations",
@@ -222,7 +224,8 @@
           "required": false,
           "targetSchemaId": "competitions"
         }
-      ]
+      ],
+      "firestore_strategy": "Root Collection"
     },
     {
       "id": "org_encounters",
@@ -266,7 +269,8 @@
           "type": "json_array",
           "required": false
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
     },
     {
       "id": "teams",
@@ -303,7 +307,8 @@
           "required": false,
           "categoryListId": "SQUAD_PLAYING"
         }
-      ]
+      ],
+      "firestore_strategy": "Root Collection"
     },
     {
       "id": "competitions",
@@ -363,7 +368,8 @@
           "type": "boolean",
           "required": false
         }
-      ]
+      ],
+      "firestore_strategy": "Root Collection"
     },
     {
       "id": "comp_encounters",
@@ -544,7 +550,8 @@
           "required": false,
           "categoryListId": "TV_TYPE"
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
     },
     {
       "id": "stages",
@@ -604,7 +611,8 @@
           "required": false,
           "categoryListId": "GROUP_MEMBERSHIP"
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
     },
     {
       "id": "venues",
@@ -648,7 +656,8 @@
           "required": false,
           "categoryListId": "CAT_RNK_SIZ"
         }
-      ]
+      ],
+      "firestore_strategy": "Root Collection"
     },
     {
       "id": "nations",
@@ -707,7 +716,8 @@
           "required": false,
           "categoryListId": "IIHF_JUNIOR_DIVISION"
         }
-      ]
+      ],
+      "firestore_strategy": "Root Collection"
     },
     {
       "id": "ruling_bodies",
@@ -750,7 +760,8 @@
           "key": "ORG_AFK",
           "type": "text"
         }
-      ]
+      ],
+      "firestore_strategy": "Root Collection"
     },
     {
       "id": "medical_injuries",
@@ -793,7 +804,8 @@
           "type": "datetime",
           "required": false
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection"
     },
     {
       "id": "drafts",
@@ -829,16 +841,17 @@
           "type": "text",
           "required": false
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
     },
     {
       "id": "financials",
-      "name": "Financiën",
+      "name": "Financi\u00ebn",
       "group": "STATIC",
       "fields": [
         {
           "id": "id_t9e775",
-          "name": "Financiën ID",
+          "name": "Financi\u00ebn ID",
           "key": "id",
           "type": "text",
           "required": true
@@ -858,11 +871,12 @@
           "type": "number",
           "required": false
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
     },
     {
       "id": "ledgers",
-      "name": "Financiën Maandelijks",
+      "name": "Financi\u00ebn Maandelijks",
       "group": "TRANSACTIONAL",
       "fields": [
         {
@@ -915,7 +929,8 @@
           "type": "json_array",
           "required": false
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection"
     },
     {
       "id": "games",
@@ -1124,8 +1139,17 @@
           "key": "backup_registrar_id",
           "type": "text",
           "required": false
+        },
+        {
+          "id": "game_level_stat_tracking",
+          "name": "Game-Level Stat Tracking Override",
+          "key": "stat_tracking_override",
+          "type": "select",
+          "required": false,
+          "categoryListId": "STAT_TRACKING_FLAGS"
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
     },
     {
       "id": "game_events",
@@ -1293,14 +1317,14 @@
         },
         {
           "id": "coord_x_9pl2q",
-          "name": "Coördinaat X (Optioneel)",
+          "name": "Co\u00f6rdinaat X (Optioneel)",
           "key": "coord_x",
           "type": "number",
           "required": false
         },
         {
           "id": "coord_y_3vn8m",
-          "name": "Coördinaat Y (Optioneel)",
+          "name": "Co\u00f6rdinaat Y (Optioneel)",
           "key": "coord_y",
           "type": "number",
           "required": false
@@ -1325,8 +1349,37 @@
           "key": "event_details",
           "type": "json_array",
           "required": false
+        },
+        {
+          "id": "primary_person_name",
+          "name": "Speler (Uitvoerder) Naam (Gedenormaliseerd)",
+          "key": "primary_person_name",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "primary_person_jersey",
+          "name": "Speler (Uitvoerder) Rugnummer (Gedenormaliseerd)",
+          "key": "primary_person_jersey",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "target_person_name",
+          "name": "Speler (Doelwit) Naam (Gedenormaliseerd)",
+          "key": "target_person_name",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "target_person_jersey",
+          "name": "Speler (Doelwit) Rugnummer (Gedenormaliseerd)",
+          "key": "target_person_jersey",
+          "type": "number",
+          "required": false
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection"
     },
     {
       "id": "team_encounters",
@@ -1363,7 +1416,8 @@
           "required": false,
           "categoryListId": "GAME_IMPORTANCE"
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection"
     },
     {
       "id": "developments",
@@ -1392,7 +1446,8 @@
           "type": "number",
           "required": false
         }
-      ]
+      ],
+      "firestore_strategy": "Sub-Collection or Root Collection based on hierarchy"
     },
     {
       "id": "weekly_plans",
@@ -1451,6 +1506,74 @@
           "type": "json_array",
           "required": false
         }
+      ],
+      "firestore_strategy": "Sub-Collection"
+    },
+    {
+      "id": "game_rosters",
+      "name": "Game Rosters (Wedstrijd Selecties)",
+      "group": "TRANSACTIONAL",
+      "firestore_strategy": "Sub-Collection under Game",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Game Roster ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "game_id",
+          "name": "Wedstrijd ID",
+          "key": "game_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "team_id",
+          "name": "Team ID",
+          "key": "team_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "person_id",
+          "name": "Persoon ID (Verplicht)",
+          "key": "person_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "name_display",
+          "name": "Naam op Shirt (Voor ringers of regulier)",
+          "key": "name_display",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "jersey_number",
+          "name": "Rugnummer (Tijdens wedstrijd)",
+          "key": "jersey_number",
+          "type": "number",
+          "required": true
+        },
+        {
+          "id": "position_type",
+          "name": "Positietype (Snapshot)",
+          "key": "position_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_POS_TYP"
+        },
+        {
+          "id": "player_role",
+          "name": "Spelersrol (Snapshot)",
+          "key": "player_role",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_PLR_ROL"
+        }
       ]
     }
-  ],
+  ]
+}
