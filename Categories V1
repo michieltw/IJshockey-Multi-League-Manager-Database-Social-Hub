@@ -807,7 +807,7 @@
       ]
     },
     {
-      "id": "NAME_EXTRA_FLAGS",
+      "id": "CAT_NAME_EXTRA_FLAGS",
       "name": "Extra Naamvlaggen",
       "items": [
         {
@@ -825,7 +825,7 @@
       ]
     },
     {
-      "id": "STAFF_EXTRA_FLAGS",
+      "id": "CAT_STAFF_EXTRA_FLAGS",
       "name": "Extra Persoonsvlaggen",
       "items": [
         {
@@ -855,7 +855,7 @@
       ]
     },
     {
-      "id": "MATCH_RULES_FLAGS",
+      "id": "CAT_MATCH_RULES_FLAGS",
       "name": "Wedstrijdregels",
       "items": [
         {
@@ -929,7 +929,7 @@
       ]
     },
     {
-      "id": "BASIC_RULES_FLAGS",
+      "id": "CAT_BASIC_RULES_FLAGS",
       "name": "Basisregels",
       "items": [
         {
@@ -1063,7 +1063,7 @@
       ]
     },
     {
-      "id": "EXTRA_RULE_TYPE",
+      "id": "CAT_EXTRA_RULE_TYPE",
       "name": "Extra Regeltype",
       "items": [
         {
@@ -1797,7 +1797,7 @@
       ]
     },
     {
-      "id": "LANGUAGE",
+      "id": "CAT_LANGUAGE",
       "name": "Taal",
       "items": [
         {
@@ -2063,7 +2063,7 @@
       ]
     },
     {
-      "id": "AWARD_TYPE",
+      "id": "CAT_AWARD_TYPE",
       "name": "Prijzen & Onderscheidingen",
       "items": [
         {
@@ -2273,7 +2273,7 @@
       ]
     },
     {
-      "id": "ROUND_TYPE",
+      "id": "CAT_ROUND_TYPE",
       "name": "Rondetype",
       "items": [
         {
@@ -2387,7 +2387,7 @@
       ]
     },
     {
-      "id": "STAGE_TYPE",
+      "id": "CAT_STAGE_TYPE",
       "name": "Fasetype",
       "items": [
         {
@@ -2497,7 +2497,7 @@
       ]
     },
     {
-      "id": "APPROXIMATE_REGION",
+      "id": "CAT_APPROXIMATE_REGION",
       "name": "Geschatte Regio",
       "items": [
         {
@@ -2603,7 +2603,7 @@
       ]
     },
     {
-      "id": "REGION_ACTUAL",
+      "id": "CAT_REGION_ACTUAL",
       "name": "Actuele Regio",
       "items": [
         {
@@ -2669,7 +2669,7 @@
       ]
     },
     {
-      "id": "AFFILIATION_TYPE",
+      "id": "CAT_AFFILIATION_TYPE",
       "name": "Samenwerkingsverband Type",
       "items": [
         {
@@ -2703,7 +2703,7 @@
       ]
     },
     {
-      "id": "AFFILIATION_DEPENDENCY",
+      "id": "CAT_AFFILIATION_DEPENDENCY",
       "name": "Samenwerkingsverband Afhankelijkheid",
       "items": [
         {
@@ -2725,7 +2725,7 @@
       ]
     },
     {
-      "id": "DAY",
+      "id": "CAT_DAY",
       "name": "Dag",
       "items": [
         {
@@ -2763,7 +2763,7 @@
       ]
     },
     {
-      "id": "TACTIC",
+      "id": "CAT_TACTIC",
       "name": "Tactiek",
       "items": [
         {
@@ -2841,7 +2841,7 @@
       ]
     },
     {
-      "id": "EXTRA_MATCH_RULES",
+      "id": "CAT_EXTRA_MATCH_RULES",
       "name": "Extra Wedstrijdregels",
       "items": [
         {
@@ -2855,7 +2855,7 @@
       ]
     },
     {
-      "id": "ROUND_RULES",
+      "id": "CAT_ROUND_RULES",
       "name": "Ronderegels",
       "items": [
         {
@@ -2945,7 +2945,7 @@
       ]
     },
     {
-      "id": "TEAM_PICKING_RULES",
+      "id": "CAT_TEAM_PICKING_RULES",
       "name": "Teamselectieregels",
       "items": [
         {
@@ -3071,7 +3071,7 @@
       ]
     },
     {
-      "id": "REPLAY_RULES",
+      "id": "CAT_REPLAY_RULES",
       "name": "Replay-regels",
       "items": [
         {
@@ -3125,7 +3125,7 @@
       ]
     },
     {
-      "id": "CLUB_VALUATION",
+      "id": "CAT_CLUB_VALUATION",
       "name": "Clubwaardering",
       "items": [
         {
@@ -3159,7 +3159,7 @@
       ]
     },
     {
-      "id": "GENDER",
+      "id": "CAT_GENDER",
       "name": "Geslacht",
       "items": [
         {
@@ -3197,7 +3197,7 @@
       ]
     },
     {
-      "id": "GROUP",
+      "id": "CAT_GROUP",
       "name": "Groep",
       "items": [
         {
@@ -3327,7 +3327,7 @@
       ]
     },
     {
-      "id": "GROUP_MEMBERSHIP",
+      "id": "CAT_GROUP_MEMBERSHIP",
       "name": "Groepslidmaatschap",
       "items": [
         {
@@ -3345,7 +3345,7 @@
       ]
     },
     {
-      "id": "IIHF_JUNIOR_DIVISION",
+      "id": "CAT_IIHF_JUNIOR_DIVISION",
       "name": "IIHF Junioren Divisie",
       "items": [
         {
@@ -3367,7 +3367,7 @@
       ]
     },
     {
-      "id": "IIHF_SENIOR_DIVISION",
+      "id": "CAT_IIHF_SENIOR_DIVISION",
       "name": "IIHF Senioren Divisie",
       "items": [
         {
@@ -3401,7 +3401,7 @@
       ]
     },
     {
-      "id": "FATE_RULES",
+      "id": "CAT_FATE_RULES",
       "name": "Lotregels (Resultaat)",
       "items": [
         {
@@ -3439,7 +3439,7 @@
       ]
     },
     {
-      "id": "FATE_TO_DRAW_FROM",
+      "id": "CAT_FATE_TO_DRAW_FROM",
       "name": "Resultatenpool",
       "items": [
         {
@@ -3489,7 +3489,7 @@
       ]
     },
     {
-      "id": "TRANSFER_RULES_FLAGS",
+      "id": "CAT_TRANSFER_RULES_FLAGS",
       "name": "Transferregels",
       "items": [
         {
@@ -3551,7 +3551,7 @@
       ]
     },
     {
-      "id": "TRANSFER_SYSTEM_TYPE",
+      "id": "CAT_TRANSFER_SYSTEM_TYPE",
       "name": "Transfersysteem",
       "items": [
         {
@@ -3569,7 +3569,7 @@
       ]
     },
     {
-      "id": "ARENA_RULES",
+      "id": "CAT_ARENA_RULES",
       "name": "Accommodatie-instellingen",
       "items": [
         {
@@ -3643,7 +3643,7 @@
       ]
     },
     {
-      "id": "CONTINENTAL_LICENCE",
+      "id": "CAT_CONTINENTAL_LICENCE",
       "name": "Continentale Licentie",
       "items": [
         {
@@ -3677,7 +3677,7 @@
       ]
     },
     {
-      "id": "GAME_IMPORTANCE",
+      "id": "CAT_GAME_IMPORTANCE",
       "name": "Wedstrijdbelang",
       "items": [
         {
@@ -3703,7 +3703,7 @@
       ]
     },
     {
-      "id": "MONTH",
+      "id": "CAT_MONTH",
       "name": "Maand",
       "items": [
         {
@@ -3761,7 +3761,7 @@
       ]
     },
     {
-      "id": "SQUAD_PLAYING",
+      "id": "CAT_SQUAD_PLAYING",
       "name": "Spelende Selectie",
       "items": [
         {
@@ -3795,7 +3795,7 @@
       ]
     },
     {
-      "id": "SQUAD_SELECTED",
+      "id": "CAT_SQUAD_SELECTED",
       "name": "Teamselectie",
       "items": [
         {
@@ -3821,7 +3821,7 @@
       ]
     },
     {
-      "id": "STATS_SCOPE",
+      "id": "CAT_STATS_SCOPE",
       "name": "Reikwijdte Statistieken",
       "items": [
         {
@@ -3855,7 +3855,7 @@
       ]
     },
     {
-      "id": "TIME_OF_DAY",
+      "id": "CAT_TIME_OF_DAY",
       "name": "Tijdstip",
       "items": [
         {
@@ -3881,7 +3881,7 @@
       ]
     },
     {
-      "id": "TV_TYPE",
+      "id": "CAT_TV_TYPE",
       "name": "TV-Uitzending Type",
       "items": [
         {
@@ -3911,7 +3911,7 @@
       ]
     },
     {
-      "id": "COMP_SELECTED_FLAG",
+      "id": "CAT_COMP_SELECTED_FLAG",
       "name": "Competitievlag",
       "items": [
         {
@@ -3945,7 +3945,7 @@
       ]
     },
     {
-      "id": "LEAGUE_SELECTED",
+      "id": "CAT_LEAGUE_SELECTED",
       "name": "Competitie Selectiestatus",
       "items": [
         {
@@ -3971,7 +3971,7 @@
       ]
     },
     {
-      "id": "DECLARED_NATION",
+      "id": "CAT_DECLARED_NATION",
       "name": "Verklaarde Nationaliteit",
       "items": [
         {
@@ -3993,7 +3993,7 @@
       ]
     },
     {
-      "id": "JOB_LEVEL",
+      "id": "CAT_JOB_LEVEL",
       "name": "Functieniveau",
       "items": [
         {
@@ -4037,7 +4037,7 @@
       ]
     },
     {
-      "id": "RULING_BODY_FLAGS",
+      "id": "CAT_RULING_BODY_FLAGS",
       "name": "Bestuursorgaan Vlaggen",
       "items": [
         {
@@ -4067,7 +4067,7 @@
       ]
     },
     {
-      "id": "JUNIOR_PREFERENCE",
+      "id": "CAT_JUNIOR_PREFERENCE",
       "name": "Voorkeur Junior",
       "items": [
         {
@@ -4089,7 +4089,7 @@
       ]
     },
     {
-      "id": "DEVELOPMENT_STATE",
+      "id": "CAT_DEVELOPMENT_STATE",
       "name": "Ontwikkelingsstatus",
       "items": [
         {
@@ -4111,7 +4111,7 @@
       ]
     },
     {
-      "id": "17e078d6-9991-4c4d-9ab7-651a42251aa3",
+      "id": "CAT_STBR",
       "name": "Stickmerk",
       "items": [
         {
@@ -4161,7 +4161,7 @@
       ]
     },
     {
-      "id": "dc78a62c-5a23-4656-b465-c500cb6348cf",
+      "id": "CAT_STFL",
       "name": "Stickflex",
       "items": [
         {
@@ -4267,7 +4267,7 @@
       ]
     },
     {
-      "id": "333fe324-d161-4253-a058-49e91e04e090",
+      "id": "CAT_STCU",
       "name": "Bladcurve Stick",
       "items": [
         {
@@ -4325,7 +4325,7 @@
       ]
     },
     {
-      "id": "c51cc670-8f3f-429e-a900-e5908c84ba4a",
+      "id": "CAT_STCL",
       "name": "Stickklasse",
       "items": [
         {
@@ -4351,7 +4351,7 @@
       ]
     },
     {
-      "id": "70dac729-6439-40ae-91b0-cab965685e1b",
+      "id": "CAT_STKP",
       "name": "Kick-point Stick",
       "items": [
         {
@@ -4373,7 +4373,7 @@
       ]
     },
     {
-      "id": "ad6e7664-1de5-4590-93c2-8f3348a05aa2",
+      "id": "CAT_STPC",
       "name": "Prestatieklasse Stick",
       "items": [
         {
@@ -4395,7 +4395,7 @@
       ]
     },
     {
-      "id": "9586ad60-85f2-4028-9946-ae9037a56c8d",
+      "id": "CAT_STWC",
       "name": "Gewichtsklasse Stick",
       "items": [
         {
@@ -4425,7 +4425,7 @@
       ]
     },
     {
-      "id": "61e77be0-6eb4-422a-a2cd-15814b36586a",
+      "id": "CAT_STSE",
       "name": "Stickserie",
       "items": [
         {
@@ -4531,7 +4531,7 @@
       ]
     },
     {
-      "id": "87fe335a-091e-41b8-b1ac-cfa2d1505b09",
+      "id": "CAT_ST3D",
       "name": "3D-Grip Stick",
       "items": [
         {
@@ -4561,7 +4561,7 @@
       ]
     },
     {
-      "id": "1f295359-5383-464c-aea5-6f42899b36f3",
+      "id": "CAT_STBT",
       "name": "Bladtextuur Stick",
       "items": [
         {
@@ -4583,7 +4583,7 @@
       ]
     },
     {
-      "id": "0cf6985b-a1bf-4e34-ade3-de593b09908f",
+      "id": "CAT_STST",
       "name": "Shafttype Stick",
       "items": [
         {
@@ -4613,7 +4613,7 @@
       ]
     },
     {
-      "id": "8a3cb45d-9611-43e2-b66d-81149e3d2a0f",
+      "id": "CAT_STTX",
       "name": "Shafttextuur Stick",
       "items": [
         {
@@ -4639,7 +4639,7 @@
       ]
     },
     {
-      "id": "d02bb5cb-5252-47c3-813d-947ee537a6e7",
+      "id": "CAT_STDE",
       "name": "Stickdesign",
       "items": [
         {
@@ -4657,7 +4657,7 @@
       ]
     },
     {
-      "id": "STAT_TRACKING_FLAGS",
+      "id": "CAT_STAT_TRACKING_FLAGS",
       "name": "Statistieken Registratieniveau",
       "items": [
         {
@@ -4707,7 +4707,7 @@
       ]
     },
     {
-      "id": "PENALTY_TYPE",
+      "id": "CAT_PENALTY_TYPE",
       "name": "Straf Types",
       "items": [
         {
@@ -4809,7 +4809,7 @@
       ]
     },
     {
-      "id": "RECORD_TYPE",
+      "id": "CAT_RECORD_TYPE",
       "name": "Wedstrijdtype/Status",
       "items": [
         {
@@ -4827,7 +4827,7 @@
       ]
     },
     {
-      "id": "EVENT_TYPE",
+      "id": "CAT_EVENT_TYPE",
       "name": "Type Gebeurtenis",
       "items": [
         {
@@ -4901,7 +4901,7 @@
       ]
     },
     {
-      "id": "EVENT_STATUS",
+      "id": "CAT_EVENT_STATUS",
       "name": "Status Gebeurtenis",
       "items": [
         {
@@ -4923,7 +4923,7 @@
       ]
     },
     {
-      "id": "STOPPAGE_REASON",
+      "id": "CAT_STOPPAGE_REASON",
       "name": "Reden Spelonderbreking",
       "items": [
         {
@@ -4969,7 +4969,7 @@
       ]
     },
     {
-      "id": "STRENGTH_SITUATION",
+      "id": "CAT_STRENGTH_SITUATION",
       "name": "Spelsituatie (Sterkte)",
       "items": [
         {
@@ -5015,7 +5015,7 @@
       ]
     },
     {
-      "id": "SHOT_TYPE",
+      "id": "CAT_SHOT_TYPE",
       "name": "Type Schot",
       "items": [
         {
