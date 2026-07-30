@@ -1,0 +1,6492 @@
+{
+  "schemas": [
+    {
+      "id": "persons",
+      "name": "Personen (Spelers & Overig)",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_ytzoa",
+          "name": "Persoon ID (bijv. PER_001)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "name_first_4ixo8p",
+          "name": "Voornaam",
+          "key": "name_first",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "name_last_fnf0cp",
+          "name": "Achternaam",
+          "key": "name_last",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "name_extra_flags_9e9vn7",
+          "name": "Naam Extra Vlaggen (Bitmask)",
+          "key": "name_extra_flags",
+          "type": "select",
+          "required": false,
+          "categoryListId": "NAME_EXTRA_FLAGS"
+        },
+        {
+          "id": "gender_6p1gyt",
+          "name": "Geslacht",
+          "key": "gender",
+          "type": "select",
+          "required": false,
+          "categoryListId": "GENDER"
+        },
+        {
+          "id": "nationality_declared_3k9nqh",
+          "name": "Verklaarde Nationaliteit (NAT_ID)",
+          "key": "nationality_declared",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "language_primary_wgujjb",
+          "name": "Primaire Taal",
+          "key": "language_primary",
+          "type": "select",
+          "required": false,
+          "categoryListId": "LANGUAGE"
+        },
+        {
+          "id": "handedness_delgpm",
+          "name": "Voorkeurshand",
+          "key": "handedness",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_HND"
+        },
+        {
+          "id": "junior_preference_h80459",
+          "name": "Voorkeur Junior",
+          "key": "junior_preference",
+          "type": "select",
+          "required": false,
+          "categoryListId": "JUNIOR_PREFERENCE"
+        },
+        {
+          "id": "job_primary_fxd4qp",
+          "name": "Primaire Functie",
+          "key": "job_primary",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_JOB"
+        },
+        {
+          "id": "staff_classification_8qojb",
+          "name": "Stafclassificatie",
+          "key": "staff_classification",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_STF_CLS"
+        },
+        {
+          "id": "staff_extra_flags_wf6p8c",
+          "name": "Staf Extra Vlaggen (Bitmask)",
+          "key": "staff_extra_flags",
+          "type": "select",
+          "required": false,
+          "categoryListId": "STAFF_EXTRA_FLAGS"
+        }
+      ]
+    },
+    {
+      "id": "person_encounters",
+      "name": "Persoon x Seizoen",
+      "group": "SEASONAL",
+      "fields": [
+        {
+          "id": "id_2dktjl",
+          "name": "Ontmoeting ID (bijv. PER_001:SZN_26)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "season_id_s1begtq",
+          "name": "Seizoen ID",
+          "key": "season_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "job_level_nj1114",
+          "name": "Functieniveau",
+          "key": "job_level",
+          "type": "select",
+          "required": false,
+          "categoryListId": "JOB_LEVEL"
+        },
+        {
+          "id": "player_role_csnagq",
+          "name": "Spelersrol",
+          "key": "player_role",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_PLR_ROL"
+        },
+        {
+          "id": "position_type_ccqfce",
+          "name": "Positietype",
+          "key": "position_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_POS_TYP"
+        },
+        {
+          "id": "team_id_7g41s",
+          "name": "Team ID (TEA_ID)",
+          "key": "team_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "jersey_number_yud6u",
+          "name": "Rugnummer",
+          "key": "jersey_number",
+          "type": "number",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "organizations",
+      "name": "Organisaties (Verenigingen)",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_80aubj",
+          "name": "Organisatie ID (bijv. ORG_001)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "name_v6fboi",
+          "name": "Organisatienaam",
+          "key": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "short_name_drda9",
+          "name": "Korte Naam",
+          "key": "short_name",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "professional_status_ykp9jo",
+          "name": "Professionele Status",
+          "key": "professional_status",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_PRO_STA"
+        },
+        {
+          "id": "colors_primary_00u69",
+          "name": "Primaire Kleuren (Hex/Str)",
+          "key": "colors_primary",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "colors_secondary_c0iljj",
+          "name": "Secundaire Kleuren (Hex/Str)",
+          "key": "colors_secondary",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "currency_type_gecz",
+          "name": "Valutasoort",
+          "key": "currency_type",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "league_id_pvw5p",
+          "name": "Competitie ID",
+          "key": "league_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "competitions"
+        }
+      ]
+    },
+    {
+      "id": "org_encounters",
+      "name": "Organisatie x Seizoen",
+      "group": "SEASONAL",
+      "fields": [
+        {
+          "id": "id_au0t5",
+          "name": "Ontmoeting ID (bijv. ORG_001:SZN_26)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "season_id_hj42te",
+          "name": "Seizoen ID",
+          "key": "season_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "club_valuation_iksyb",
+          "name": "Clubwaardering",
+          "key": "club_valuation",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CLUB_VALUATION"
+        },
+        {
+          "id": "continental_licence_bglxpp",
+          "name": "Continentale Licentie",
+          "key": "continental_licence",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CONTINENTAL_LICENCE"
+        },
+        {
+          "id": "affiliation_network_8bnpgc",
+          "name": "Samenwerkingsnetwerk",
+          "key": "affiliation_network",
+          "type": "json_array",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "teams",
+      "name": "Teams",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_w9m6ci",
+          "name": "Team ID (bijv. TEA_001)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "org_id_ydeddq",
+          "name": "Organisatie ID (ORG_ID)",
+          "key": "org_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "organizations"
+        },
+        {
+          "id": "name_pryw3h",
+          "name": "Teamnaam",
+          "key": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "squad_playing_rlflo5",
+          "name": "Spelende Selectie",
+          "key": "squad_playing",
+          "type": "select",
+          "required": false,
+          "categoryListId": "SQUAD_PLAYING"
+        }
+      ]
+    },
+    {
+      "id": "competitions",
+      "name": "Competities",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_75vgv6",
+          "name": "Competitie ID (bijv. CMP_001)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "name_lyg54",
+          "name": "Competitienaam",
+          "key": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "comp_type_tozc59",
+          "name": "Competitietype",
+          "key": "comp_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_CMP_TYP"
+        },
+        {
+          "id": "comp_scope_n1tkv",
+          "name": "Competitiereikwijdte",
+          "key": "comp_scope",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_CMP_SCP"
+        },
+        {
+          "id": "comp_classification_0qlijb",
+          "name": "Competitieclassificatie",
+          "key": "comp_classification",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_CMP_CLS"
+        },
+        {
+          "id": "approximate_region_kho1s",
+          "name": "Geschatte Regio",
+          "key": "approximate_region",
+          "type": "select",
+          "required": false,
+          "categoryListId": "APPROXIMATE_REGION"
+        },
+        {
+          "id": "league_selected_h8mox7",
+          "name": "Competitie Geselecteerd",
+          "key": "league_selected",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "comp_encounters",
+      "name": "Competitie-instellingen",
+      "group": "SEASONAL",
+      "fields": [
+        {
+          "id": "id_qxncfj",
+          "name": "Ontmoeting ID (CMP_001:SZN_26)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "season_id_n4klp",
+          "name": "Seizoen ID",
+          "key": "season_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "basic_rules_flags_25vovc",
+          "name": "Basisregels Vlaggen (Bitmask)",
+          "key": "basic_rules_flags",
+          "type": "select",
+          "required": false,
+          "categoryListId": "BASIC_RULES_FLAGS"
+        },
+        {
+          "id": "match_rules_fngkwp",
+          "name": "Wedstrijdregels Vlaggen (Bitmask)",
+          "key": "match_rules",
+          "type": "select",
+          "required": false,
+          "categoryListId": "MATCH_RULES_FLAGS"
+        },
+        {
+          "id": "stat_tracking_flags_8xq1m",
+          "name": "Statistieken Registratieniveau (Bitmask)",
+          "key": "stat_tracking_flags",
+          "type": "select",
+          "required": false,
+          "categoryListId": "STAT_TRACKING_FLAGS"
+        },
+        {
+          "id": "extra_match_rules_1ij34n",
+          "name": "Extra Wedstrijdregels",
+          "key": "extra_match_rules",
+          "type": "select",
+          "required": false,
+          "categoryListId": "EXTRA_MATCH_RULES"
+        },
+        {
+          "id": "extra_rule_type_eryjym",
+          "name": "Extra Regeltype",
+          "key": "extra_rule_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "EXTRA_RULE_TYPE"
+        },
+        {
+          "id": "round_rules_5jsyg",
+          "name": "Ronderegels",
+          "key": "round_rules",
+          "type": "select",
+          "required": false,
+          "categoryListId": "ROUND_RULES"
+        },
+        {
+          "id": "team_picking_rules_da0nkj",
+          "name": "Teamselectieregels",
+          "key": "team_picking_rules",
+          "type": "select",
+          "required": false,
+          "categoryListId": "TEAM_PICKING_RULES"
+        },
+        {
+          "id": "replay_rules_ptwxl",
+          "name": "Replay-regels",
+          "key": "replay_rules",
+          "type": "select",
+          "required": false,
+          "categoryListId": "REPLAY_RULES"
+        },
+        {
+          "id": "sort_rule_sioopa",
+          "name": "Sorteerregel",
+          "key": "sort_rule",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_SRT_RUL"
+        },
+        {
+          "id": "transfer_system_type_q64jm",
+          "name": "Transfersysteem",
+          "key": "transfer_system_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "TRANSFER_SYSTEM_TYPE"
+        },
+        {
+          "id": "transfer_rules_flags_dzyr9l",
+          "name": "Transferregels (Bitmask)",
+          "key": "transfer_rules_flags",
+          "type": "select",
+          "required": false,
+          "categoryListId": "TRANSFER_RULES_FLAGS"
+        },
+        {
+          "id": "salary_cap_type_t8q6zc",
+          "name": "Salarisplafond Type",
+          "key": "salary_cap_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_SAL_CAP"
+        },
+        {
+          "id": "prize_money_type_7igqur",
+          "name": "Prijzengeld Type",
+          "key": "prize_money_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_PRZ_MON"
+        },
+        {
+          "id": "fighting_penalty_z49tn8",
+          "name": "Vechtstraf",
+          "key": "fighting_penalty",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_FGT_PEN"
+        },
+        {
+          "id": "misconduct_accumulator_type_zfxupq",
+          "name": "Accumulator Wangedrag",
+          "key": "misconduct_accumulator_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_MSC_ACC"
+        },
+        {
+          "id": "fate_rules_t2krbb",
+          "name": "Lotregels (Resultaat)",
+          "key": "fate_rules",
+          "type": "select",
+          "required": false,
+          "categoryListId": "FATE_RULES"
+        },
+        {
+          "id": "fate_to_draw_from_le38fj",
+          "name": "Resultatenpool",
+          "key": "fate_to_draw_from",
+          "type": "select",
+          "required": false,
+          "categoryListId": "FATE_TO_DRAW_FROM"
+        },
+        {
+          "id": "stats_scope_t26cdf",
+          "name": "Reikwijdte Statistieken",
+          "key": "stats_scope",
+          "type": "select",
+          "required": false,
+          "categoryListId": "STATS_SCOPE"
+        },
+        {
+          "id": "win_pct_type_54i2tr",
+          "name": "Winstpercentage Type",
+          "key": "win_pct_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_WIN_PCT"
+        },
+        {
+          "id": "tv_type_d7ohpo",
+          "name": "TV-Uitzending Type",
+          "key": "tv_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "TV_TYPE"
+        }
+      ]
+    },
+    {
+      "id": "stages",
+      "name": "Fases & Rondes",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_aqvprs",
+          "name": "Fase ID (bijv. STG_001)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "network_cmp_yaue66",
+          "name": "Competitie ID (CMP_ID)",
+          "key": "network_cmp",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "stage_type_otxppe",
+          "name": "Fasetype",
+          "key": "stage_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "STAGE_TYPE"
+        },
+        {
+          "id": "stage_name_extra_w9jprp",
+          "name": "Fasenaam Extra",
+          "key": "stage_name_extra",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "round_type_oqqlrp",
+          "name": "Rondetype",
+          "key": "round_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "ROUND_TYPE"
+        },
+        {
+          "id": "group_type_ecfsyt",
+          "name": "Groeptype",
+          "key": "group_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "GROUP"
+        },
+        {
+          "id": "group_membership_e3nn3g",
+          "name": "Groepslidmaatschap",
+          "key": "group_membership",
+          "type": "select",
+          "required": false,
+          "categoryListId": "GROUP_MEMBERSHIP"
+        }
+      ]
+    },
+    {
+      "id": "venues",
+      "name": "Sportaccommodaties",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_vdhy2d",
+          "name": "Locatie ID (bijv. VEN_001)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "name_ypcsrbw",
+          "name": "Locatienaam",
+          "key": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "capacity_kzccmqe",
+          "name": "Capaciteit (Toeschouwers)",
+          "key": "capacity",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "region_actual_1p2z49",
+          "name": "Actuele Regio",
+          "key": "region_actual",
+          "type": "select",
+          "required": false,
+          "categoryListId": "REGION_ACTUAL"
+        },
+        {
+          "id": "arena_rink_size_aylth9",
+          "name": "Afmetingen IJsvloer",
+          "key": "arena_rink_size",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_RNK_SIZ"
+        }
+      ]
+    },
+    {
+      "id": "nations",
+      "name": "Naties",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_rygnb",
+          "name": "Natie ID (bijv. NAT_001)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "name_k78uss",
+          "name": "Natienaam",
+          "key": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "nation_extra_data_3372do",
+          "name": "Natie Extra Data",
+          "key": "nation_extra_data",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "state_extra_data_v22tlc",
+          "name": "Staat Extra Data",
+          "key": "state_extra_data",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "development_state_on4ik4",
+          "name": "Ontwikkelingsstatus",
+          "key": "development_state",
+          "type": "select",
+          "required": false,
+          "categoryListId": "DEVELOPMENT_STATE"
+        },
+        {
+          "id": "iihf_senior_division_684hi",
+          "name": "IIHF Senioren Divisie",
+          "key": "iihf_senior_division",
+          "type": "select",
+          "required": false,
+          "categoryListId": "IIHF_SENIOR_DIVISION"
+        },
+        {
+          "id": "iihf_junior_division_dor7x7",
+          "name": "IIHF Junioren Divisie",
+          "key": "iihf_junior_division",
+          "type": "select",
+          "required": false,
+          "categoryListId": "IIHF_JUNIOR_DIVISION"
+        }
+      ]
+    },
+    {
+      "id": "ruling_bodies",
+      "name": "Bestuursorganen",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_vrrad",
+          "name": "Bestuursorgaan ID (bijv. RUL_001)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "name_rl7lur",
+          "name": "Naam (bijv. IIHF of NIJB)",
+          "key": "NAAM",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "ruling_body_type_723zpc",
+          "name": "Niveau Bestuursorgaan",
+          "key": "ORG_TYPE",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_RUL_BOD"
+        },
+        {
+          "id": "ruling_body_flags_7o61gl9",
+          "name": "Bestuursorgaan Vlaggen",
+          "key": "ORG_INDI",
+          "type": "select",
+          "required": false,
+          "categoryListId": "RULING_BODY_FLAGS"
+        },
+        {
+          "id": "d14264ff-41e0-403d-826f-cf5952d6e28b",
+          "name": "Afkorting Naam",
+          "key": "ORG_AFK",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "medical_injuries",
+      "name": "Medische Blessures",
+      "group": "TRANSACTIONAL",
+      "fields": [
+        {
+          "id": "id_acj7dq",
+          "name": "Blessure ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "person_id_bidgwp",
+          "name": "Persoon ID (PER_ID)",
+          "key": "person_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "injury_extra_data_6qvpoq",
+          "name": "Blessuretype/-Data",
+          "key": "injury_extra_data",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "date_injured_fv99ag",
+          "name": "Datum Geblesseerd",
+          "key": "date_injured",
+          "type": "datetime",
+          "required": false
+        },
+        {
+          "id": "expected_return_jzecibp",
+          "name": "Verwachte Terugkeer",
+          "key": "expected_return",
+          "type": "datetime",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "drafts",
+      "name": "Drafts",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_aj7k9v",
+          "name": "Draft ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "year_7j5njp",
+          "name": "Draft Jaar",
+          "key": "year",
+          "type": "number",
+          "required": true
+        },
+        {
+          "id": "league_id_2lqwm",
+          "name": "Competitie ID",
+          "key": "league_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "competitions"
+        },
+        {
+          "id": "draft_extra_data_htylf",
+          "name": "Draft Extra Data",
+          "key": "draft_extra_data",
+          "type": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "financials",
+      "name": "Financiën",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_t9e775",
+          "name": "Financiën ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "network_org_ny5y8",
+          "name": "Organisatie ID (ORG_ID)",
+          "key": "network_org",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "organizations"
+        },
+        {
+          "id": "bank_balance_start_9wboph",
+          "name": "Startsaldo Bank",
+          "key": "bank_balance_start",
+          "type": "number",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "ledgers",
+      "name": "Financiën Maandelijks",
+      "group": "TRANSACTIONAL",
+      "fields": [
+        {
+          "id": "id_qb9k1",
+          "name": "Grootboek ID (bijv. FIN_001:2026-07)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "month_id_rj4tzd",
+          "name": "Maand",
+          "key": "month_id",
+          "type": "select",
+          "required": false,
+          "categoryListId": "MONTH"
+        },
+        {
+          "id": "total_income_94h1w",
+          "name": "Totale Inkomsten",
+          "key": "total_income",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "total_expenses_340djh",
+          "name": "Totale Uitgaven",
+          "key": "total_expenses",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "net_profit_loss_615cc",
+          "name": "Nettowinst/-verlies",
+          "key": "net_profit_loss",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "income_line_items_yzkkh",
+          "name": "Inkomstenposten",
+          "key": "income_line_items",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "expense_line_items_bqyyya",
+          "name": "Uitgavenposten",
+          "key": "expense_line_items",
+          "type": "json_array",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "games",
+      "name": "Wedstrijden",
+      "group": "SEASONAL",
+      "fields": [
+        {
+          "id": "id_1jcd8sk",
+          "name": "Wedstrijd ID (bijv. GAM_102)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "season_id_g2jkuv",
+          "name": "Seizoen ID",
+          "key": "season_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "league_id_jy0p8d",
+          "name": "Competitie ID",
+          "key": "league_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "competitions"
+        },
+        {
+          "id": "ruling_body_id_8fj2k",
+          "name": "Bestuursorgaan ID (Bond)",
+          "key": "ruling_body_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "ruling_bodies"
+        },
+        {
+          "id": "home_team_id_qrmjnzn",
+          "name": "Thuisploeg ID",
+          "key": "home_team_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "away_team_id_enyn29",
+          "name": "Uitploeg ID",
+          "key": "away_team_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "record_type_6xm1q",
+          "name": "Wedstrijdtype/Status (Officieel of Oefen)",
+          "key": "record_type",
+          "type": "select",
+          "required": true,
+          "categoryListId": "RECORD_TYPE"
+        },
+        {
+          "id": "game_type_p1l0n",
+          "name": "Wedstrijd Scope (League/Playoff)",
+          "key": "game_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "STATS_SCOPE"
+        },
+        {
+          "id": "status_a7t76e",
+          "name": "Live Status (bijv. gepland, live, afgelopen)",
+          "key": "status",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "clock_running_plk9m",
+          "name": "Klok Loopt (Spel Actief)",
+          "key": "clock_running",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "id": "current_period_o7xgpw",
+          "name": "Huidige Periode",
+          "key": "current_period",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "time_remaining_bd00mn",
+          "name": "Resterende Tijd",
+          "key": "time_remaining",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "score_krv0fp",
+          "name": "Score (Thuis/Uit)",
+          "key": "score",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "shots_on_goal_bnc6u",
+          "name": "Schoten op Doel (Thuis/Uit)",
+          "key": "shots_on_goal",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "faceoffs_won_8vbn1",
+          "name": "Face-offs Gewonnen (Thuis/Uit)",
+          "key": "faceoffs_won",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "home_starting_goalie_id",
+          "name": "Startende Goalie Thuis",
+          "key": "home_starting_goalie_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "away_starting_goalie_id",
+          "name": "Startende Goalie Uit",
+          "key": "away_starting_goalie_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "referee_1_id",
+          "name": "Scheidsrechter 1",
+          "key": "referee_1_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "referee_2_id",
+          "name": "Scheidsrechter 2",
+          "key": "referee_2_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "linesman_1_id",
+          "name": "Linesman 1",
+          "key": "linesman_1_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "linesman_2_id",
+          "name": "Linesman 2",
+          "key": "linesman_2_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "attendance_3f1nm",
+          "name": "Aantal Toeschouwers",
+          "key": "attendance",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "broadcast_type_7j2b1",
+          "name": "Uitzending / TV",
+          "key": "broadcast_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "TV_TYPE"
+        },
+        {
+          "id": "venue_id_ogj5d",
+          "name": "Locatie ID",
+          "key": "venue_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "venues"
+        },
+        {
+          "id": "start_time_4axfbs",
+          "name": "Starttijd",
+          "key": "start_time",
+          "type": "datetime",
+          "required": false
+        },
+        {
+          "id": "registered_by_user_id",
+          "name": "Geregistreerd door (Systeem User ID)",
+          "key": "registered_by_user_id",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "backup_registrar_id",
+          "name": "Back-up Registrar (Naam of Systeem User ID)",
+          "key": "backup_registrar_id",
+          "type": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "game_events",
+      "name": "Live Wedstrijdgebeurtenissen",
+      "group": "TRANSACTIONAL",
+      "fields": [
+        {
+          "id": "id_4jkhg6",
+          "name": "Gebeurtenis ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "game_id_g34pn",
+          "name": "Wedstrijd ID",
+          "key": "game_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "timestamp_r6d5w",
+          "name": "Tijdstempel (Real-world)",
+          "key": "timestamp",
+          "type": "datetime",
+          "required": false
+        },
+        {
+          "id": "event_status_4b2n",
+          "name": "Status van dit event (Validatie / Undo)",
+          "key": "event_status",
+          "type": "select",
+          "required": true,
+          "categoryListId": "EVENT_STATUS"
+        },
+        {
+          "id": "period_wq0al",
+          "name": "Periode",
+          "key": "period",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "time_in_period_pgg6eb",
+          "name": "Tijd in Periode (Match clock)",
+          "key": "time_in_period",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "home_score_current",
+          "name": "Thuisploeg Score (Op dit moment)",
+          "key": "home_score_current",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "away_score_current",
+          "name": "Uitploeg Score (Op dit moment)",
+          "key": "away_score_current",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "event_type_a1zcg",
+          "name": "Gebeurtenistype",
+          "key": "event_type",
+          "type": "select",
+          "required": true,
+          "categoryListId": "EVENT_TYPE"
+        },
+        {
+          "id": "acting_team_id_45lkn",
+          "name": "Uitvoerend Team (Acteur)",
+          "key": "acting_team_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "opposing_team_id_11bzn",
+          "name": "Tegenstander Team (Doelwit)",
+          "key": "opposing_team_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "primary_person_id_8fj9a",
+          "name": "Speler (Uitvoerder: Scorer/Schutter/Overtreder)",
+          "key": "primary_person_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "target_person_id_7xq1k",
+          "name": "Speler (Doelwit: Ontvanger hit/Face-off verliezer/Slachtoffer straf)",
+          "key": "target_person_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "secondary_person_id_2mv7b",
+          "name": "Assist 1 / Reddende Goalie / Wissel Goalie",
+          "key": "secondary_person_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "tertiary_person_id_5xk1z",
+          "name": "Assist 2",
+          "key": "tertiary_person_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "strength_situation_9wlzv",
+          "name": "Spelsituatie (Sterkte)",
+          "key": "strength_situation",
+          "type": "select",
+          "required": false,
+          "categoryListId": "STRENGTH_SITUATION"
+        },
+        {
+          "id": "empty_net_flag_8zpq1",
+          "name": "Leeg Doel (Extra Attacker)",
+          "key": "empty_net",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "id": "shot_type_6vk2m",
+          "name": "Type Schot",
+          "key": "shot_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "SHOT_TYPE"
+        },
+        {
+          "id": "penalty_type_7xj1p",
+          "name": "Type Straf (Reden)",
+          "key": "penalty_type",
+          "type": "select",
+          "required": false,
+          "categoryListId": "PENALTY_TYPE"
+        },
+        {
+          "id": "penalty_minutes_7tb4n",
+          "name": "Strafminuten",
+          "key": "penalty_minutes",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "stoppage_reason_8p1x",
+          "name": "Reden Spelonderbreking",
+          "key": "stoppage_reason",
+          "type": "select",
+          "required": false,
+          "categoryListId": "STOPPAGE_REASON"
+        },
+        {
+          "id": "coord_x_9pl2q",
+          "name": "Coördinaat X (Optioneel)",
+          "key": "coord_x",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "coord_y_3vn8m",
+          "name": "Coördinaat Y (Optioneel)",
+          "key": "coord_y",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "players_on_ice_home_4zxc1",
+          "name": "Spelers op ijs Thuisploeg (+/-)",
+          "key": "players_on_ice_home",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "players_on_ice_away_9bnm2",
+          "name": "Spelers op ijs Uitploeg (+/-)",
+          "key": "players_on_ice_away",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "event_details_y3xhvi",
+          "name": "Extra JSON Details (Vrij Veld)",
+          "key": "event_details",
+          "type": "json_array",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "team_encounters",
+      "name": "Team Ontmoetingen (Wedstrijdtactieken)",
+      "group": "TRANSACTIONAL",
+      "fields": [
+        {
+          "id": "id_byfjhl",
+          "name": "Ontmoeting ID (TEA_001:GAM_102)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "game_id_24oinm",
+          "name": "Wedstrijd ID",
+          "key": "game_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "tactic_used_gkg2oh",
+          "name": "Gebruikte Tactiek",
+          "key": "tactic_used",
+          "type": "select",
+          "required": false,
+          "categoryListId": "TACTIC"
+        },
+        {
+          "id": "game_importance_lp2w7",
+          "name": "Wedstrijdbelang",
+          "key": "game_importance",
+          "type": "select",
+          "required": false,
+          "categoryListId": "GAME_IMPORTANCE"
+        }
+      ]
+    },
+    {
+      "id": "developments",
+      "name": "Ontwikkelingsdossiers (Kern)",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id_mn6gvf",
+          "name": "Ontwikkeling ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "network_per_1tsfnm",
+          "name": "Persoon ID (PER_ID)",
+          "key": "network_per",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "current_potential_ceiling_d2izf9",
+          "name": "Potentieel Plafond (1-200)",
+          "key": "current_potential_ceiling",
+          "type": "number",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "weekly_plans",
+      "name": "Wekelijkse Trainingsschema's",
+      "group": "TRANSACTIONAL",
+      "fields": [
+        {
+          "id": "id_nuw65",
+          "name": "Schema ID (bijv. DEV_001:WK_32)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "week_number_kk5wi",
+          "name": "Weeknummer (1-52)",
+          "key": "week_number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "network_coach_per_khpdlo",
+          "name": "Coach ID (PER_ID)",
+          "key": "network_coach_per",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "focus_area_23o5hi",
+          "name": "Trainingsfocus",
+          "key": "focus_area",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_TRN_FOC"
+        },
+        {
+          "id": "intensity_98o0a",
+          "name": "Trainingsintensiteit",
+          "key": "intensity",
+          "type": "select",
+          "required": false,
+          "categoryListId": "CAT_TRN_INT"
+        },
+        {
+          "id": "fatigue_level_ubbz2",
+          "name": "Vermoeidheidsniveau (1-100)",
+          "key": "fatigue_level",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "attribute_changes_5axk3i",
+          "name": "Attribuutwijzigingen",
+          "key": "attribute_changes",
+          "type": "json_array",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "CAT_POS_TYP",
+      "name": "Spelerspositie",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Goalie"
+        },
+        {
+          "id": "1",
+          "label": "Linkerverdediger"
+        },
+        {
+          "id": "2",
+          "label": "Rechterverdediger"
+        },
+        {
+          "id": "3",
+          "label": "Linkervleugel"
+        },
+        {
+          "id": "4",
+          "label": "Center"
+        },
+        {
+          "id": "5",
+          "label": "Rechtervleugel"
+        },
+        {
+          "id": "6",
+          "label": "Verdediging"
+        },
+        {
+          "id": "7",
+          "label": "Aanvaller"
+        }
+      ]
+    },
+    {
+      "id": "CAT_PLR_ROL",
+      "name": "Spelersrol",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Goalie: Gemengd"
+        },
+        {
+          "id": "1",
+          "label": "Goalie: Butterfly"
+        },
+        {
+          "id": "2",
+          "label": "Goalie: Stand-up"
+        },
+        {
+          "id": "3",
+          "label": "Goalie: Hybride/Onorthodox"
+        },
+        {
+          "id": "4",
+          "label": "Verdediger: Aanvallend"
+        },
+        {
+          "id": "5",
+          "label": "Verdediger: Aanvallend (finesse)"
+        },
+        {
+          "id": "6",
+          "label": "Verdediger: Aanvallend (fysiek)"
+        },
+        {
+          "id": "7",
+          "label": "Verdediger: Pointman"
+        },
+        {
+          "id": "8",
+          "label": "Verdediger: Pointman (finesse)"
+        },
+        {
+          "id": "9",
+          "label": "Verdediger: Pointman (fysiek)"
+        },
+        {
+          "id": "10",
+          "label": "Verdediger: Spelverdeler"
+        },
+        {
+          "id": "11",
+          "label": "Verdediger: Spelverdeler (finesse)"
+        },
+        {
+          "id": "12",
+          "label": "Verdediger: Spelverdeler (fysiek)"
+        },
+        {
+          "id": "13",
+          "label": "Verdediger: Verdedigend"
+        },
+        {
+          "id": "14",
+          "label": "Verdediger: Verdedigend (finesse)"
+        },
+        {
+          "id": "15",
+          "label": "Verdediger: Verdedigend (fysiek)"
+        },
+        {
+          "id": "16",
+          "label": "Verdediger: Standaard"
+        },
+        {
+          "id": "17",
+          "label": "Verdediger: Robuust"
+        },
+        {
+          "id": "18",
+          "label": "Verdediger: Enforcer"
+        },
+        {
+          "id": "19",
+          "label": "Vleugelspeler: Verdedigend"
+        },
+        {
+          "id": "20",
+          "label": "Vleugelspeler: Verdedigend (finesse)"
+        },
+        {
+          "id": "21",
+          "label": "Vleugelspeler: Verdedigend (fysiek)"
+        },
+        {
+          "id": "22",
+          "label": "Vleugelspeler: Sniper"
+        },
+        {
+          "id": "23",
+          "label": "Vleugelspeler: Sniper (finesse)"
+        },
+        {
+          "id": "24",
+          "label": "Vleugelspeler: Sniper (fysiek)"
+        },
+        {
+          "id": "25",
+          "label": "Vleugelspeler: Spelverdeler"
+        },
+        {
+          "id": "26",
+          "label": "Vleugelspeler: Spelverdeler (finesse)"
+        },
+        {
+          "id": "27",
+          "label": "Vleugelspeler: Spelverdeler (fysiek)"
+        },
+        {
+          "id": "28",
+          "label": "Vleugelspeler: Allround"
+        },
+        {
+          "id": "29",
+          "label": "Vleugelspeler: Finesse"
+        },
+        {
+          "id": "30",
+          "label": "Vleugelspeler: Grinder"
+        },
+        {
+          "id": "31",
+          "label": "Vleugelspeler: Powerforward"
+        },
+        {
+          "id": "32",
+          "label": "Vleugelspeler: Enforcer"
+        },
+        {
+          "id": "33",
+          "label": "Center: Verdedigend"
+        },
+        {
+          "id": "34",
+          "label": "Center: Verdedigend (finesse)"
+        },
+        {
+          "id": "35",
+          "label": "Center: Verdedigend (fysiek)"
+        },
+        {
+          "id": "36",
+          "label": "Center: Sniper"
+        },
+        {
+          "id": "37",
+          "label": "Center: Sniper (finesse)"
+        },
+        {
+          "id": "38",
+          "label": "Center: Sniper (fysiek)"
+        },
+        {
+          "id": "39",
+          "label": "Center: Spelverdeler"
+        },
+        {
+          "id": "40",
+          "label": "Center: Spelverdeler (finesse)"
+        },
+        {
+          "id": "41",
+          "label": "Center: Spelverdeler (fysiek)"
+        },
+        {
+          "id": "42",
+          "label": "Center: Allround"
+        },
+        {
+          "id": "43",
+          "label": "Center: Finesse"
+        },
+        {
+          "id": "44",
+          "label": "Center: Grinder"
+        },
+        {
+          "id": "45",
+          "label": "Center: Powerforward"
+        },
+        {
+          "id": "46",
+          "label": "Center: Enforcer"
+        }
+      ]
+    },
+    {
+      "id": "CAT_JOB",
+      "name": "Functie",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Ongeldige functie voor natie]"
+        },
+        {
+          "id": "0",
+          "label": "[Ongeldige functie voor club]"
+        },
+        {
+          "id": "1",
+          "label": "Voorzitter"
+        },
+        {
+          "id": "2",
+          "label": "Algemeen Directeur"
+        },
+        {
+          "id": "3",
+          "label": "President"
+        },
+        {
+          "id": "4",
+          "label": "Personeelsdirecteur"
+        },
+        {
+          "id": "5",
+          "label": "General Manager (GM)"
+        },
+        {
+          "id": "6",
+          "label": "Assistent GM"
+        },
+        {
+          "id": "7",
+          "label": "Hoofdcoach"
+        },
+        {
+          "id": "8",
+          "label": "Coach"
+        },
+        {
+          "id": "9",
+          "label": "Scout"
+        },
+        {
+          "id": "10",
+          "label": "Fysiotherapeut"
+        },
+        {
+          "id": "11",
+          "label": "Speler"
+        },
+        {
+          "id": "12",
+          "label": "Speler/Coach"
+        },
+        {
+          "id": "13",
+          "label": "Media-analist"
+        },
+        {
+          "id": "14",
+          "label": "Gepensioneerd"
+        },
+        {
+          "id": "15",
+          "label": "Hoofdscout (Alleen in opgeslagen spel)"
+        },
+        {
+          "id": "16",
+          "label": "GM/Hoofdcoach"
+        }
+      ]
+    },
+    {
+      "id": "CAT_STF_CLS",
+      "name": "Persoonsclassificatie",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Ongeldig]"
+        },
+        {
+          "id": "1",
+          "label": "Niet-speler"
+        },
+        {
+          "id": "2",
+          "label": "Speler"
+        },
+        {
+          "id": "3",
+          "label": "Speler/Niet-speler"
+        },
+        {
+          "id": "4",
+          "label": "Menselijke GM (Alleen in opgeslagen spel)"
+        },
+        {
+          "id": "5",
+          "label": "Reserve Niet-speler (Alleen in opgeslagen spel)"
+        },
+        {
+          "id": "6",
+          "label": "Reserve Speler (Alleen in opgeslagen spel)"
+        }
+      ]
+    },
+    {
+      "id": "CAT_HND",
+      "name": "Voorkeurshand",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Rechts"
+        },
+        {
+          "id": "1",
+          "label": "Links"
+        }
+      ]
+    },
+    {
+      "id": "CAT_PRO_STA",
+      "name": "Spelersniveau",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Professioneel"
+        },
+        {
+          "id": "2",
+          "label": "Semi-professioneel"
+        },
+        {
+          "id": "3",
+          "label": "Amateur"
+        },
+        {
+          "id": "4",
+          "label": "Junior"
+        },
+        {
+          "id": "5",
+          "label": "Nationaal (Senior)"
+        },
+        {
+          "id": "6",
+          "label": "Nationaal (U20)"
+        }
+      ]
+    },
+    {
+      "id": "CAT_CMP_TYP",
+      "name": "Competitiesoort",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Ongeldig]"
+        },
+        {
+          "id": "1",
+          "label": "Beker"
+        },
+        {
+          "id": "2",
+          "label": "Competitie"
+        }
+      ]
+    },
+    {
+      "id": "CAT_CMP_SCP",
+      "name": "Competitie Reikwijdte",
+      "items": [
+        {
+          "id": "1",
+          "label": "Nationaal"
+        },
+        {
+          "id": "2",
+          "label": "Continentaal"
+        },
+        {
+          "id": "4",
+          "label": "Internationaal"
+        }
+      ]
+    },
+    {
+      "id": "CAT_CMP_CLS",
+      "name": "Competitieclassificatie",
+      "items": [
+        {
+          "id": "-3",
+          "label": "- Niet Ingesteld -"
+        },
+        {
+          "id": "-2",
+          "label": "- Opgeheven -"
+        },
+        {
+          "id": "-1",
+          "label": "[Ongeldig]"
+        },
+        {
+          "id": "0",
+          "label": "Internationaal Senior"
+        },
+        {
+          "id": "1",
+          "label": "Internationaal Junior"
+        },
+        {
+          "id": "2",
+          "label": "Binnenlandse Competitie"
+        },
+        {
+          "id": "3",
+          "label": "Binnenlandse Beker"
+        },
+        {
+          "id": "4",
+          "label": "Binnenlandse Major Junior"
+        },
+        {
+          "id": "5",
+          "label": "Binnenlandse Junior"
+        },
+        {
+          "id": "6",
+          "label": "Binnenlands College"
+        },
+        {
+          "id": "7",
+          "label": "Binnenlandse High School"
+        },
+        {
+          "id": "8",
+          "label": "Binnenlandse All-Star"
+        },
+        {
+          "id": "9",
+          "label": "Continentaal"
+        },
+        {
+          "id": "10",
+          "label": "Subcompetitie (Conference / Divisie)"
+        }
+      ]
+    },
+    {
+      "id": "CAT_RNK_SIZ",
+      "name": "Afmetingen IJsvloer",
+      "items": [
+        {
+          "id": "1",
+          "label": "IIHF (61m x 30.5m)"
+        },
+        {
+          "id": "2",
+          "label": "NHL (61m x 26m)"
+        }
+      ]
+    },
+    {
+      "id": "CAT_ICE_CND",
+      "name": "IJsconditie",
+      "items": [
+        {
+          "id": "1",
+          "label": "Uitstekend"
+        },
+        {
+          "id": "2",
+          "label": "Goed"
+        },
+        {
+          "id": "3",
+          "label": "Matig"
+        },
+        {
+          "id": "4",
+          "label": "Zeer Slecht"
+        }
+      ]
+    },
+    {
+      "id": "CAT_FGT_PEN",
+      "name": "Vechtstraffen",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "1 wedstrijd = wangedrag"
+        },
+        {
+          "id": "2",
+          "label": "2 wedstrijden = wangedrag"
+        },
+        {
+          "id": "3",
+          "label": "3 wedstrijden = wangedrag"
+        },
+        {
+          "id": "4",
+          "label": "3 wedstrijden = wangedrag (UK Elite League)"
+        }
+      ]
+    },
+    {
+      "id": "CAT_MSC_ACC",
+      "name": "Accumulatie Wangedrag",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Standaard accumulatie"
+        },
+        {
+          "id": "2",
+          "label": "Incrementele accumulatie"
+        },
+        {
+          "id": "3",
+          "label": "Vermenigvuldigde accumulatie"
+        }
+      ]
+    },
+    {
+      "id": "CAT_SAL_CAP",
+      "name": "Salarisplafond",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Ongeldig]"
+        },
+        {
+          "id": "0",
+          "label": "Cumulatief over het seizoen"
+        },
+        {
+          "id": "1",
+          "label": "Jaarlijks salaris nominaal gemaximeerd"
+        },
+        {
+          "id": "2",
+          "label": "Wekelijks salaris nominaal gemaximeerd"
+        }
+      ]
+    },
+    {
+      "id": "CAT_PRZ_MON",
+      "name": "Prijzengeld",
+      "items": [
+        {
+          "id": "1",
+          "label": "Normaal (geschaald)"
+        },
+        {
+          "id": "2",
+          "label": "[Geen]"
+        },
+        {
+          "id": "3",
+          "label": "Alleen eerste plaats"
+        },
+        {
+          "id": "4",
+          "label": "Top vier (gelijke bedragen)"
+        },
+        {
+          "id": "5",
+          "label": "Euro Champions Cup"
+        }
+      ]
+    },
+    {
+      "id": "CAT_WIN_PCT",
+      "name": "Winstpercentage",
+      "items": [
+        {
+          "id": "0",
+          "label": "Winst gedeeld door GW (Gespeelde Wedstrijden)"
+        },
+        {
+          "id": "1",
+          "label": "Punten gedeeld door totaal mogelijke punten"
+        },
+        {
+          "id": "2",
+          "label": "Punten gedeeld door (2 x GW)"
+        }
+      ]
+    },
+    {
+      "id": "CAT_SRT_RUL",
+      "name": "Tiebreaker Klassement",
+      "items": [
+        {
+          "id": "0",
+          "label": "Geen Regel"
+        },
+        {
+          "id": "1",
+          "label": "Doelsaldo"
+        },
+        {
+          "id": "2",
+          "label": "Doelpunten Voor"
+        },
+        {
+          "id": "3",
+          "label": "Wedstrijden Gewonnen"
+        },
+        {
+          "id": "4",
+          "label": "Onderling Resultaat"
+        },
+        {
+          "id": "5",
+          "label": "Uitdoelpunten"
+        },
+        {
+          "id": "6",
+          "label": "Divisiewinnaars"
+        },
+        {
+          "id": "7",
+          "label": "Divisie Top Drie"
+        },
+        {
+          "id": "8",
+          "label": "Reguliere en Overtime Winst"
+        },
+        {
+          "id": "9",
+          "label": "Niet Sorteren"
+        },
+        {
+          "id": "10",
+          "label": "UK Conference Winnaars"
+        },
+        {
+          "id": "11",
+          "label": "ONBEKENDE SORTEERREGEL"
+        },
+        {
+          "id": "12",
+          "label": "Alleen Reguliere Winst"
+        },
+        {
+          "id": "13",
+          "label": "Puntenpercentage"
+        }
+      ]
+    },
+    {
+      "id": "CAT_FIN_INC",
+      "name": "Financiële Inkomsten",
+      "items": [
+        {
+          "id": "1",
+          "label": "Recettes"
+        },
+        {
+          "id": "2",
+          "label": "Merchandise"
+        },
+        {
+          "id": "3",
+          "label": "TV-rechten"
+        },
+        {
+          "id": "4",
+          "label": "Prijzengeld"
+        }
+      ]
+    },
+    {
+      "id": "CAT_FIN_EXP",
+      "name": "Financiële Uitgaven",
+      "items": [
+        {
+          "id": "1",
+          "label": "Spelerssalarissen"
+        },
+        {
+          "id": "2",
+          "label": "Stafsalarissen"
+        },
+        {
+          "id": "3",
+          "label": "Reiskosten"
+        },
+        {
+          "id": "4",
+          "label": "Onderhoud Accommodatie"
+        }
+      ]
+    },
+    {
+      "id": "CAT_TRN_INT",
+      "name": "Trainingsintensiteit",
+      "items": [
+        {
+          "id": "1",
+          "label": "Rust"
+        },
+        {
+          "id": "2",
+          "label": "Licht"
+        },
+        {
+          "id": "3",
+          "label": "Normaal"
+        },
+        {
+          "id": "4",
+          "label": "Intensief"
+        }
+      ]
+    },
+    {
+      "id": "CAT_TRN_FOC",
+      "name": "Trainingstype",
+      "items": [
+        {
+          "id": "1",
+          "label": "Conditie"
+        },
+        {
+          "id": "2",
+          "label": "Schaatsen"
+        },
+        {
+          "id": "3",
+          "label": "Schieten"
+        },
+        {
+          "id": "4",
+          "label": "Tactiek"
+        },
+        {
+          "id": "5",
+          "label": "Keepen"
+        }
+      ]
+    },
+    {
+      "id": "NAME_EXTRA_FLAGS",
+      "name": "Extra Naamvlaggen",
+      "items": [
+        {
+          "id": "0",
+          "label": "Geen Vlaggen Ingesteld"
+        },
+        {
+          "id": "1",
+          "label": "Ongeldig"
+        },
+        {
+          "id": "2",
+          "label": "Vrouw"
+        }
+      ]
+    },
+    {
+      "id": "STAFF_EXTRA_FLAGS",
+      "name": "Extra Persoonsvlaggen",
+      "items": [
+        {
+          "id": "0",
+          "label": "Geen Vlaggen Ingesteld"
+        },
+        {
+          "id": "1",
+          "label": "Fictief persoon"
+        },
+        {
+          "id": "2",
+          "label": "Verdwenen/Overleden persoon"
+        },
+        {
+          "id": "3",
+          "label": "Extra speler vanaf spelstart"
+        },
+        {
+          "id": "4",
+          "label": "Extra niet-speler vanaf spelstart"
+        },
+        {
+          "id": "5",
+          "label": "Menselijke manager"
+        }
+      ]
+    },
+    {
+      "id": "MATCH_RULES_FLAGS",
+      "name": "Wedstrijdregels",
+      "items": [
+        {
+          "id": "1",
+          "label": "Geen rode lijn"
+        },
+        {
+          "id": "2",
+          "label": "Automatische icing"
+        },
+        {
+          "id": "3",
+          "label": "Geen uitdoelpunten"
+        },
+        {
+          "id": "4",
+          "label": "Replay"
+        },
+        {
+          "id": "5",
+          "label": "Verlenging: 4 Tegen 4"
+        },
+        {
+          "id": "6",
+          "label": "Verlenging: 1x periode (5 minuten)"
+        },
+        {
+          "id": "7",
+          "label": "Verlenging: 1x periode (10 minuten)"
+        },
+        {
+          "id": "8",
+          "label": "Verlenging: 1x periode (20 minuten)"
+        },
+        {
+          "id": "9",
+          "label": "Verlenging: (Periodes van 20 minuten tot winnaar)"
+        },
+        {
+          "id": "10",
+          "label": "Shoot-out: 5 schutters (geen herhaling)"
+        },
+        {
+          "id": "11",
+          "label": "Shoot-out: 3 schutters (geen herhaling)"
+        },
+        {
+          "id": "12",
+          "label": "Shoot-out: 3 schutters (herhaling schutters toegestaan in sudden death)"
+        },
+        {
+          "id": "13",
+          "label": "Shoot-out: 1-tegen-1 sudden death"
+        },
+        {
+          "id": "14",
+          "label": "Hybride icing"
+        },
+        {
+          "id": "15",
+          "label": "Niet wisselen na icing"
+        },
+        {
+          "id": "16",
+          "label": "Verlenging: 7 minuten (4 tegen 4 en 3 tegen 3)"
+        },
+        {
+          "id": "17",
+          "label": "Verlenging: 3 tegen 3"
+        }
+      ]
+    },
+    {
+      "id": "BASIC_RULES_FLAGS",
+      "name": "Basisregels",
+      "items": [
+        {
+          "id": "0",
+          "label": "Heeft All-Star Skills Competitie"
+        },
+        {
+          "id": "1",
+          "label": "Conference-gebaseerde All-Star Game"
+        },
+        {
+          "id": "2",
+          "label": "Sla Olympische Jaren Over"
+        },
+        {
+          "id": "3",
+          "label": "Gebruikt Alleen Winnaar Voor Geschiedenis"
+        },
+        {
+          "id": "4",
+          "label": "Gebruikt Top Twee Plaatsen Voor Geschiedenis"
+        },
+        {
+          "id": "5",
+          "label": "Gebruikt Medailles Voor Top Plaatsen"
+        },
+        {
+          "id": "6",
+          "label": "Benoemt Regulier Seizoen Kampioen"
+        },
+        {
+          "id": "7",
+          "label": "Startfases Gehost Door Top Geklasseerde Club"
+        },
+        {
+          "id": "8",
+          "label": "Sla Willekeurige Jaren Over"
+        },
+        {
+          "id": "9",
+          "label": "Twee Jaar Tussen Competities"
+        },
+        {
+          "id": "10",
+          "label": "Vier Jaar Tussen Competities"
+        },
+        {
+          "id": "11",
+          "label": "Gebruikt Extra Teams Voor Latere Loting"
+        },
+        {
+          "id": "12",
+          "label": "Competitieseizoen Overlapt Niet"
+        },
+        {
+          "id": "13",
+          "label": "Competitie Gebruikt Intra-Conference Schema"
+        },
+        {
+          "id": "14",
+          "label": "Competitie Gebruikt Echte Schema Template"
+        },
+        {
+          "id": "15",
+          "label": "Zelfde Teams In Meerdere Toernooien"
+        },
+        {
+          "id": "16",
+          "label": "Kies Gastheer Uit Gekoppelde Competities"
+        },
+        {
+          "id": "17",
+          "label": "Gastclub Natie Tegen World All-Star Game"
+        },
+        {
+          "id": "18",
+          "label": "Clubs geografisch verdeeld"
+        },
+        {
+          "id": "19",
+          "label": "Klassement Scheidt OT En SO Verliezen"
+        },
+        {
+          "id": "20",
+          "label": "Aanvoerder Teams En Pickup Stijl All-Star Game"
+        },
+        {
+          "id": "21",
+          "label": "Competitie Heeft Extra Voorrondes"
+        },
+        {
+          "id": "22",
+          "label": "Startfases Gehost Door Willekeurige Club"
+        },
+        {
+          "id": "23",
+          "label": "Deelnemende Teams Rouleren Tussen Fases"
+        },
+        {
+          "id": "24",
+          "label": "Elke Fase Gehost Door Willekeurige Club"
+        },
+        {
+          "id": "25",
+          "label": "Extra Inter-Conference Rondes In Algehele Fase"
+        },
+        {
+          "id": "26",
+          "label": "Gebruikt Twee Winnaars Voor Geschiedenis"
+        },
+        {
+          "id": "27",
+          "label": "Clubs Gebruiken Financiële Data Voor Club Natie"
+        },
+        {
+          "id": "28",
+          "label": "Sorteer Deelnemende Teams Voor Startfases Oost Naar West"
+        },
+        {
+          "id": "29",
+          "label": "Sla Eerste Willekeurige Jaar Niet Over"
+        },
+        {
+          "id": "30",
+          "label": "Voer Clubs In Op Basis Van Continentale Vlaggen Naar Basislijst"
+        },
+        {
+          "id": "31",
+          "label": "Extra Teams Naar Latere Fases Vanuit Basislijst"
+        }
+      ]
+    },
+    {
+      "id": "EXTRA_RULE_TYPE",
+      "name": "Extra Regeltype",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Ongeldig]"
+        },
+        {
+          "id": "1",
+          "label": "Minimumleeftijd prijs"
+        },
+        {
+          "id": "2",
+          "label": "Maximumleeftijd prijs"
+        },
+        {
+          "id": "3",
+          "label": "Minimum aantal gespeelde wedstrijden in seizoen voor prijs"
+        },
+        {
+          "id": "4",
+          "label": "Maximum aantal gespeelde wedstrijden in carrière voor prijs"
+        },
+        {
+          "id": "5",
+          "label": "Maximale leeftijd rookie"
+        },
+        {
+          "id": "6",
+          "label": "Peildatum maximale leeftijd rookie"
+        },
+        {
+          "id": "7",
+          "label": "Maximum aantal wedstrijden rookie voor seizoen"
+        },
+        {
+          "id": "8",
+          "label": "Maximum aantal wedstrijden rookie in elk van vorige twee seizoenen"
+        },
+        {
+          "id": "9",
+          "label": "Minimum jaarsalaris contractspeler"
+        },
+        {
+          "id": "10",
+          "label": "Minimum weeksalaris contractspeler"
+        },
+        {
+          "id": "11",
+          "label": "Maximum jaarsalaris instapcontract"
+        },
+        {
+          "id": "12",
+          "label": "Maximum weeksalaris instapcontract"
+        },
+        {
+          "id": "13",
+          "label": "Maximum jaarsalaris contractspeler"
+        },
+        {
+          "id": "14",
+          "label": "Maximum weeksalaris contractspeler"
+        },
+        {
+          "id": "15",
+          "label": "Maximum contractjaren"
+        },
+        {
+          "id": "16",
+          "label": "Leeftijd 1 instapcontract"
+        },
+        {
+          "id": "17",
+          "label": "Duur 1 instapcontract"
+        },
+        {
+          "id": "18",
+          "label": "Leeftijd 2 instapcontract"
+        },
+        {
+          "id": "19",
+          "label": "Duur 2 instapcontract"
+        },
+        {
+          "id": "20",
+          "label": "Leeftijd 3 instapcontract"
+        },
+        {
+          "id": "21",
+          "label": "Duur 3 instapcontract"
+        },
+        {
+          "id": "22",
+          "label": "Minimum aantal wedstrijden veteraan voor veldspeler"
+        },
+        {
+          "id": "23",
+          "label": "Minimum aantal wedstrijden veteraan voor goalie"
+        },
+        {
+          "id": "24",
+          "label": "Veteraanlimiet wedstrijden vorig seizoen voor re-entry waivers"
+        },
+        {
+          "id": "25",
+          "label": "Veteraanlimiet wedstrijden afgelopen twee seizoenen voor re-entry waivers"
+        },
+        {
+          "id": "26",
+          "label": "Ontwikkeling max leeftijd voor veldspeler"
+        },
+        {
+          "id": "27",
+          "label": "Ontwikkeling max leeftijd voor goalie"
+        },
+        {
+          "id": "28",
+          "label": "Ontwikkeling max leeftijd"
+        },
+        {
+          "id": "29",
+          "label": "Maximumleeftijd zelfopgeleide speler"
+        },
+        {
+          "id": "30",
+          "label": "Startdag salarisplafond tussenseizoen"
+        },
+        {
+          "id": "31",
+          "label": "Einddag salarisplafond tussenseizoen"
+        },
+        {
+          "id": "32",
+          "label": "Salarisplafond max percentage voor één spelerssalaris"
+        },
+        {
+          "id": "33",
+          "label": "Startdag selectielimiet"
+        },
+        {
+          "id": "34",
+          "label": "Einddag selectielimiet"
+        },
+        {
+          "id": "35",
+          "label": "Selectielimiet tussenseizoen"
+        },
+        {
+          "id": "36",
+          "label": "Deadline tekenen restricted free agents"
+        },
+        {
+          "id": "37",
+          "label": "Wedstrijdregel min. minderjarige spelers"
+        },
+        {
+          "id": "38",
+          "label": "Wedstrijdregel max. minderjarige spelers"
+        },
+        {
+          "id": "39",
+          "label": "Wedstrijdregel minderjarige spelers leeftijdsgrens"
+        },
+        {
+          "id": "40",
+          "label": "Wedstrijdregel max. overjarige spelers"
+        },
+        {
+          "id": "41",
+          "label": "Wedstrijdregel min. zelfopgeleide spelers"
+        },
+        {
+          "id": "42",
+          "label": "Wedstrijdregel min. rookie spelers"
+        },
+        {
+          "id": "43",
+          "label": "Wedstrijdregel min. ontwikkelingsspelers"
+        },
+        {
+          "id": "44",
+          "label": "Wedstrijdregel max. veteraan spelers"
+        },
+        {
+          "id": "45",
+          "label": "Start trainingskamp verschuiving t.o.v. start competitie"
+        },
+        {
+          "id": "46",
+          "label": "Rookie max professionele wedstrijden voor seizoen"
+        },
+        {
+          "id": "47",
+          "label": "Rookie max wedstrijden voor seizoen in NHL"
+        },
+        {
+          "id": "48",
+          "label": "Minimale contractleeftijd"
+        },
+        {
+          "id": "49",
+          "label": "Minimale contractleeftijd Noord-Amerikaanse speler"
+        },
+        {
+          "id": "50",
+          "label": "Peildatum minimale contractleeftijd"
+        },
+        {
+          "id": "51",
+          "label": "Leenspelers veteraan uitgezonderd onder de leeftijd"
+        },
+        {
+          "id": "52",
+          "label": "Minimum jaarsalaris instapcontract speler"
+        },
+        {
+          "id": "53",
+          "label": "Minimum weeksalaris instapcontract speler"
+        },
+        {
+          "id": "54",
+          "label": "Salarisplafond leenspeler jaarsalaris voor cap"
+        },
+        {
+          "id": "55",
+          "label": "Salarisplafond leenspeler weeksalaris voor cap"
+        },
+        {
+          "id": "56",
+          "label": "Wedstrijdregel max. niet-EEG spelers"
+        },
+        {
+          "id": "57",
+          "label": "Wedstrijdregel max. buitenlandse spelers"
+        },
+        {
+          "id": "58",
+          "label": "Salarisplafond tussenseizoen extra toelage pct"
+        },
+        {
+          "id": "59",
+          "label": "Wedstrijdregel min. binnenlandse spelers"
+        },
+        {
+          "id": "60",
+          "label": "Wedstrijdregel min. binnenlandse spelers voor buitenlandse teams"
+        },
+        {
+          "id": "61",
+          "label": "Wedstrijdregel max. buitenlandse spelers voor binnenlandse teams"
+        },
+        {
+          "id": "62",
+          "label": "Free Agency max leeftijd voor restricted free agency"
+        },
+        {
+          "id": "63",
+          "label": "Free Agency veldspeler wedstrijdenlimiet voor opbouw seizoen richting UFA"
+        },
+        {
+          "id": "64",
+          "label": "Free Agency goalie wedstrijdenlimiet voor opbouw seizoen richting UFA"
+        },
+        {
+          "id": "65",
+          "label": "Free Agency UFA groep drie absolute seizoenslimiet"
+        },
+        {
+          "id": "66",
+          "label": "Free Agency UFA groep drie absolute leeftijdsgrens"
+        },
+        {
+          "id": "67",
+          "label": "Free Agency UFA groep drie lagere seizoenslimiet met leeftijd"
+        },
+        {
+          "id": "68",
+          "label": "Free Agency UFA groep drie leeftijdsgrens voor lagere seizoenslimiet"
+        },
+        {
+          "id": "69",
+          "label": "Free Agency UFA groep vijf seizoenslimiet onder gemiddeld loon"
+        },
+        {
+          "id": "70",
+          "label": "Free Agency UFA groep zes seizoenslimiet"
+        },
+        {
+          "id": "71",
+          "label": "Free Agency UFA groep zes leeftijdsgrens"
+        },
+        {
+          "id": "72",
+          "label": "Free Agency UFA groep goalie wedstrijdenlimiet"
+        },
+        {
+          "id": "73",
+          "label": "Free Agency UFA groep veldspeler wedstrijdenlimiet"
+        },
+        {
+          "id": "74",
+          "label": "Contract wedstrijdenlimiet voor inschuivend instapcontract U20"
+        },
+        {
+          "id": "75",
+          "label": "Waivers competitie gebruikt waiver-regels"
+        },
+        {
+          "id": "76",
+          "label": "Waivers re-entry waivers minor league salarislimiet"
+        },
+        {
+          "id": "77",
+          "label": "Waivers tussenseizoen carrièrewedstrijden limiet voor ondergemiddeld salaris"
+        },
+        {
+          "id": "78",
+          "label": "Waivers eerste contract leeftijd 18 vrijgestelde jaren veldspeler"
+        },
+        {
+          "id": "79",
+          "label": "Waivers eerste contract leeftijd 18 vrijgestelde wedstrijden veldspeler"
+        },
+        {
+          "id": "80",
+          "label": "Waivers eerste contract leeftijd 19 vrijgestelde jaren veldspeler"
+        },
+        {
+          "id": "81",
+          "label": "Waivers eerste contract leeftijd 19 vrijgestelde wedstrijden veldspeler"
+        },
+        {
+          "id": "82",
+          "label": "Waivers eerste contract leeftijd 20 vrijgestelde jaren veldspeler"
+        },
+        {
+          "id": "83",
+          "label": "Waivers eerste contract leeftijd 20 vrijgestelde wedstrijden veldspeler"
+        },
+        {
+          "id": "84",
+          "label": "Waivers eerste contract leeftijd 21 vrijgestelde jaren veldspeler"
+        },
+        {
+          "id": "85",
+          "label": "Waivers eerste contract leeftijd 21 vrijgestelde wedstrijden veldspeler"
+        },
+        {
+          "id": "86",
+          "label": "Waivers eerste contract leeftijd 22 vrijgestelde jaren veldspeler"
+        },
+        {
+          "id": "87",
+          "label": "Waivers eerste contract leeftijd 22 vrijgestelde wedstrijden veldspeler"
+        },
+        {
+          "id": "88",
+          "label": "Waivers eerste contract leeftijd 23 vrijgestelde jaren veldspeler"
+        },
+        {
+          "id": "89",
+          "label": "Waivers eerste contract leeftijd 23 vrijgestelde wedstrijden veldspeler"
+        },
+        {
+          "id": "90",
+          "label": "Waivers eerste contract leeftijd 24 vrijgestelde jaren veldspeler"
+        },
+        {
+          "id": "91",
+          "label": "Waivers eerste contract leeftijd 24 vrijgestelde wedstrijden veldspeler"
+        },
+        {
+          "id": "92",
+          "label": "Waivers eerste contract leeftijd 25 vrijgestelde jaren veldspeler"
+        },
+        {
+          "id": "93",
+          "label": "Waivers eerste contract leeftijd 25 vrijgestelde wedstrijden veldspeler"
+        },
+        {
+          "id": "94",
+          "label": "Waivers eerste contract leeftijd 18 vrijgestelde jaren goalie"
+        },
+        {
+          "id": "95",
+          "label": "Waivers eerste contract leeftijd 18 vrijgestelde wedstrijden goalie"
+        },
+        {
+          "id": "96",
+          "label": "Waivers eerste contract leeftijd 19 vrijgestelde jaren goalie"
+        },
+        {
+          "id": "97",
+          "label": "Waivers eerste contract leeftijd 19 vrijgestelde wedstrijden goalie"
+        },
+        {
+          "id": "98",
+          "label": "Waivers eerste contract leeftijd 20 vrijgestelde jaren goalie"
+        },
+        {
+          "id": "99",
+          "label": "Waivers eerste contract leeftijd 20 vrijgestelde wedstrijden goalie"
+        },
+        {
+          "id": "100",
+          "label": "Waivers eerste contract leeftijd 21 vrijgestelde jaren goalie"
+        },
+        {
+          "id": "101",
+          "label": "Waivers eerste contract leeftijd 21 vrijgestelde wedstrijden goalie"
+        },
+        {
+          "id": "102",
+          "label": "Waivers eerste contract leeftijd 22 vrijgestelde jaren goalie"
+        },
+        {
+          "id": "103",
+          "label": "Waivers eerste contract leeftijd 22 vrijgestelde wedstrijden goalie"
+        },
+        {
+          "id": "104",
+          "label": "Waivers eerste contract leeftijd 23 vrijgestelde jaren goalie"
+        },
+        {
+          "id": "105",
+          "label": "Waivers eerste contract leeftijd 23 vrijgestelde wedstrijden goalie"
+        },
+        {
+          "id": "106",
+          "label": "Waivers eerste contract leeftijd 24 vrijgestelde jaren goalie"
+        },
+        {
+          "id": "107",
+          "label": "Waivers eerste contract leeftijd 24 vrijgestelde wedstrijden goalie"
+        },
+        {
+          "id": "108",
+          "label": "Waivers eerste contract leeftijd 25 vrijgestelde jaren goalie"
+        },
+        {
+          "id": "109",
+          "label": "Waivers eerste contract leeftijd 25 vrijgestelde wedstrijden goalie"
+        },
+        {
+          "id": "110",
+          "label": "Waivers algemeen vrijgestelde jaren veldspeler"
+        },
+        {
+          "id": "111",
+          "label": "Waivers algemeen vrijgestelde wedstrijden veldspeler"
+        },
+        {
+          "id": "112",
+          "label": "Waivers algemeen vrijgestelde jaren goalie"
+        },
+        {
+          "id": "113",
+          "label": "Waivers algemeen vrijgestelde wedstrijden goalie"
+        },
+        {
+          "id": "114",
+          "label": "Buitenlanders: spelers van deelnemende naties in de competitie tellen niet mee"
+        },
+        {
+          "id": "115",
+          "label": "Offer sheet compensatielimiet 3e ronde pick"
+        },
+        {
+          "id": "116",
+          "label": "Offer sheet compensatielimiet 2e ronde pick"
+        },
+        {
+          "id": "117",
+          "label": "Offer sheet compensatielimiet 1e en 3e ronde pick"
+        },
+        {
+          "id": "118",
+          "label": "Offer sheet compensatielimiet 1e, 2e en 3e ronde pick"
+        },
+        {
+          "id": "119",
+          "label": "Offer sheet compensatielimiet twee 1e, 2e en 3e ronde pick"
+        },
+        {
+          "id": "120",
+          "label": "Offer sheet compensatielimiet vier 1e ronde picks"
+        },
+        {
+          "id": "121",
+          "label": "Salarisplafond farmteam loon max jaarlijkse limiet"
+        },
+        {
+          "id": "122",
+          "label": "Buitenlandersregel gebruikt importspelers"
+        },
+        {
+          "id": "123",
+          "label": "Maximumleeftijd zelfopgeleide speler voor goalies"
+        },
+        {
+          "id": "124",
+          "label": "Samenwerkingsverband verplaatsing alleen voor binnenlandse spelers"
+        },
+        {
+          "id": "125",
+          "label": "Samenwerkingsverband verplaatsing maximale leeftijdsgrens"
+        },
+        {
+          "id": "126",
+          "label": "Samenwerkingsverband verplaatsing maximale leeftijdsgrens voor goalies"
+        },
+        {
+          "id": "127",
+          "label": "Transfers/leningen niet toegestaan binnen dezelfde competitie"
+        },
+        {
+          "id": "128",
+          "label": "Transfers/leningen niet toegestaan in competitie"
+        },
+        {
+          "id": "129",
+          "label": "Free Agency RFA loonlimiet 1"
+        },
+        {
+          "id": "130",
+          "label": "Free Agency RFA kwalificerend pct 1"
+        },
+        {
+          "id": "131",
+          "label": "Free Agency RFA loonlimiet 2"
+        },
+        {
+          "id": "132",
+          "label": "Free Agency RFA kwalificerend pct 2"
+        },
+        {
+          "id": "133",
+          "label": "Free Agency RFA loonlimiet 3"
+        },
+        {
+          "id": "134",
+          "label": "Free Agency RFA kwalificerend pct 3"
+        },
+        {
+          "id": "135",
+          "label": "Free Agency RFA kwalificerende limieten max leeftijdsgrens"
+        },
+        {
+          "id": "136",
+          "label": "Free Agency RFA kwalificerende aanbieding duur"
+        },
+        {
+          "id": "137",
+          "label": "Free Agency RFA compensatiesysteem"
+        },
+        {
+          "id": "138",
+          "label": "Draft verkiesbaarheid gebaseerd op team, niet nationaliteit"
+        },
+        {
+          "id": "139",
+          "label": "Draft: goalies niet verkiesbaar"
+        },
+        {
+          "id": "140",
+          "label": "Contract salarisverandering limiet jaar tot jaar pct"
+        },
+        {
+          "id": "141",
+          "label": "Contract salarisverandering limiet laagst naar hoogst pct"
+        },
+        {
+          "id": "142",
+          "label": "Try-outs: spelers niet toegestaan deel te nemen tijdens seizoen"
+        },
+        {
+          "id": "143",
+          "label": "Contract: teamoptie-clausule niet toegestaan"
+        },
+        {
+          "id": "144",
+          "label": "Contract: speleroptie-clausule niet toegestaan"
+        },
+        {
+          "id": "145",
+          "label": "Contract: buitenland-clausule niet toegestaan"
+        },
+        {
+          "id": "146",
+          "label": "Buitenlandse spelers voor binnenlandse teams gebaseerd op nationale team verkiesbaarheid"
+        },
+        {
+          "id": "147",
+          "label": "Club beperkt tot enkel gebruik van natuurlijk binnenlandse spelers"
+        },
+        {
+          "id": "148",
+          "label": "-- Instapcontract vereist two-way-clausule --"
+        },
+        {
+          "id": "149",
+          "label": "-- Contractafkoop schaal 1 leeftijdsgrens --"
+        },
+        {
+          "id": "150",
+          "label": "-- Contractafkoop schaal 1 percentage cap hit --"
+        },
+        {
+          "id": "151",
+          "label": "-- Contractafkoop schaal 2 leeftijdsgrens --"
+        },
+        {
+          "id": "152",
+          "label": "-- Contractafkoop schaal 2 percentage cap hit --"
+        },
+        {
+          "id": "153",
+          "label": "-- Contractafkoop: pas salarisaanpassing toe op cap hit --"
+        },
+        {
+          "id": "154",
+          "label": "-- Contractafkoop cap hit jaren vermenigvuldiger --"
+        },
+        {
+          "id": "155",
+          "label": "-- Contractafkoop: sta geen onderhandeling toe --"
+        },
+        {
+          "id": "156",
+          "label": "Trainingskampen standaard gesloten voor vrije inloop"
+        },
+        {
+          "id": "157",
+          "label": "Two-way-contracten toestaan"
+        },
+        {
+          "id": "158",
+          "label": "Two-way-contracten verplicht onder een bepaalde leeftijd"
+        },
+        {
+          "id": "159",
+          "label": "Goalies vrijgesteld van buitenlandersregels"
+        },
+        {
+          "id": "160",
+          "label": "Spelers op two-way-contracten vrijgesteld van waivers"
+        },
+        {
+          "id": "161",
+          "label": "Tel spelers van thuisnatie competitie als binnenlands voor buitenlands gevestigde clubs"
+        },
+        {
+          "id": "162",
+          "label": "Competitie: overjarige spelerstolerantie enkel van toepassing op spelers in laatste jaar van verkiesbaarheid"
+        },
+        {
+          "id": "163",
+          "label": "Natie telt niet als buitenlands [UID]"
+        },
+        {
+          "id": "164",
+          "label": "Maximum aantal buitenlandse goalies (alle teams)"
+        },
+        {
+          "id": "165",
+          "label": "Maximum aantal buitenlandse goalies (binnenlandse teams)"
+        },
+        {
+          "id": "166",
+          "label": "Minimale contractduur"
+        },
+        {
+          "id": "167",
+          "label": "Draft minimumleeftijd (alle spelers)"
+        },
+        {
+          "id": "168",
+          "label": "Draft peildatum leeftijd"
+        },
+        {
+          "id": "169",
+          "label": "Draft minimumleeftijd (binnenlandse spelers) (overschrijft de 'Alle Spelers' instelling)"
+        },
+        {
+          "id": "170",
+          "label": "Draft maximumleeftijd (alle spelers)"
+        },
+        {
+          "id": "171",
+          "label": "Datum van waiver draft (alleen NHL)"
+        },
+        {
+          "id": "172",
+          "label": "Draftloterij uitschakelen (enkel voor drafts met een hardgecodeerde loterij)"
+        },
+        {
+          "id": "173",
+          "label": "Deelname aan Olympische Spelen uitschakelen (alleen Noord-Amerikaanse competities)"
+        },
+        {
+          "id": "174",
+          "label": "Aantal continentale A-licenties"
+        },
+        {
+          "id": "175",
+          "label": "Aantal continentale B-licenties"
+        },
+        {
+          "id": "176",
+          "label": "Aantal continentale C-licenties"
+        },
+        {
+          "id": "177",
+          "label": "Kandidaatcompetitie voor continentale A-licentie [UID]"
+        },
+        {
+          "id": "178",
+          "label": "Kandidaatcompetitie voor continentale B-licentie [UID]"
+        },
+        {
+          "id": "179",
+          "label": "Kandidaatcompetitie voor continentale C-licentie [UID]"
+        },
+        {
+          "id": "180",
+          "label": "Team dat automatisch continentale A-licentie ontvangt [UID]"
+        },
+        {
+          "id": "181",
+          "label": "Niet-overeenkomst natie voor overgelopen spelers met betrekking tot spelersrechten [UID]"
+        }
+      ]
+    },
+    {
+      "id": "LANGUAGE",
+      "name": "Taal",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Albanees (1)"
+        },
+        {
+          "id": "2",
+          "label": "Arabisch"
+        },
+        {
+          "id": "3",
+          "label": "Bulgaars"
+        },
+        {
+          "id": "4",
+          "label": "Chinees"
+        },
+        {
+          "id": "5",
+          "label": "Kroatisch"
+        },
+        {
+          "id": "6",
+          "label": "Tsjechisch"
+        },
+        {
+          "id": "7",
+          "label": "Nederlands"
+        },
+        {
+          "id": "8",
+          "label": "Engels"
+        },
+        {
+          "id": "9",
+          "label": "Fins"
+        },
+        {
+          "id": "10",
+          "label": "Frans"
+        },
+        {
+          "id": "11",
+          "label": "Duits"
+        },
+        {
+          "id": "12",
+          "label": "Grieks"
+        },
+        {
+          "id": "13",
+          "label": "Hebreeuws"
+        },
+        {
+          "id": "14",
+          "label": "Hongaars"
+        },
+        {
+          "id": "15",
+          "label": "Italiaans"
+        },
+        {
+          "id": "16",
+          "label": "Japans"
+        },
+        {
+          "id": "17",
+          "label": "Koreaans"
+        },
+        {
+          "id": "18",
+          "label": "Pools"
+        },
+        {
+          "id": "19",
+          "label": "Portugees"
+        },
+        {
+          "id": "20",
+          "label": "Roemeens"
+        },
+        {
+          "id": "21",
+          "label": "Russisch"
+        },
+        {
+          "id": "22",
+          "label": "Noors"
+        },
+        {
+          "id": "23",
+          "label": "Servisch"
+        },
+        {
+          "id": "24",
+          "label": "Spaans"
+        },
+        {
+          "id": "25",
+          "label": "Turks"
+        },
+        {
+          "id": "26",
+          "label": "Birmaans"
+        },
+        {
+          "id": "27",
+          "label": "Maleis"
+        },
+        {
+          "id": "28",
+          "label": "Perzisch"
+        },
+        {
+          "id": "29",
+          "label": "Slowaaks"
+        },
+        {
+          "id": "30",
+          "label": "Zweeds"
+        },
+        {
+          "id": "31",
+          "label": "IJslands"
+        },
+        {
+          "id": "32",
+          "label": "Deens"
+        },
+        {
+          "id": "33",
+          "label": "Afrikaans"
+        },
+        {
+          "id": "34",
+          "label": "Albanees (2)"
+        },
+        {
+          "id": "35",
+          "label": "Amhaars"
+        },
+        {
+          "id": "36",
+          "label": "Armeens"
+        },
+        {
+          "id": "37",
+          "label": "Azerbeidzjaans"
+        },
+        {
+          "id": "38",
+          "label": "Bengaals"
+        },
+        {
+          "id": "39",
+          "label": "Estlands"
+        },
+        {
+          "id": "40",
+          "label": "Georgisch"
+        },
+        {
+          "id": "41",
+          "label": "Hindi"
+        },
+        {
+          "id": "42",
+          "label": "Javaans"
+        },
+        {
+          "id": "43",
+          "label": "Khmer"
+        },
+        {
+          "id": "44",
+          "label": "Kirgizisch"
+        },
+        {
+          "id": "45",
+          "label": "Laotiaans"
+        },
+        {
+          "id": "46",
+          "label": "Lets"
+        },
+        {
+          "id": "47",
+          "label": "Luxemburgs"
+        },
+        {
+          "id": "48",
+          "label": "Litouws"
+        },
+        {
+          "id": "49",
+          "label": "Macedonisch"
+        },
+        {
+          "id": "50",
+          "label": "Malagassisch"
+        },
+        {
+          "id": "51",
+          "label": "Maltees"
+        },
+        {
+          "id": "52",
+          "label": "Singalees"
+        },
+        {
+          "id": "53",
+          "label": "Sloveens"
+        },
+        {
+          "id": "54",
+          "label": "Somalisch"
+        },
+        {
+          "id": "55",
+          "label": "Swahili"
+        },
+        {
+          "id": "56",
+          "label": "Tadzjieks"
+        },
+        {
+          "id": "57",
+          "label": "Tamil"
+        },
+        {
+          "id": "58",
+          "label": "Thais"
+        },
+        {
+          "id": "59",
+          "label": "Oezbeeks"
+        },
+        {
+          "id": "60",
+          "label": "Vietnamees"
+        },
+        {
+          "id": "61",
+          "label": "Mongools"
+        },
+        {
+          "id": "62",
+          "label": "Bosnisch"
+        },
+        {
+          "id": "63",
+          "label": "Oekraïens"
+        },
+        {
+          "id": "64",
+          "label": "Zoeloe"
+        }
+      ]
+    },
+    {
+      "id": "AWARD_TYPE",
+      "name": "Prijzen & Onderscheidingen",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Meeste punten"
+        },
+        {
+          "id": "2",
+          "label": "Meeste doelpunten"
+        },
+        {
+          "id": "3",
+          "label": "Beste speler algemeen"
+        },
+        {
+          "id": "4",
+          "label": "Speler van het jaar (gekozen door spelers)"
+        },
+        {
+          "id": "5",
+          "label": "Beste verdediger"
+        },
+        {
+          "id": "6",
+          "label": "Beste goalie"
+        },
+        {
+          "id": "7",
+          "label": "Beste goalie duo"
+        },
+        {
+          "id": "8",
+          "label": "Beste reddingspercentage goalie"
+        },
+        {
+          "id": "9",
+          "label": "Beste verdedigende aanvaller"
+        },
+        {
+          "id": "10",
+          "label": "Beste aanvallende verdediger"
+        },
+        {
+          "id": "11",
+          "label": "Beste aanvaller"
+        },
+        {
+          "id": "12",
+          "label": "Beste rookie"
+        },
+        {
+          "id": "13",
+          "label": "Beste studerende speler"
+        },
+        {
+          "id": "14",
+          "label": "Beste overjarige speler"
+        },
+        {
+          "id": "15",
+          "label": "Meeste punten in play-offs"
+        },
+        {
+          "id": "16",
+          "label": "Beste center"
+        },
+        {
+          "id": "17",
+          "label": "Beste vleugelspeler"
+        },
+        {
+          "id": "18",
+          "label": "Aanvallende rookie van het jaar"
+        },
+        {
+          "id": "19",
+          "label": "Verdedigende rookie van het jaar"
+        },
+        {
+          "id": "20",
+          "label": "Beste verdedigende verdediger"
+        },
+        {
+          "id": "21",
+          "label": "Meeste drie sterren-selecties"
+        },
+        {
+          "id": "22",
+          "label": "Beste manager"
+        },
+        {
+          "id": "23",
+          "label": "Beste verdedigende speler"
+        },
+        {
+          "id": "24",
+          "label": "Beste binnenlandse speler"
+        },
+        {
+          "id": "25",
+          "label": "Sportiviteitsprijs (Gentleman)"
+        },
+        {
+          "id": "26",
+          "label": "Beste leider"
+        },
+        {
+          "id": "27",
+          "label": "Humanitaire prijs"
+        },
+        {
+          "id": "28",
+          "label": "Beste coach"
+        },
+        {
+          "id": "29",
+          "label": "Beste plus/minus"
+        },
+        {
+          "id": "30",
+          "label": "MVP"
+        },
+        {
+          "id": "31",
+          "label": "Play-off MVP"
+        },
+        {
+          "id": "32",
+          "label": "All-star MVP"
+        },
+        {
+          "id": "33",
+          "label": "Speler van de week"
+        },
+        {
+          "id": "34",
+          "label": "Speler van de maand"
+        },
+        {
+          "id": "35",
+          "label": "Rookie van de maand"
+        },
+        {
+          "id": "36",
+          "label": "Aanvallende speler van de week"
+        },
+        {
+          "id": "37",
+          "label": "Verdedigende speler van de week"
+        },
+        {
+          "id": "38",
+          "label": "Toewijding aan het ijshockey"
+        },
+        {
+          "id": "39",
+          "label": "Aanvallende speler van de maand"
+        },
+        {
+          "id": "40",
+          "label": "Verdedigende speler van de maand"
+        },
+        {
+          "id": "41",
+          "label": "Eerste all-star team"
+        },
+        {
+          "id": "42",
+          "label": "Tweede all-star team"
+        },
+        {
+          "id": "43",
+          "label": "Derde all-star team"
+        },
+        {
+          "id": "44",
+          "label": "Rookie all-star team"
+        },
+        {
+          "id": "45",
+          "label": "Goalie van de week"
+        },
+        {
+          "id": "46",
+          "label": "Verdediger van de week"
+        },
+        {
+          "id": "47",
+          "label": "Aanvaller van de week"
+        },
+        {
+          "id": "48",
+          "label": "Rookie van de week"
+        },
+        {
+          "id": "49",
+          "label": "Meeste punten door een verdediger"
+        },
+        {
+          "id": "50",
+          "label": "Meeste doelpunten in play-offs"
+        }
+      ]
+    },
+    {
+      "id": "ROUND_TYPE",
+      "name": "Rondetype",
+      "items": [
+        {
+          "id": "0",
+          "label": "Geen Rondenaam"
+        },
+        {
+          "id": "1",
+          "label": "Replay 1"
+        },
+        {
+          "id": "2",
+          "label": "Replay 2"
+        },
+        {
+          "id": "3",
+          "label": "Wedstrijd 1 / Duel 1"
+        },
+        {
+          "id": "4",
+          "label": "Wedstrijd 2 / Duel 2"
+        },
+        {
+          "id": "5",
+          "label": "Wedstrijd 3 / Beslissingswedstrijd"
+        },
+        {
+          "id": "6",
+          "label": "Wedstrijd 4"
+        },
+        {
+          "id": "7",
+          "label": "Wedstrijd 5"
+        },
+        {
+          "id": "8",
+          "label": "Wedstrijd 6"
+        },
+        {
+          "id": "9",
+          "label": "Wedstrijd 7"
+        },
+        {
+          "id": "10",
+          "label": "Eerste Ronde"
+        },
+        {
+          "id": "20",
+          "label": "Tweede Ronde"
+        },
+        {
+          "id": "30",
+          "label": "Derde Ronde"
+        },
+        {
+          "id": "120",
+          "label": "Kwartfinale"
+        },
+        {
+          "id": "130",
+          "label": "Halve Finale"
+        },
+        {
+          "id": "140",
+          "label": "Troostfinale (Derde Plaats)"
+        },
+        {
+          "id": "150",
+          "label": "Finale"
+        },
+        {
+          "id": "160",
+          "label": "Play-off"
+        },
+        {
+          "id": "170",
+          "label": "Play-off Finale"
+        },
+        {
+          "id": "180",
+          "label": "Play-off Halve Finale"
+        },
+        {
+          "id": "190",
+          "label": "Playout"
+        },
+        {
+          "id": "200",
+          "label": "Kwalificatieronde"
+        },
+        {
+          "id": "210",
+          "label": "Voorronde"
+        },
+        {
+          "id": "220",
+          "label": "Promotiefinale"
+        },
+        {
+          "id": "230",
+          "label": "Eerste Kwalificatiefase"
+        },
+        {
+          "id": "240",
+          "label": "Tweede Kwalificatiefase"
+        },
+        {
+          "id": "250",
+          "label": "Derde Kwalificatiefase"
+        }
+      ]
+    },
+    {
+      "id": "STAGE_TYPE",
+      "name": "Fasetype",
+      "items": [
+        {
+          "id": "0",
+          "label": "Geen Fasenaam"
+        },
+        {
+          "id": "100",
+          "label": "Internationale Competitie"
+        },
+        {
+          "id": "200",
+          "label": "Binnenlandse Competitie"
+        },
+        {
+          "id": "300",
+          "label": "Groepsfase"
+        },
+        {
+          "id": "800",
+          "label": "Promotie"
+        },
+        {
+          "id": "900",
+          "label": "Degradatiegroep"
+        },
+        {
+          "id": "1000",
+          "label": "Degradatie Play-offs"
+        },
+        {
+          "id": "1100",
+          "label": "Promotie Play-offs"
+        },
+        {
+          "id": "1200",
+          "label": "Kampioenschap"
+        },
+        {
+          "id": "1300",
+          "label": "Conference"
+        },
+        {
+          "id": "1400",
+          "label": "Hogere Competitie"
+        },
+        {
+          "id": "1500",
+          "label": "Lagere Competitie"
+        },
+        {
+          "id": "1600",
+          "label": "Degradatie Competitie"
+        },
+        {
+          "id": "1700",
+          "label": "Conference Play-offs"
+        },
+        {
+          "id": "1800",
+          "label": "Voorrondegroep"
+        },
+        {
+          "id": "1900",
+          "label": "Finalegroep"
+        },
+        {
+          "id": "2000",
+          "label": "Kwalificatiegroep"
+        },
+        {
+          "id": "2100",
+          "label": "Algemeen Klassement"
+        },
+        {
+          "id": "2200",
+          "label": "Play-off Competitie"
+        },
+        {
+          "id": "2300",
+          "label": "Regulier Seizoen"
+        },
+        {
+          "id": "2400",
+          "label": "Vervolg Regulier Seizoen"
+        },
+        {
+          "id": "2500",
+          "label": "Play-offs"
+        },
+        {
+          "id": "2600",
+          "label": "Divisie"
+        },
+        {
+          "id": "2700",
+          "label": "Divisie Play-offs"
+        },
+        {
+          "id": "2800",
+          "label": "Playouts"
+        },
+        {
+          "id": "2900",
+          "label": "Playout Competitie"
+        }
+      ]
+    },
+    {
+      "id": "APPROXIMATE_REGION",
+      "name": "Geschatte Regio",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Afrika (Centraal)"
+        },
+        {
+          "id": "2",
+          "label": "Azië"
+        },
+        {
+          "id": "3",
+          "label": "Europa (Oost)"
+        },
+        {
+          "id": "4",
+          "label": "Europa (VK & Ierland)"
+        },
+        {
+          "id": "5",
+          "label": "Canada"
+        },
+        {
+          "id": "6",
+          "label": "Caribisch Gebied"
+        },
+        {
+          "id": "7",
+          "label": "Centraal-Amerika"
+        },
+        {
+          "id": "8",
+          "label": "Europa (Centraal)"
+        },
+        {
+          "id": "9",
+          "label": "Europa (Tsjechië)"
+        },
+        {
+          "id": "10",
+          "label": "Europa (Balkan)"
+        },
+        {
+          "id": "11",
+          "label": "Europa (Finland)"
+        },
+        {
+          "id": "12",
+          "label": "Europa (Duitsland)"
+        },
+        {
+          "id": "13",
+          "label": "Oost-Azië"
+        },
+        {
+          "id": "14",
+          "label": "Midden-Oosten"
+        },
+        {
+          "id": "15",
+          "label": "Noord-Afrika"
+        },
+        {
+          "id": "16",
+          "label": "Oceanië"
+        },
+        {
+          "id": "17",
+          "label": "West-Rusland"
+        },
+        {
+          "id": "18",
+          "label": "Europa (Scandinavië)"
+        },
+        {
+          "id": "19",
+          "label": "Oost-Rusland"
+        },
+        {
+          "id": "20",
+          "label": "Zuid-Amerika"
+        },
+        {
+          "id": "21",
+          "label": "Afrika (Zuid)"
+        },
+        {
+          "id": "22",
+          "label": "Europa (Zweden)"
+        },
+        {
+          "id": "23",
+          "label": "Noord-Amerika"
+        },
+        {
+          "id": "24",
+          "label": "Europa (West)"
+        }
+      ]
+    },
+    {
+      "id": "REGION_ACTUAL",
+      "name": "Actuele Regio",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Afrika"
+        },
+        {
+          "id": "2",
+          "label": "Azië"
+        },
+        {
+          "id": "3",
+          "label": "Caribisch Gebied"
+        },
+        {
+          "id": "4",
+          "label": "Centraal-Amerika"
+        },
+        {
+          "id": "5",
+          "label": "Europa (Centraal)"
+        },
+        {
+          "id": "6",
+          "label": "Europa (Oost)"
+        },
+        {
+          "id": "7",
+          "label": "Midden-Oosten"
+        },
+        {
+          "id": "8",
+          "label": "Noord-Afrika"
+        },
+        {
+          "id": "9",
+          "label": "Noord-Amerika"
+        },
+        {
+          "id": "10",
+          "label": "Oceanië"
+        },
+        {
+          "id": "11",
+          "label": "Europa (Scandinavië)"
+        },
+        {
+          "id": "12",
+          "label": "Zuid-Amerika"
+        },
+        {
+          "id": "13",
+          "label": "Europa (Zuid)"
+        },
+        {
+          "id": "14",
+          "label": "Europa (VK & Ierland)"
+        }
+      ]
+    },
+    {
+      "id": "AFFILIATION_TYPE",
+      "name": "Samenwerkingsverband Type",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Opleidingsteam (Primair)"
+        },
+        {
+          "id": "1",
+          "label": "Opleidingsteam (Secundair)"
+        },
+        {
+          "id": "2",
+          "label": "Opleidingsteam (Overig)"
+        },
+        {
+          "id": "3",
+          "label": "Junior (Primair)"
+        },
+        {
+          "id": "4",
+          "label": "Junior (Secundair)"
+        },
+        {
+          "id": "5",
+          "label": "Junior (Overig)"
+        }
+      ]
+    },
+    {
+      "id": "AFFILIATION_DEPENDENCY",
+      "name": "Samenwerkingsverband Afhankelijkheid",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Onafhankelijk"
+        },
+        {
+          "id": "1",
+          "label": "Semi-onafhankelijk"
+        },
+        {
+          "id": "2",
+          "label": "Afhankelijk"
+        }
+      ]
+    },
+    {
+      "id": "DAY",
+      "name": "Dag",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Maandag"
+        },
+        {
+          "id": "1",
+          "label": "Dinsdag"
+        },
+        {
+          "id": "2",
+          "label": "Woensdag"
+        },
+        {
+          "id": "3",
+          "label": "Donderdag"
+        },
+        {
+          "id": "4",
+          "label": "Vrijdag"
+        },
+        {
+          "id": "5",
+          "label": "Zaterdag"
+        },
+        {
+          "id": "6",
+          "label": "Zondag"
+        }
+      ]
+    },
+    {
+      "id": "TACTIC",
+      "name": "Tactiek",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[NIET GEBRUIKEN (-1)]"
+        },
+        {
+          "id": "0",
+          "label": "Onbekend (0)"
+        },
+        {
+          "id": "1",
+          "label": "Onbekend (1)"
+        },
+        {
+          "id": "2",
+          "label": "Onbekend (2)"
+        },
+        {
+          "id": "3",
+          "label": "Onbekend (3)"
+        },
+        {
+          "id": "4",
+          "label": "Onbekend (4)"
+        },
+        {
+          "id": "5",
+          "label": "Onbekend (5)"
+        },
+        {
+          "id": "6",
+          "label": "Onbekend (6)"
+        },
+        {
+          "id": "7",
+          "label": "Onbekend (7)"
+        },
+        {
+          "id": "8",
+          "label": "Onbekend (8)"
+        },
+        {
+          "id": "9",
+          "label": "Onbekend (9)"
+        },
+        {
+          "id": "10",
+          "label": "Onbekend (10)"
+        },
+        {
+          "id": "11",
+          "label": "Onbekend (11)"
+        },
+        {
+          "id": "12",
+          "label": "Onbekend (12)"
+        },
+        {
+          "id": "13",
+          "label": "Onbekend (13)"
+        },
+        {
+          "id": "14",
+          "label": "Onbekend (14)"
+        },
+        {
+          "id": "15",
+          "label": "Onbekend (15)"
+        },
+        {
+          "id": "16",
+          "label": "Onbekend (16)"
+        }
+      ]
+    },
+    {
+      "id": "EXTRA_MATCH_RULES",
+      "name": "Extra Wedstrijdregels",
+      "items": [
+        {
+          "id": "1",
+          "label": "Gebruik trapeze (trapezoid)"
+        },
+        {
+          "id": "2",
+          "label": "Ken doelpunt toe voor winnende shoot-out goal"
+        }
+      ]
+    },
+    {
+      "id": "ROUND_RULES",
+      "name": "Ronderegels",
+      "items": [
+        {
+          "id": "1",
+          "label": "Geen Wedstrijden Tussen Zelfde Natie Toegestaan"
+        },
+        {
+          "id": "2",
+          "label": "Team Uit Lagere Divisie Thuis In Eerste Duel"
+        },
+        {
+          "id": "3",
+          "label": "Lager Geplaatst Team Thuis In Eerste Duel"
+        },
+        {
+          "id": "4",
+          "label": "Hoger Geplaatst Team Thuis In Eerste Duel"
+        },
+        {
+          "id": "5",
+          "label": "Lager Geklasseerd Team Thuis In Eerste Duel"
+        },
+        {
+          "id": "6",
+          "label": "Twee Divisie Brackets"
+        },
+        {
+          "id": "7",
+          "label": "Wissel Thuis- Uitwedstrijden Af"
+        },
+        {
+          "id": "8",
+          "label": "Hoogst Tegen Laagst Matchup"
+        },
+        {
+          "id": "9",
+          "label": "Verliezer Gaat Door"
+        },
+        {
+          "id": "10",
+          "label": "TV-Data Bestaan"
+        },
+        {
+          "id": "11",
+          "label": "Vaste Loting"
+        },
+        {
+          "id": "12",
+          "label": "Gezette Loting (Seeded)"
+        },
+        {
+          "id": "13",
+          "label": "Twee Duels Hoger Geplaatst Wint"
+        },
+        {
+          "id": "14",
+          "label": "Twee Duels Thuiswinst"
+        },
+        {
+          "id": "15",
+          "label": "Twee Duels Uitwinst"
+        },
+        {
+          "id": "16",
+          "label": "Hockey Best Of Three"
+        },
+        {
+          "id": "17",
+          "label": "Hockey Best Of Five"
+        },
+        {
+          "id": "18",
+          "label": "Hockey Best Of Seven"
+        },
+        {
+          "id": "19",
+          "label": "Drie Divisieleiders In Bracket"
+        },
+        {
+          "id": "20",
+          "label": "Sta Willekeurige Bekerplaatsingen Toe"
+        },
+        {
+          "id": "21",
+          "label": "Team Met Beter Seizoensrecord Thuis"
+        }
+      ]
+    },
+    {
+      "id": "TEAM_PICKING_RULES",
+      "name": "Teamselectieregels",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Uit Basisregels Lijst"
+        },
+        {
+          "id": "2",
+          "label": "Uit Basisregels Lijst Per Conference"
+        },
+        {
+          "id": "3",
+          "label": "Uit Basisregels Lijst Per Divisie"
+        },
+        {
+          "id": "4",
+          "label": "Uit Database Via Basiscompetitie"
+        },
+        {
+          "id": "5",
+          "label": "Uit Natie Op Basis Van Reputatie"
+        },
+        {
+          "id": "6",
+          "label": "Uit Nationale Teams Op Basis Van Reputatie"
+        },
+        {
+          "id": "7",
+          "label": "Uit Nationale Teams Op Basis Van Eindklassering"
+        },
+        {
+          "id": "8",
+          "label": "Uit Vorige Fases Gebruik Eén Fase"
+        },
+        {
+          "id": "9",
+          "label": "Uit Vorige Fases Gezet (Seeded)"
+        },
+        {
+          "id": "10",
+          "label": "Uit Vorige Fases Top Vrijstelling (Bye)"
+        },
+        {
+          "id": "11",
+          "label": "Uit Nationale Teams Op Basis Van Ranglijst"
+        },
+        {
+          "id": "12",
+          "label": "Uit Vorige Fases Intra Groep Eerste Ronde"
+        },
+        {
+          "id": "13",
+          "label": "Uit Vorige Fases Speciale Sortering Olympische Spelen"
+        },
+        {
+          "id": "14",
+          "label": "Uit Vorige Fases Speciale Sortering Punten Regulier Seizoen"
+        },
+        {
+          "id": "15",
+          "label": "Uit Lagere Competitie Play-off Winnaars"
+        },
+        {
+          "id": "16",
+          "label": "Uit Eerste Play-off Fase Verliezers"
+        },
+        {
+          "id": "17",
+          "label": "Uit Andere Conference Laatste Top Play-off Plekken"
+        },
+        {
+          "id": "18",
+          "label": "Uit Gekoppelde Competitie Kampioenen"
+        },
+        {
+          "id": "19",
+          "label": "Uit Lagere Competitie Top Play-off Plaatsen"
+        },
+        {
+          "id": "20",
+          "label": "Uit Lagere Competitie Promotieplaatsen"
+        },
+        {
+          "id": "21",
+          "label": "Uit Extra Gespecificeerde Fase"
+        },
+        {
+          "id": "22",
+          "label": "Geef Initiële Bonuspunten"
+        },
+        {
+          "id": "23",
+          "label": "Uit Vorige Fases Onderste Vrijstelling (Bye)"
+        },
+        {
+          "id": "24",
+          "label": "Uit Vorige Fases Splits Teams En Negeer Reeds Gekozen Voor Gelijktijdige Fases"
+        },
+        {
+          "id": "25",
+          "label": "Behoud Vorige Fase Punten En Doelsaldo"
+        },
+        {
+          "id": "26",
+          "label": "Behoud Vorige Fase Punten"
+        },
+        {
+          "id": "27",
+          "label": "Geef Initiële Bonuspunten Vanaf Plaats 4 Omlaag"
+        },
+        {
+          "id": "28",
+          "label": "Uit Vorige Fases Gezet In Volgorde Van Fases Naar Één Poule"
+        },
+        {
+          "id": "29",
+          "label": "Vergelijk Top Play-off Plek Met Vorige Divisie"
+        }
+      ]
+    },
+    {
+      "id": "REPLAY_RULES",
+      "name": "Replay-regels",
+      "items": [
+        {
+          "id": "3",
+          "label": "Geen uitdoelpunten"
+        },
+        {
+          "id": "5",
+          "label": "Verlenging: 4 Tegen 4"
+        },
+        {
+          "id": "6",
+          "label": "Verlenging: 1x periode (5 minuten)"
+        },
+        {
+          "id": "7",
+          "label": "Verlenging: 1x periode (10 minuten)"
+        },
+        {
+          "id": "8",
+          "label": "Verlenging: 1x periode (20 minuten)"
+        },
+        {
+          "id": "9",
+          "label": "Verlenging: (Periodes van 20 minuten tot winnaar)"
+        },
+        {
+          "id": "10",
+          "label": "Shoot-out: 5 schutters (geen herhaling)"
+        },
+        {
+          "id": "11",
+          "label": "Shoot-out: 3 schutters (geen herhaling)"
+        },
+        {
+          "id": "12",
+          "label": "Shoot-out: 3 schutters (herhaling schutters toegestaan in sudden death)"
+        },
+        {
+          "id": "13",
+          "label": "Shoot-out: 1-tegen-1 sudden death"
+        },
+        {
+          "id": "16",
+          "label": "Verlenging: 7 minuten (4 tegen 4 en 3 tegen 3)"
+        },
+        {
+          "id": "17",
+          "label": "Verlenging: 3 tegen 3"
+        }
+      ]
+    },
+    {
+      "id": "CLUB_VALUATION",
+      "name": "Clubwaardering",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Onbekend (0)"
+        },
+        {
+          "id": "1",
+          "label": "Onbekend (1)"
+        },
+        {
+          "id": "2",
+          "label": "Onbekend (2)"
+        },
+        {
+          "id": "3",
+          "label": "Onbekend (3)"
+        },
+        {
+          "id": "4",
+          "label": "Onbekend (4)"
+        },
+        {
+          "id": "5",
+          "label": "Onbekend (5)"
+        }
+      ]
+    },
+    {
+      "id": "GENDER",
+      "name": "Geslacht",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "-51",
+          "label": "Standaard Natie (-51)"
+        },
+        {
+          "id": "0",
+          "label": "Standaard (0)"
+        },
+        {
+          "id": "1",
+          "label": "Onbekend (1)"
+        },
+        {
+          "id": "2",
+          "label": "Onbekend (2)"
+        },
+        {
+          "id": "3",
+          "label": "Onbekend (3)"
+        },
+        {
+          "id": "4",
+          "label": "Onbekend (4)"
+        },
+        {
+          "id": "5",
+          "label": "Onbekend (5)"
+        }
+      ]
+    },
+    {
+      "id": "GROUP",
+      "name": "Groep",
+      "items": [
+        {
+          "id": "0",
+          "label": "Geen Groepsnaam"
+        },
+        {
+          "id": "1",
+          "label": "Groep A"
+        },
+        {
+          "id": "2",
+          "label": "Groep B"
+        },
+        {
+          "id": "3",
+          "label": "Groep C"
+        },
+        {
+          "id": "4",
+          "label": "Groep D"
+        },
+        {
+          "id": "5",
+          "label": "Groep E"
+        },
+        {
+          "id": "6",
+          "label": "Groep F"
+        },
+        {
+          "id": "7",
+          "label": "Groep G"
+        },
+        {
+          "id": "8",
+          "label": "Groep H"
+        },
+        {
+          "id": "9",
+          "label": "Groep I"
+        },
+        {
+          "id": "10",
+          "label": "Groep J"
+        },
+        {
+          "id": "11",
+          "label": "Groep K"
+        },
+        {
+          "id": "12",
+          "label": "Groep L"
+        },
+        {
+          "id": "13",
+          "label": "Groep M"
+        },
+        {
+          "id": "14",
+          "label": "Groep N"
+        },
+        {
+          "id": "15",
+          "label": "Groep O"
+        },
+        {
+          "id": "16",
+          "label": "Groep P"
+        },
+        {
+          "id": "50",
+          "label": "Groep 1"
+        },
+        {
+          "id": "51",
+          "label": "Groep 2"
+        },
+        {
+          "id": "52",
+          "label": "Groep 3"
+        },
+        {
+          "id": "53",
+          "label": "Groep 4"
+        },
+        {
+          "id": "54",
+          "label": "Groep 5"
+        },
+        {
+          "id": "55",
+          "label": "Groep 6"
+        },
+        {
+          "id": "56",
+          "label": "Groep 7"
+        },
+        {
+          "id": "57",
+          "label": "Groep 8"
+        },
+        {
+          "id": "58",
+          "label": "Noordelijke Sectie"
+        },
+        {
+          "id": "59",
+          "label": "Zuidelijke Sectie"
+        },
+        {
+          "id": "60",
+          "label": "Westelijke Sectie"
+        },
+        {
+          "id": "61",
+          "label": "Oostelijke Sectie"
+        },
+        {
+          "id": "62",
+          "label": "Generiek 1"
+        },
+        {
+          "id": "63",
+          "label": "Generiek 2"
+        }
+      ]
+    },
+    {
+      "id": "GROUP_MEMBERSHIP",
+      "name": "Groepslidmaatschap",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Nee"
+        },
+        {
+          "id": "2",
+          "label": "Ja"
+        }
+      ]
+    },
+    {
+      "id": "IIHF_JUNIOR_DIVISION",
+      "name": "IIHF Junioren Divisie",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Wereldkampioenschappen"
+        },
+        {
+          "id": "2",
+          "label": "Divisie 1"
+        },
+        {
+          "id": "3",
+          "label": "Divisie 2"
+        }
+      ]
+    },
+    {
+      "id": "IIHF_SENIOR_DIVISION",
+      "name": "IIHF Senioren Divisie",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Wereldkampioenschappen"
+        },
+        {
+          "id": "2",
+          "label": "Divisie 1A"
+        },
+        {
+          "id": "3",
+          "label": "Divisie 1B"
+        },
+        {
+          "id": "4",
+          "label": "Divisie 2A"
+        },
+        {
+          "id": "5",
+          "label": "Divisie 2B"
+        },
+        {
+          "id": "6",
+          "label": "Divisie 3"
+        }
+      ]
+    },
+    {
+      "id": "FATE_RULES",
+      "name": "Lotregels (Resultaat)",
+      "items": [
+        {
+          "id": "0",
+          "label": "Kampioen"
+        },
+        {
+          "id": "1",
+          "label": "Promotie uit fase"
+        },
+        {
+          "id": "2",
+          "label": "Gekwalificeerd voor volgende competitie"
+        },
+        {
+          "id": "3",
+          "label": "Gekwalificeerd voor volgende fase"
+        },
+        {
+          "id": "4",
+          "label": "Controleer op geen resultaat"
+        },
+        {
+          "id": "5",
+          "label": "Geen willekeurige datums"
+        },
+        {
+          "id": "6",
+          "label": "Degradatie uit fase"
+        },
+        {
+          "id": "7",
+          "label": "Regulier seizoen kampioen"
+        }
+      ]
+    },
+    {
+      "id": "FATE_TO_DRAW_FROM",
+      "name": "Resultatenpool",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Competitie: Promotieplaatsen"
+        },
+        {
+          "id": "1",
+          "label": "Competitie: Play-off (top) plaatsen"
+        },
+        {
+          "id": "2",
+          "label": "Competitie: Play-off (onderste) plaatsen"
+        },
+        {
+          "id": "3",
+          "label": "Competitie: Degradatie eindplaats"
+        },
+        {
+          "id": "99",
+          "label": "Beker: Uitgeschakeld"
+        },
+        {
+          "id": "100",
+          "label": "Beker: Nog in de race"
+        },
+        {
+          "id": "101",
+          "label": "Beker: Winnaar"
+        },
+        {
+          "id": "102",
+          "label": "Beker: Tweede plaats"
+        },
+        {
+          "id": "103",
+          "label": "Beker: Derde plaats"
+        },
+        {
+          "id": "104",
+          "label": "Beker: Vierde plaats"
+        }
+      ]
+    },
+    {
+      "id": "TRANSFER_RULES_FLAGS",
+      "name": "Transferregels",
+      "items": [
+        {
+          "id": "1",
+          "label": "Sta spelers met junior-contract toe in hoofdteam"
+        },
+        {
+          "id": "2",
+          "label": "Sta verhuur toe buiten transferperiodes"
+        },
+        {
+          "id": "3",
+          "label": "Free agents mogen alleen tekenen tot laatste transferperiode"
+        },
+        {
+          "id": "4",
+          "label": "Spelers met junior-status mogen niet worden teruggeroepen tijdens seizoen"
+        },
+        {
+          "id": "5",
+          "label": "Tekenbonus telt mee voor salarisplafond (cap hit)"
+        },
+        {
+          "id": "6",
+          "label": "Prestatiebonussen niet toegestaan"
+        },
+        {
+          "id": "7",
+          "label": "Instap-prestatiebonussen toegestaan"
+        },
+        {
+          "id": "8",
+          "label": "Restricted free agents tellen niet mee op reservelijst"
+        },
+        {
+          "id": "9",
+          "label": "Sta jaarlijkse salariswijzigingen toe"
+        },
+        {
+          "id": "10",
+          "label": "Limiteer jaarlijkse salariswijzigingen"
+        },
+        {
+          "id": "11",
+          "label": "Contracten zijn gegarandeerd"
+        },
+        {
+          "id": "12",
+          "label": "Overjarigheidslimiet gebaseerd op exacte leeftijd"
+        },
+        {
+          "id": "13",
+          "label": "Geen trainingskampen"
+        },
+        {
+          "id": "14",
+          "label": "Spelers met junior-status waarvan rechten behouden zijn kunnen niet getekend worden"
+        }
+      ]
+    },
+    {
+      "id": "TRANSFER_SYSTEM_TYPE",
+      "name": "Transfersysteem",
+      "items": [
+        {
+          "id": "0",
+          "label": "Noord-Amerikaans"
+        },
+        {
+          "id": "1",
+          "label": "IIHF (geen trades)"
+        },
+        {
+          "id": "2",
+          "label": "IIHF (trades toegestaan)"
+        }
+      ]
+    },
+    {
+      "id": "ARENA_RULES",
+      "name": "Accommodatie-instellingen",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Ongeldig]"
+        },
+        {
+          "id": "0",
+          "label": "Thuisarena"
+        },
+        {
+          "id": "1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "2",
+          "label": "Geen nationale arena"
+        },
+        {
+          "id": "4",
+          "label": "Nationale arena"
+        },
+        {
+          "id": "8",
+          "label": "Nabijgelegen arena"
+        },
+        {
+          "id": "16",
+          "label": "Gastarena"
+        },
+        {
+          "id": "32",
+          "label": "Arenagrootte passend bij teams"
+        },
+        {
+          "id": "64",
+          "label": "Arena 1"
+        },
+        {
+          "id": "128",
+          "label": "Arena 2"
+        },
+        {
+          "id": "256",
+          "label": "Arena 3"
+        },
+        {
+          "id": "512",
+          "label": "Arena 4"
+        },
+        {
+          "id": "1024",
+          "label": "Arena 5"
+        },
+        {
+          "id": "2048",
+          "label": "Arena 6"
+        },
+        {
+          "id": "4096",
+          "label": "Arena 7"
+        },
+        {
+          "id": "8192",
+          "label": "Arena 8"
+        },
+        {
+          "id": "16384",
+          "label": "Arena 9"
+        }
+      ]
+    },
+    {
+      "id": "CONTINENTAL_LICENCE",
+      "name": "Continentale Licentie",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "CHL A-licentie"
+        },
+        {
+          "id": "1",
+          "label": "CHL B-licentie"
+        },
+        {
+          "id": "2",
+          "label": "CHL C-licentie"
+        },
+        {
+          "id": "3",
+          "label": "Lagere A-licentie"
+        },
+        {
+          "id": "4",
+          "label": "Lagere B-licentie"
+        },
+        {
+          "id": "5",
+          "label": "Lagere C-licentie"
+        }
+      ]
+    },
+    {
+      "id": "GAME_IMPORTANCE",
+      "name": "Wedstrijdbelang",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Groot Belang"
+        },
+        {
+          "id": "2",
+          "label": "Normaal Belang"
+        },
+        {
+          "id": "3",
+          "label": "Gering Belang"
+        },
+        {
+          "id": "4",
+          "label": "Geen Hockey"
+        }
+      ]
+    },
+    {
+      "id": "MONTH",
+      "name": "Maand",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Januari"
+        },
+        {
+          "id": "1",
+          "label": "Februari"
+        },
+        {
+          "id": "2",
+          "label": "Maart"
+        },
+        {
+          "id": "3",
+          "label": "April"
+        },
+        {
+          "id": "4",
+          "label": "Mei"
+        },
+        {
+          "id": "5",
+          "label": "Juni"
+        },
+        {
+          "id": "6",
+          "label": "Juli"
+        },
+        {
+          "id": "7",
+          "label": "Augustus"
+        },
+        {
+          "id": "8",
+          "label": "September"
+        },
+        {
+          "id": "9",
+          "label": "Oktober"
+        },
+        {
+          "id": "10",
+          "label": "November"
+        },
+        {
+          "id": "11",
+          "label": "December"
+        }
+      ]
+    },
+    {
+      "id": "SQUAD_PLAYING",
+      "name": "Spelende Selectie",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Ongeldig]"
+        },
+        {
+          "id": "0",
+          "label": "Onbekend (0)"
+        },
+        {
+          "id": "1",
+          "label": "Onbekend (1)"
+        },
+        {
+          "id": "2",
+          "label": "Onbekend (2)"
+        },
+        {
+          "id": "3",
+          "label": "Onbekend (3)"
+        },
+        {
+          "id": "4",
+          "label": "Onbekend (4)"
+        },
+        {
+          "id": "5",
+          "label": "Onbekend (5)"
+        }
+      ]
+    },
+    {
+      "id": "SQUAD_SELECTED",
+      "name": "Teamselectie",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Ongeldig]"
+        },
+        {
+          "id": "1",
+          "label": "Club Seniorenselectie"
+        },
+        {
+          "id": "2",
+          "label": "Club Reserveselectie"
+        },
+        {
+          "id": "4",
+          "label": "Nationale Hoofdselectie"
+        },
+        {
+          "id": "8",
+          "label": "Nationale Reserveselectie"
+        }
+      ]
+    },
+    {
+      "id": "STATS_SCOPE",
+      "name": "Reikwijdte Statistieken",
+      "items": [
+        {
+          "id": "1",
+          "label": "Competitie"
+        },
+        {
+          "id": "2",
+          "label": "Play-offs"
+        },
+        {
+          "id": "3",
+          "label": "Playouts"
+        },
+        {
+          "id": "4",
+          "label": "Oefenwedstrijd"
+        },
+        {
+          "id": "5",
+          "label": "Continentaal"
+        },
+        {
+          "id": "6",
+          "label": "Internationaal"
+        },
+        {
+          "id": "7",
+          "label": "Algemeen"
+        }
+      ]
+    },
+    {
+      "id": "TIME_OF_DAY",
+      "name": "Tijdstip",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Ochtend"
+        },
+        {
+          "id": "1",
+          "label": "Middag"
+        },
+        {
+          "id": "2",
+          "label": "Avond"
+        },
+        {
+          "id": "4",
+          "label": "[Ongeldig]"
+        }
+      ]
+    },
+    {
+      "id": "TV_TYPE",
+      "name": "TV-Uitzending Type",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Regionaal"
+        },
+        {
+          "id": "1",
+          "label": "Nationaal"
+        },
+        {
+          "id": "2",
+          "label": "Satelliet"
+        },
+        {
+          "id": "3",
+          "label": "Stil (geen bericht)"
+        },
+        {
+          "id": "4",
+          "label": "Verplaats geen wedstrijden"
+        }
+      ]
+    },
+    {
+      "id": "COMP_SELECTED_FLAG",
+      "name": "Competitievlag",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Onbekend (0)"
+        },
+        {
+          "id": "1",
+          "label": "Onbekend (1)"
+        },
+        {
+          "id": "2",
+          "label": "Onbekend (2)"
+        },
+        {
+          "id": "3",
+          "label": "Onbekend (3)"
+        },
+        {
+          "id": "4",
+          "label": "Onbekend (4)"
+        },
+        {
+          "id": "5",
+          "label": "Onbekend (5)"
+        }
+      ]
+    },
+    {
+      "id": "LEAGUE_SELECTED",
+      "name": "Competitie Selectiestatus",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Geselecteerd"
+        },
+        {
+          "id": "2",
+          "label": "Uitgebreid"
+        },
+        {
+          "id": "4",
+          "label": "Geselecteerd (Alle Divisies)"
+        },
+        {
+          "id": "8",
+          "label": "Uitgebreid (Startdatum)"
+        }
+      ]
+    },
+    {
+      "id": "DECLARED_NATION",
+      "name": "Verklaarde Nationaliteit",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Ongeldig]"
+        },
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Primaire Nationaliteit"
+        },
+        {
+          "id": "2",
+          "label": "Secundaire Nationaliteit"
+        }
+      ]
+    },
+    {
+      "id": "JOB_LEVEL",
+      "name": "Functieniveau",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "Onbekend (0)"
+        },
+        {
+          "id": "1",
+          "label": "Onbekend (1)"
+        }
+      ]
+    },
+    {
+      "id": "CAT_RUL_BOD",
+      "name": "Niveau Bestuursorgaan",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Internationaal"
+        },
+        {
+          "id": "2",
+          "label": "Continentaal"
+        },
+        {
+          "id": "3",
+          "label": "Nationaal"
+        },
+        {
+          "id": "4",
+          "label": "Binnenlandse Competitie"
+        }
+      ]
+    },
+    {
+      "id": "RULING_BODY_FLAGS",
+      "name": "Bestuursorgaan Vlaggen",
+      "items": [
+        {
+          "id": "0",
+          "label": "- Geen Vlaggen Ingesteld -"
+        },
+        {
+          "id": "1",
+          "label": "Automatische schorsing voor poging tot verwonding"
+        },
+        {
+          "id": "2",
+          "label": "Automatische schorsing voor fysieke aanval op officials"
+        },
+        {
+          "id": "3",
+          "label": "Automatische schorsing voor grof wangedrag"
+        },
+        {
+          "id": "4",
+          "label": "Bestuur beoordeelt alle wedstrijdstraffen"
+        },
+        {
+          "id": "5",
+          "label": "Bestuur beoordeelt alle disciplinaire uitsluitingen (game misconducts)"
+        }
+      ]
+    },
+    {
+      "id": "JUNIOR_PREFERENCE",
+      "name": "Voorkeur Junior",
+      "items": [
+        {
+          "id": "-1",
+          "label": "[Geen]"
+        },
+        {
+          "id": "0",
+          "label": "College"
+        },
+        {
+          "id": "1",
+          "label": "Major Junior"
+        },
+        {
+          "id": "2",
+          "label": "Europa"
+        }
+      ]
+    },
+    {
+      "id": "DEVELOPMENT_STATE",
+      "name": "Ontwikkelingsstatus",
+      "items": [
+        {
+          "id": "0",
+          "label": "[Geen]"
+        },
+        {
+          "id": "1",
+          "label": "Ontwikkelde Wereld"
+        },
+        {
+          "id": "2",
+          "label": "Ontwikkelingslanden"
+        },
+        {
+          "id": "3",
+          "label": "Derde Wereld"
+        }
+      ]
+    },
+    {
+      "id": "17e078d6-9991-4c4d-9ab7-651a42251aa3",
+      "name": "Stickmerk",
+      "items": [
+        {
+          "id": "bauer_",
+          "label": "Bauer"
+        },
+        {
+          "id": "ccm",
+          "label": "CCM"
+        },
+        {
+          "id": "blackout_hockey",
+          "label": "Blackout Hockey"
+        },
+        {
+          "id": "warrior",
+          "label": "Warrior"
+        },
+        {
+          "id": "sherwood",
+          "label": "Sherwood"
+        },
+        {
+          "id": "true",
+          "label": "True"
+        },
+        {
+          "id": "fischer",
+          "label": "Fischer"
+        },
+        {
+          "id": "easton",
+          "label": "Easton"
+        },
+        {
+          "id": "tps",
+          "label": "TPS"
+        },
+        {
+          "id": "koho",
+          "label": "Koho"
+        },
+        {
+          "id": "overige",
+          "label": "Overige"
+        }
+      ]
+    },
+    {
+      "id": "dc78a62c-5a23-4656-b465-c500cb6348cf",
+      "name": "Stickflex",
+      "items": [
+        {
+          "id": "20",
+          "label": "20"
+        },
+        {
+          "id": "25",
+          "label": "25"
+        },
+        {
+          "id": "30",
+          "label": "30"
+        },
+        {
+          "id": "35",
+          "label": "35"
+        },
+        {
+          "id": "40",
+          "label": "40"
+        },
+        {
+          "id": "45",
+          "label": "45"
+        },
+        {
+          "id": "50",
+          "label": "50"
+        },
+        {
+          "id": "55",
+          "label": "55"
+        },
+        {
+          "id": "60",
+          "label": "60"
+        },
+        {
+          "id": "65",
+          "label": "65"
+        },
+        {
+          "id": "67",
+          "label": "67"
+        },
+        {
+          "id": "70",
+          "label": "70"
+        },
+        {
+          "id": "75",
+          "label": "75"
+        },
+        {
+          "id": "77",
+          "label": "77"
+        },
+        {
+          "id": "80",
+          "label": "80"
+        },
+        {
+          "id": "85",
+          "label": "85"
+        },
+        {
+          "id": "87",
+          "label": "87"
+        },
+        {
+          "id": "90",
+          "label": "90"
+        },
+        {
+          "id": "95",
+          "label": "95"
+        },
+        {
+          "id": "100",
+          "label": "100"
+        },
+        {
+          "id": "105",
+          "label": "105"
+        },
+        {
+          "id": "110",
+          "label": "110"
+        },
+        {
+          "id": "115",
+          "label": "115"
+        },
+        {
+          "id": "120",
+          "label": "120"
+        },
+        {
+          "id": "125",
+          "label": "125"
+        }
+      ]
+    },
+    {
+      "id": "333fe324-d161-4253-a058-49e91e04e090",
+      "name": "Bladcurve Stick",
+      "items": [
+        {
+          "id": "p02",
+          "label": "P02"
+        },
+        {
+          "id": "p08",
+          "label": "P08"
+        },
+        {
+          "id": "pm9",
+          "label": "PM9"
+        },
+        {
+          "id": "p14",
+          "label": "P14"
+        },
+        {
+          "id": "p28",
+          "label": "P28"
+        },
+        {
+          "id": "p28m",
+          "label": "P28M"
+        },
+        {
+          "id": "p77",
+          "label": "P77"
+        },
+        {
+          "id": "p86",
+          "label": "P86"
+        },
+        {
+          "id": "p88",
+          "label": "P88"
+        },
+        {
+          "id": "p90tm",
+          "label": "P90TM"
+        },
+        {
+          "id": "p91",
+          "label": "P91"
+        },
+        {
+          "id": "p92",
+          "label": "P92"
+        },
+        {
+          "id": "p92m",
+          "label": "P92M"
+        }
+      ]
+    },
+    {
+      "id": "c51cc670-8f3f-429e-a900-e5908c84ba4a",
+      "name": "Stickklasse",
+      "items": [
+        {
+          "id": "jeugd",
+          "label": "Jeugd"
+        },
+        {
+          "id": "junior",
+          "label": "Junior"
+        },
+        {
+          "id": "intermediate",
+          "label": "Intermediate"
+        },
+        {
+          "id": "women",
+          "label": "Dames"
+        },
+        {
+          "id": "senior",
+          "label": "Senior"
+        }
+      ]
+    },
+    {
+      "id": "70dac729-6439-40ae-91b0-cab965685e1b",
+      "name": "Kick-point Stick",
+      "items": [
+        {
+          "id": "low_",
+          "label": "Low"
+        },
+        {
+          "id": "hybrid",
+          "label": "Hybride"
+        },
+        {
+          "id": "mid",
+          "label": "Mid"
+        },
+        {
+          "id": "high",
+          "label": "High"
+        }
+      ]
+    },
+    {
+      "id": "ad6e7664-1de5-4590-93c2-8f3348a05aa2",
+      "name": "Prestatieklasse Stick",
+      "items": [
+        {
+          "id": "beginner",
+          "label": "Beginner"
+        },
+        {
+          "id": "recreatief",
+          "label": "Recreatief"
+        },
+        {
+          "id": "geavanceerd",
+          "label": "Geavanceerd"
+        },
+        {
+          "id": "pro_stock",
+          "label": "Pro-Stock"
+        }
+      ]
+    },
+    {
+      "id": "9586ad60-85f2-4028-9946-ae9037a56c8d",
+      "name": "Gewichtsklasse Stick",
+      "items": [
+        {
+          "id": "ultra_lightweight",
+          "label": "Ultra Lichtgewicht"
+        },
+        {
+          "id": "featherweight",
+          "label": "Vedergewicht"
+        },
+        {
+          "id": "proweight",
+          "label": "Pro-gewicht"
+        },
+        {
+          "id": "welterweight",
+          "label": "Weltergewicht"
+        },
+        {
+          "id": "middleweight",
+          "label": "Middengewicht"
+        },
+        {
+          "id": "cruiserweight",
+          "label": "Cruisergewicht"
+        }
+      ]
+    },
+    {
+      "id": "61e77be0-6eb4-422a-a2cd-15814b36586a",
+      "name": "Stickserie",
+      "items": [
+        {
+          "id": "nexus__bauer_",
+          "label": "Nexus (Bauer)"
+        },
+        {
+          "id": "supreme__bauer_",
+          "label": "Supreme (Bauer)"
+        },
+        {
+          "id": "innovation_series__bauer_",
+          "label": "Innovation Series (Bauer)"
+        },
+        {
+          "id": "vapor__bauer_",
+          "label": "Vapor (Bauer)"
+        },
+        {
+          "id": "tacks__ccm_",
+          "label": "Tacks (CCM)"
+        },
+        {
+          "id": "jetspeed__ccm_",
+          "label": "Jetspeed (CCM)"
+        },
+        {
+          "id": "ribcor_trigger__ccm_",
+          "label": "RibCor Trigger (CCM)"
+        },
+        {
+          "id": "innovation_series__ccm_",
+          "label": "Innovation Series (CCM)"
+        },
+        {
+          "id": "novium__warrior_",
+          "label": "Novium (Warrior)"
+        },
+        {
+          "id": "covert__warrior_",
+          "label": "Covert (Warrior)"
+        },
+        {
+          "id": "alpha__warrior_",
+          "label": "Alpha (Warrior)"
+        },
+        {
+          "id": "code__sherwood_",
+          "label": "CODE (Sherwood)"
+        },
+        {
+          "id": "rekker__sherwood_",
+          "label": "Rekker (Sherwood)"
+        },
+        {
+          "id": "hzrdus__true_",
+          "label": "Hzrdus (TRUE)"
+        },
+        {
+          "id": "catalyst__true_",
+          "label": "Catalyst (TRUE)"
+        },
+        {
+          "id": "skyline__kyc_",
+          "label": "Skyline (KYC)"
+        },
+        {
+          "id": "phantom__kyc_",
+          "label": "Phantom (KYC)"
+        },
+        {
+          "id": "bastion__blackout_hockey_",
+          "label": "Bastion (Blackout Hockey)"
+        },
+        {
+          "id": "cataphract__blackout_hockey_",
+          "label": "Cataphract (Blackout Hockey)"
+        },
+        {
+          "id": "oilslick__blackout_hockey_",
+          "label": "OilSlick (Blackout Hockey)"
+        },
+        {
+          "id": "select_series__blackout_hockey_",
+          "label": "Select Series (Blackout Hockey)"
+        },
+        {
+          "id": "anders__low_kick_",
+          "label": "Overig (Low-Kick)"
+        },
+        {
+          "id": "anders__hybrid_kick_",
+          "label": "Overig (Hybrid-Kick)"
+        },
+        {
+          "id": "anders__mid_kick_",
+          "label": "Overig (Mid-Kick)"
+        },
+        {
+          "id": "anders__high_kick_",
+          "label": "Overig (High-Kick)"
+        }
+      ]
+    },
+    {
+      "id": "87fe335a-091e-41b8-b1ac-cfa2d1505b09",
+      "name": "3D-Grip Stick",
+      "items": [
+        {
+          "id": "geen_",
+          "label": "Geen"
+        },
+        {
+          "id": "helemaal_bedekt",
+          "label": "Helemaal bedekt"
+        },
+        {
+          "id": "zuurstok",
+          "label": "Zuurstok"
+        },
+        {
+          "id": "vissengraat",
+          "label": "Vissengraat"
+        },
+        {
+          "id": "rechte_hoeken",
+          "label": "Rechte hoeken"
+        },
+        {
+          "id": "diagonale_hoeken",
+          "label": "Diagonale hoeken"
+        }
+      ]
+    },
+    {
+      "id": "1f295359-5383-464c-aea5-6f42899b36f3",
+      "name": "Bladtextuur Stick",
+      "items": [
+        {
+          "id": "mat",
+          "label": "Mat"
+        },
+        {
+          "id": "glanzend",
+          "label": "Glanzend"
+        },
+        {
+          "id": "geschuurd",
+          "label": "Geschuurd"
+        },
+        {
+          "id": "3d_textuur",
+          "label": "3D Textuur"
+        }
+      ]
+    },
+    {
+      "id": "0cf6985b-a1bf-4e34-ade3-de593b09908f",
+      "name": "Shafttype Stick",
+      "items": [
+        {
+          "id": "goalie",
+          "label": "Goalie"
+        },
+        {
+          "id": "goalie_trigger",
+          "label": "Goalie Trigger"
+        },
+        {
+          "id": "junior_",
+          "label": "Junior"
+        },
+        {
+          "id": "ovaal",
+          "label": "Ovaal"
+        },
+        {
+          "id": "_micro__concaaf",
+          "label": "(Micro) Concaaf"
+        },
+        {
+          "id": "penta__vijfhoekig_",
+          "label": "Penta (Vijfhoekig)"
+        }
+      ]
+    },
+    {
+      "id": "8a3cb45d-9611-43e2-b66d-81149e3d2a0f",
+      "name": "Shafttextuur Stick",
+      "items": [
+        {
+          "id": "mat",
+          "label": "Mat"
+        },
+        {
+          "id": "glanzend",
+          "label": "Glanzend"
+        },
+        {
+          "id": "mat_met_griplaag",
+          "label": "Mat met Griplaag"
+        },
+        {
+          "id": "glanzend_met_griplaag",
+          "label": "Glanzend met Griplaag"
+        },
+        {
+          "id": "superglanzend_met_griplaag",
+          "label": "Superglanzend met Griplaag"
+        }
+      ]
+    },
+    {
+      "id": "d02bb5cb-5252-47c3-813d-947ee537a6e7",
+      "name": "Stickdesign",
+      "items": [
+        {
+          "id": "true_blackout__geen_graphics_",
+          "label": "True Blackout (Geen graphics)"
+        },
+        {
+          "id": "custom_design",
+          "label": "Custom Design"
+        },
+        {
+          "id": "team_design",
+          "label": "Team Design"
+        }
+      ]
+    },
+    {
+      "id": "STAT_TRACKING_FLAGS",
+      "name": "Statistieken Registratieniveau",
+      "items": [
+        {
+          "id": "0",
+          "label": "Basis (Alleen Doelpunten & Straffen)"
+        },
+        {
+          "id": "1",
+          "label": "Registreer Assists"
+        },
+        {
+          "id": "2",
+          "label": "Registreer Schoten op Doel (Teamniveau)"
+        },
+        {
+          "id": "4",
+          "label": "Registreer Face-offs (Teamniveau)"
+        },
+        {
+          "id": "8",
+          "label": "Registreer Plus/Minus (Spelers op het ijs)"
+        },
+        {
+          "id": "16",
+          "label": "Registreer X/Y Coördinaten bij Doelpunten"
+        },
+        {
+          "id": "32",
+          "label": "Registreer X/Y Coördinaten bij Alle Schoten"
+        },
+        {
+          "id": "64",
+          "label": "Geavanceerd (Hits, Blocks, Giveaways, Takeaways)"
+        },
+        {
+          "id": "128",
+          "label": "Maak Plus/Minus Verplicht bij Doelpunten"
+        },
+        {
+          "id": "256",
+          "label": "Maak X/Y Coördinaten Verplicht bij Doelpunten"
+        }
+      ]
+    },
+    {
+      "id": "PENALTY_TYPE",
+      "name": "Straf Types",
+      "items": [
+        {
+          "id": "boarding",
+          "label": "Boarding"
+        },
+        {
+          "id": "charging",
+          "label": "Charging"
+        },
+        {
+          "id": "checking_from_behind",
+          "label": "Checking from behind"
+        },
+        {
+          "id": "cross_checking",
+          "label": "Cross-checking"
+        },
+        {
+          "id": "delay_of_game",
+          "label": "Delay of game (Spelbederf)"
+        },
+        {
+          "id": "diving",
+          "label": "Diving / Embellishment (Schwalbe)"
+        },
+        {
+          "id": "elbowing",
+          "label": "Elbowing"
+        },
+        {
+          "id": "fighting",
+          "label": "Fighting (Vechten)"
+        },
+        {
+          "id": "high_sticking",
+          "label": "High-sticking"
+        },
+        {
+          "id": "holding",
+          "label": "Holding"
+        },
+        {
+          "id": "hooking",
+          "label": "Hooking"
+        },
+        {
+          "id": "interference",
+          "label": "Interference"
+        },
+        {
+          "id": "kneeing",
+          "label": "Kneeing"
+        },
+        {
+          "id": "roughing",
+          "label": "Roughing"
+        },
+        {
+          "id": "slashing",
+          "label": "Slashing"
+        },
+        {
+          "id": "spearing",
+          "label": "Spearing"
+        },
+        {
+          "id": "too_many_men",
+          "label": "Too many men (Te veel spelers op het ijs)"
+        },
+        {
+          "id": "tripping",
+          "label": "Tripping"
+        },
+        {
+          "id": "unsportsmanlike_conduct",
+          "label": "Unsportsmanlike conduct"
+        },
+        {
+          "id": "misconduct",
+          "label": "Misconduct (10 minuten)"
+        },
+        {
+          "id": "game_misconduct",
+          "label": "Game Misconduct (Wedstrijdstraf)"
+        },
+        {
+          "id": "match_penalty",
+          "label": "Match Penalty"
+        }
+      ]
+    },
+    {
+      "id": "RECORD_TYPE",
+      "name": "Wedstrijdtype/Status",
+      "items": [
+        {
+          "id": "official",
+          "label": "Officieel (Telt mee voor statistieken)"
+        },
+        {
+          "id": "exhibition",
+          "label": "Oefenwedstrijd (Exhibition)"
+        },
+        {
+          "id": "test",
+          "label": "Testscenario (Telt nergens voor mee)"
+        }
+      ]
+    },
+    {
+      "id": "EVENT_TYPE",
+      "name": "Type Gebeurtenis",
+      "items": [
+        {
+          "id": "goal",
+          "label": "Doelpunt (Goal)"
+        },
+        {
+          "id": "shot",
+          "label": "Schot op Doel (Save)"
+        },
+        {
+          "id": "missed_shot",
+          "label": "Gemist Schot"
+        },
+        {
+          "id": "blocked_shot",
+          "label": "Geblokt Schot"
+        },
+        {
+          "id": "penalty",
+          "label": "Straf (Penalty)"
+        },
+        {
+          "id": "faceoff",
+          "label": "Face-off"
+        },
+        {
+          "id": "hit",
+          "label": "Hit (Check)"
+        },
+        {
+          "id": "giveaway",
+          "label": "Puckverlies (Giveaway)"
+        },
+        {
+          "id": "takeaway",
+          "label": "Puckverovering (Takeaway)"
+        },
+        {
+          "id": "timeout",
+          "label": "Time-out"
+        },
+        {
+          "id": "coach_challenge",
+          "label": "Coach Challenge"
+        },
+        {
+          "id": "goalie_change",
+          "label": "Goaliewissel"
+        },
+        {
+          "id": "shootout_goal",
+          "label": "Shoot-out: Goal"
+        },
+        {
+          "id": "shootout_miss",
+          "label": "Shoot-out: Gemist"
+        },
+        {
+          "id": "shootout_save",
+          "label": "Shoot-out: Redding (Save)"
+        },
+        {
+          "id": "stoppage",
+          "label": "Spelonderbreking (Stoppage)"
+        }
+      ]
+    },
+    {
+      "id": "EVENT_STATUS",
+      "name": "Status Gebeurtenis",
+      "items": [
+        {
+          "id": "active",
+          "label": "Geldig (Actief)"
+        },
+        {
+          "id": "under_review",
+          "label": "Onder Beoordeling (Video Review)"
+        },
+        {
+          "id": "overturned",
+          "label": "Afgekeurd (Overturned by Video Ref)"
+        },
+        {
+          "id": "invalidated",
+          "label": "Geannuleerd (Fout / Undo)"
+        }
+      ]
+    },
+    {
+      "id": "STOPPAGE_REASON",
+      "name": "Reden Spelonderbreking",
+      "items": [
+        {
+          "id": "icing",
+          "label": "Icing"
+        },
+        {
+          "id": "offside",
+          "label": "Buitenspel (Offside)"
+        },
+        {
+          "id": "puck_out_of_play",
+          "label": "Puck over de boarding"
+        },
+        {
+          "id": "goalie_freeze",
+          "label": "Goalie blokkeert puck"
+        },
+        {
+          "id": "hand_pass",
+          "label": "Hand pass"
+        },
+        {
+          "id": "high_stick",
+          "label": "Hoge stick (Spelen van de puck)"
+        },
+        {
+          "id": "timeout_tv",
+          "label": "TV / Commerciële Time-out"
+        },
+        {
+          "id": "net_dislodged",
+          "label": "Doelwit verschoven"
+        },
+        {
+          "id": "medical",
+          "label": "Medische noodsituatie / Blessure"
+        },
+        {
+          "id": "other",
+          "label": "Overig"
+        }
+      ]
+    },
+    {
+      "id": "STRENGTH_SITUATION",
+      "name": "Spelsituatie (Sterkte)",
+      "items": [
+        {
+          "id": "even_5v5",
+          "label": "Even Strength (5v5)"
+        },
+        {
+          "id": "even_4v4",
+          "label": "Even Strength (4v4)"
+        },
+        {
+          "id": "even_3v3",
+          "label": "Even Strength (3v3)"
+        },
+        {
+          "id": "powerplay_5v4",
+          "label": "Powerplay (5v4)"
+        },
+        {
+          "id": "powerplay_5v3",
+          "label": "Powerplay (5v3)"
+        },
+        {
+          "id": "powerplay_4v3",
+          "label": "Powerplay (4v3)"
+        },
+        {
+          "id": "shorthanded_4v5",
+          "label": "Shorthanded (4v5)"
+        },
+        {
+          "id": "shorthanded_3v5",
+          "label": "Shorthanded (3v5)"
+        },
+        {
+          "id": "shorthanded_3v4",
+          "label": "Shorthanded (3v4)"
+        },
+        {
+          "id": "penalty_shot",
+          "label": "Penalty Shot"
+        }
+      ]
+    },
+    {
+      "id": "SHOT_TYPE",
+      "name": "Type Schot",
+      "items": [
+        {
+          "id": "wrist_shot",
+          "label": "Wrist Shot"
+        },
+        {
+          "id": "slap_shot",
+          "label": "Slap Shot"
+        },
+        {
+          "id": "snap_shot",
+          "label": "Snap Shot"
+        },
+        {
+          "id": "backhand",
+          "label": "Backhand"
+        },
+        {
+          "id": "tip_in",
+          "label": "Tip-in (Deflection)"
+        },
+        {
+          "id": "wrap_around",
+          "label": "Wrap-around"
+        },
+        {
+          "id": "poke",
+          "label": "Poke / Schop"
+        }
+      ]
+    }
+  ],
+  "records": {}
+}
