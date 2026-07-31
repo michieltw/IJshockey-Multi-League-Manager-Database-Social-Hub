@@ -141,6 +141,14 @@ export default function Sidebar({ isOpen }: SidebarProps) {
 
         <div className="mt-4 mb-2">
           <NavItem
+            icon={<Settings size={20} />}
+            label="Configurator"
+            to="/configurator"
+          />
+        </div>
+
+        <div className="mt-4 mb-2">
+          <NavItem
             icon={<Shield size={20} />}
             label="Modules"
             defaultExpanded={true}
