@@ -2437,5 +2437,154 @@
       "firestore_strategy": "Root Collection",
       "code": "PSTC"
     }
+    ,
+    {
+      "id": "users",
+      "name": "Systeemgebruikers",
+      "group": "STATIC",
+      "fields": [
+        {
+          "id": "id",
+          "name": "User ID (Firebase UID)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "email",
+          "name": "E-mailadres",
+          "key": "email",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "display_name",
+          "name": "Weergavenaam",
+          "key": "display_name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "person_id",
+          "name": "Persoon ID (PER_ID - Gekoppelde Speler/Staf)",
+          "key": "person_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "account_type",
+          "name": "Accounttype (super_admin, standard, fan, guest)",
+          "key": "account_type",
+          "type": "select",
+          "required": true,
+          "categoryListId": "CAT_ACCOUNT_TYPE"
+        },
+        {
+          "id": "privileges",
+          "name": "Bevoegdheden (verified_player, scorekeeper, sponsor, etc)",
+          "key": "privileges",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "admin_leagues",
+          "name": "Competities waar gebruiker league_admin voor is",
+          "key": "admin_leagues",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "admin_teams",
+          "name": "Teams waar gebruiker team_admin voor is",
+          "key": "admin_teams",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "profile_image_url",
+          "name": "Profielfoto URL",
+          "key": "profile_image_url",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "bio",
+          "name": "Korte Bio",
+          "key": "bio",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "preferences",
+          "name": "Voorkeuren (JSON)",
+          "key": "preferences",
+          "type": "json_array",
+          "required": false
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "USER"
+    },
+    {
+      "id": "role_requests",
+      "name": "Aanvragen voor Rollen / Bevoegdheden",
+      "group": "TRANSACTIONAL",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Request ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "user_id",
+          "name": "Aanvragende User ID",
+          "key": "user_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "users"
+        },
+        {
+          "id": "request_type",
+          "name": "Type Aanvraag (Bijv. verified_player of team_admin)",
+          "key": "request_type",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "target_id",
+          "name": "Doel ID (Bijv. person_id of team_id)",
+          "key": "target_id",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "status",
+          "name": "Status Aanvraag (pending, approved, rejected)",
+          "key": "status",
+          "type": "select",
+          "required": true,
+          "categoryListId": "CAT_REQUEST_STATUS"
+        },
+        {
+          "id": "created_at",
+          "name": "Aangemaakt op",
+          "key": "created_at",
+          "type": "datetime",
+          "required": true
+        },
+        {
+          "id": "resolved_by_user_id",
+          "name": "Afgehandeld door User ID",
+          "key": "resolved_by_user_id",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "RREQ"
+    }
   ]
 }
