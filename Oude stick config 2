@@ -1,0 +1,530 @@
+import { StickModel, CustomStickSetup } from "../components/StickModel";
+import React, { useState, Suspense, useRef, useMemo, useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useGLTF, Environment, OrbitControls, ContactShadows, Stage } from '@react-three/drei';
+import { TessellateModifier } from 'three-stdlib';
+import * as THREE from 'three';
+import { 
+  ShoppingBag, 
+  Settings, 
+  TrendingUp, 
+  HelpCircle, 
+  Plus, 
+  Sliders, 
+  Clock, 
+  Info,
+  ChevronRight,
+  ShieldAlert,
+  Sparkles,
+  Zap,
+  Award,
+  Flame,
+  ArrowRight,
+  Eye,
+  X
+} from 'lucide-react';
+
+
+
+
+interface PreconfiguredStick {
+  id: string;
+  name: string;
+  description: string;
+  weight: number; // in grammen
+  carbon: string;
+  price: number;
+  image: string;
+}
+
+const PRECONFIGURED_STICKS: PreconfiguredStick[] = [
+  { id: 'ST-001', name: 'Blackout Ultra-Light 18K', description: 'De absolute favoriet. Met een gewicht van slechts 375 gram een van de lichtste en best uitgebalanceerde sticks op de markt.', weight: 375, carbon: '18K Carbon fiber', price: 159.00, image: 'https://images.unsplash.com/photo-1515523110800-9415d13b84a8?q=80&w=600&auto=format&fit=crop' },
+  { id: 'ST-002', name: 'Blackout Classic 12K', description: 'De perfecte mix tussen duurzaamheid en gevoel. Ontworpen voor felle slapshotters en fysiek spel.', weight: 410, carbon: '12K Carbon fiber', price: 129.00, image: 'https://images.unsplash.com/photo-1580748141549-7174060141dd?q=80&w=600&auto=format&fit=crop' },
+  { id: 'ST-003', name: 'Blackout Goalie Wall', description: 'Extreem lichte en trillingsvrije keepersstick, verstevigd met carbon-injecties op de cruciale vangvlakken.', weight: 650, carbon: 'Hybrid Carbon Matrix', price: 189.00, image: 'https://images.unsplash.com/photo-1515523110800-9415d13b84a8?q=80&w=600&auto=format&fit=crop' }
+];
+
+export const Sticks = () => {
+  const controlsRef = useRef<any>(null);
+
+  // Custom Customizer State
+  const [config, setConfig] = useState<CustomStickSetup>({
+    handedness: 'Left',
+    carbon: '18K Carbon',
+    flex: 85,
+    kickPoint: 'Mid',
+    curve: 'P92',
+    grip: 'Grip Finish',
+    length: 'Senior (60")',
+    color: '#0f172a'
+  });
+
+  const [orderSimulated, setOrderSimulated] = useState(false);
+  const [isInspecting, setIsInspecting] = useState(false);
+  const [shotTrigger, setShotTrigger] = useState<{count: number, type: 'slapshot'|'wristshot'}>({ count: 0, type: 'slapshot' });
+  const [isAnimatingFlex, setIsAnimatingFlex] = useState(false);
+
+  // Calculate simulated weight based on config
+  const calculateWeight = () => {
+    let base = 390;
+    if (config.carbon === '18K Carbon') base = 375;
+    if (config.carbon === 'Full Carbon') base = 420;
+
+    if (config.length === 'Junior (52")') base -= 40;
+    if (config.length === 'Intermediate (57")') base -= 20;
+
+    if (config.grip === 'Matte Finish') base -= 5;
+    return base;
+  };
+
+  // Calculate simulated price based on config
+  const calculatePrice = () => {
+    let base = 139.00;
+    if (config.carbon === '18K Carbon') base = 159.00;
+    if (config.carbon === 'Full Carbon') base = 119.00;
+
+    if (config.length === 'Junior (52")') base -= 20;
+    if (config.length === 'Intermediate (57")') base -= 10;
+    return base;
+  };
+
+  const handleOrderSimulation = (e: React.FormEvent) => {
+    e.preventDefault();
+    setOrderSimulated(true);
+    setTimeout(() => {
+      setOrderSimulated(false);
+      alert('🎉 Jouw custom stick aanvraag is succesvol gesimuleerd! Een adviseur van Blackout Hockey zou nu contact met je opnemen.');
+    }, 3000);
+  };
+
+  const CURVE_INFO: Record<string, string> = {
+    P92: 'De meest populaire allround curve. Uitstekend voor snelle polsschoten en controle dicht op de stick.',
+    P28: 'Biedt een diepere bocht aan de teen. Geweldig om de puck snel omhoog te liften en snelle schoten te lossen.',
+    P88: 'Een klassieke bocht met een redelijk vlak blad. Uitstekend voor puckcontrole, backhands en strakke passing.',
+    PM9: 'Lichte bocht over het hele blad. Ideaal voor passing-gericht spel en nauwkeurige stootpasses.',
+    P02: 'Een brede, open curve. Extreem veel kracht voor slapshotters en sterke verdedigers.',
+    P08: 'Sterke kromming gericht op maximaal effect en snelle polsschoten.',
+    P91A: 'Open blad, perfect voor tip-ins, rebounds en hoge schoten vanaf de blauwe lijn.',
+    P14: 'Compacte curve aan de teen. Uitstekend voor stickhandling in kleine ruimtes en precieze schoten.'
+  };
+
+  return (
+    <div className="space-y-6 max-w-6xl mx-auto py-2">
+      
+      {/* Page Banner */}
+      <div className="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 rounded-2xl p-8 text-white shadow-xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+          <Flame className="w-48 h-48 text-sky-400" />
+        </div>
+        <div className="relative z-10">
+          <div className="flex items-center space-x-3 mb-4">
+            <div className="bg-sky-500 p-2.5 rounded-xl text-slate-950 shadow-md">
+              <Zap className="w-6 h-6" />
+            </div>
+            <h1 className="text-3xl font-black tracking-tight">Blackout IJshockeysticks</h1>
+          </div>
+          <p className="text-sky-100 max-w-2xl text-sm md:text-base leading-relaxed">
+            Onze premium blackout sticks bevatten geen visuele branding van merken. We leveren rechtstreeks vanuit de fabriek waardoor we 100% premium carbon kwaliteit kunnen aanbieden voor een fractie van de retail prijs!
+          </p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        {/* Customizer Panel (2/3 width) */}
+        <div className="lg:col-span-2 space-y-6">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden">
+            
+            <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50">
+              <h3 className="font-extrabold text-slate-900 text-sm flex items-center">
+                <Sliders className="w-5 h-5 mr-1.5 text-sky-600" /> 100% Custom Stick Customizer
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">Configureer jouw ultieme blackout stick specifiek voor jouw speelstijl.</p>
+            </div>
+
+            <div className="p-6 space-y-6">
+              
+              {/* Handedness */}
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400 uppercase tracking-wider block">0. Handedness (Links / Rechts)</label>
+                <div className="grid grid-cols-2 gap-3">
+                  {['Left', 'Right'].map(hand => (
+                    <button
+                      key={hand}
+                      onClick={() => setConfig({ ...config, handedness: hand as any })}
+                      className={`p-3 border rounded-xl font-black text-xs transition-all ${
+                        config.handedness === hand 
+                          ? 'border-sky-500 bg-sky-50 text-sky-700' 
+                          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                      }`}
+                    >
+                      {hand === 'Left' ? 'Left-Handed (Links)' : 'Right-Handed (Rechts)'}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Carbon select */}
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400 uppercase tracking-wider block">1. Carbon Type (Gewicht & Responsiviteit)</label>
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { val: '18K Carbon', label: '18K Carbon Fiber', desc: 'Slechts 375g. Ultieme gevoel & flex.' },
+                    { val: '12K Carbon', label: '12K Carbon Fiber', desc: '410g. Uitstekende balans & kracht.' },
+                    { val: 'Full Carbon', label: '100% Pure Carbon', desc: '420g. Extreem robuust & betrouwbaar.' }
+                  ].map(item => (
+                    <button
+                      key={item.val}
+                      onClick={() => setConfig({ ...config, carbon: item.val as any })}
+                      className={`p-4 border rounded-xl text-left transition-all flex flex-col justify-between ${
+                        config.carbon === item.val 
+                          ? 'border-sky-500 bg-sky-50/30 ring-2 ring-sky-500/10' 
+                          : 'border-slate-200 bg-white hover:border-slate-300'
+                      }`}
+                    >
+                      <span className="font-extrabold text-slate-900 text-xs block">{item.label}</span>
+                      <span className="text-[10px] text-slate-400 mt-2 font-medium leading-relaxed">{item.desc}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Flex and Length in one row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                {/* Flex */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black text-slate-400 uppercase tracking-wider block">2. Stick Flex (Stijfheid)</label>
+                  <div className="grid grid-cols-4 gap-2">
+                    {([65, 75, 85, 95] as const).map(fl => (
+                      <button
+                        key={fl}
+                        onClick={() => setConfig({ ...config, flex: fl })}
+                        className={`p-3 border rounded-xl font-black text-xs transition-all ${
+                          config.flex === fl 
+                            ? 'border-sky-500 bg-sky-50 text-sky-700' 
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                        }`}
+                      >
+                        {fl} Flex
+                      </button>
+                    ))}
+                  </div>
+                  <p className="text-[10px] text-slate-400 font-semibold leading-relaxed">
+                    65 = Jeugd/Licht • 75 = Mid • 85 = Standaard • 95 = Heavy/Pro.
+                  </p>
+                </div>
+
+                {/* Length */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black text-slate-400 uppercase tracking-wider block">3. Stick Lengte</label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {['Senior (60")', 'Intermediate (57")', 'Junior (52")'].map(ln => (
+                      <button
+                        key={ln}
+                        onClick={() => setConfig({ ...config, length: ln as any })}
+                        className={`p-3 border rounded-xl font-extrabold text-[10px] transition-all truncate ${
+                          config.length === ln 
+                            ? 'border-sky-500 bg-sky-50 text-sky-700' 
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                        }`}
+                        title={ln}
+                      >
+                        {ln}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Curve Select */}
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400 uppercase tracking-wider block">4. Blad Curve (Bladbocht)</label>
+                <div className="grid grid-cols-4 gap-2">
+                  {(['P92', 'P28', 'P88', 'PM9', 'P02', 'P08', 'P91A', 'P14'] as const).map(cr => (
+                    <button
+                      key={cr}
+                      onClick={() => setConfig({ ...config, curve: cr })}
+                      className={`p-3 border rounded-xl font-black text-xs transition-all ${
+                        config.curve === cr 
+                          ? 'border-sky-500 bg-sky-50 text-sky-700' 
+                          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                      }`}
+                    >
+                      {cr}
+                    </button>
+                  ))}
+                </div>
+                <p className="text-xs text-slate-500 bg-slate-50 border border-slate-100 p-3 rounded-lg leading-relaxed font-semibold">
+                  <strong className="text-slate-800">{config.curve} Info:</strong> {CURVE_INFO[config.curve]}
+                </p>
+              </div>
+
+              {/* Kick Point & Color */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-black text-slate-400 uppercase tracking-wider block">5. Kick-Point (Buigpunt)</label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {(['Low', 'Mid', 'High'] as const).map(kp => (
+                      <button
+                        key={kp}
+                        onClick={() => setConfig({ ...config, kickPoint: kp })}
+                        className={`p-3 border rounded-xl font-black text-xs transition-all ${
+                          config.kickPoint === kp 
+                            ? 'border-sky-500 bg-sky-50 text-sky-700' 
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                        }`}
+                      >
+                        {kp} Kick
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-black text-slate-400 uppercase tracking-wider block">6. Stick Kleur</label>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { name: 'Black', hex: '#0f172a' },
+                      { name: 'White', hex: '#f8fafc' },
+                      { name: 'Gray', hex: '#64748b' },
+                      { name: 'Red', hex: '#ef4444' },
+                      { name: 'Blue', hex: '#3b82f6' },
+                      { name: 'Light Blue', hex: '#38bdf8' },
+                      { name: 'Teal', hex: '#14b8a6' },
+                      { name: 'Green', hex: '#22c55e' },
+                      { name: 'Yellow', hex: '#eab308' },
+                      { name: 'Orange', hex: '#f97316' },
+                      { name: 'Purple', hex: '#a855f7' }
+                    ].map(color => (
+                      <button
+                        key={color.name}
+                        onClick={() => setConfig({ ...config, color: color.hex })}
+                        className={`w-8 h-8 rounded-full border-2 transition-all ${
+                          config.color === color.hex ? 'border-sky-500 scale-110' : 'border-slate-200 hover:scale-105'
+                        }`}
+                        style={{ backgroundColor: color.hex }}
+                        aria-label={color.name}
+                      />
+                    ))}
+                    
+                    <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-slate-200 hover:scale-105 transition-all group" aria-label="Custom Kleur">
+                      <input 
+                        type="color" 
+                        value={config.color}
+                        onChange={(e) => setConfig({ ...config, color: e.target.value })}
+                        className="absolute -inset-4 w-16 h-16 cursor-pointer opacity-0 z-10"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-pink-500 via-purple-500 to-sky-500 flex items-center justify-center">
+                        <Plus className="w-4 h-4 text-white drop-shadow-md" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Grip select */}
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400 uppercase tracking-wider block">7. Shaft Finish (Grip)</label>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { val: 'Grip Finish', label: 'Premium Grip Finish', desc: 'Extra gripcoating voor optimale controle en slippreventie.' },
+                    { val: 'Matte Finish', label: 'Klassieke Matte Finish', desc: 'Gladde schachtafwerking, ideaal voor makkelijk schuiven met de handen.' }
+                  ].map(item => (
+                    <button
+                      key={item.val}
+                      onClick={() => setConfig({ ...config, grip: item.val as any })}
+                      className={`p-4 border rounded-xl text-left transition-all flex flex-col justify-between ${
+                        config.grip === item.val 
+                          ? 'border-sky-500 bg-sky-50/30' 
+                          : 'border-slate-200 bg-white hover:border-slate-300'
+                      }`}
+                    >
+                      <span className="font-extrabold text-slate-900 text-xs block">{item.label}</span>
+                      <span className="text-[10px] text-slate-400 mt-2 font-medium leading-relaxed">{item.desc}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        {/* Sidebar Info & Order Simulator (1/3 width) */}
+        <div className="space-y-6">
+          
+          {/* Custom Configuration Price Card */}
+          <div className="bg-white rounded-xl border border-slate-200 shadow-xs p-6 space-y-6">
+            <div>
+              <span className="text-[9px] font-black text-sky-600 uppercase tracking-widest block">Gekozen Configuraties</span>
+              <h3 className="font-extrabold text-slate-900 text-base mt-0.5">Jouw Custom Stick</h3>
+            </div>
+
+            {/* Spec breakdown */}
+            <div className="space-y-2.5 text-xs text-slate-600 font-bold">
+              <div className="flex justify-between">
+                <span className="text-slate-400">Carbon:</span>
+                <span className="text-slate-800">{config.carbon}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Flex:</span>
+                <span className="text-slate-800">{config.flex} Flex</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Curve:</span>
+                <span className="text-slate-800">{config.curve}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Lengte:</span>
+                <span className="text-slate-800">{config.length}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Shaft Grip:</span>
+                <span className="text-slate-800">{config.grip}</span>
+              </div>
+              <div className="h-px bg-slate-100 my-2"></div>
+              <div className="flex justify-between text-sm">
+                <span className="text-slate-500 font-black">Geschat Gewicht:</span>
+                <span className="text-sky-600 font-black">{calculateWeight()} Gram</span>
+              </div>
+            </div>
+
+            {/* Price display */}
+            <div className="bg-slate-50 border rounded-xl p-4 text-center space-y-1">
+              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block">Directe Fabrieksprijs</span>
+              <span className="text-3xl font-black text-slate-900">€{calculatePrice().toFixed(2)}</span>
+              <p className="text-[9px] text-emerald-600 font-bold">Inclusief BTW • Gratis Verzending</p>
+            </div>
+
+            {/* Inspect Weapon Button */}
+            <button
+              onClick={() => setIsInspecting(true)}
+              className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all shadow-sm bg-slate-900 hover:bg-slate-800 text-white"
+            >
+              <Eye className="w-4 h-4" />
+              <span>Inspect Weapon in 3D</span>
+            </button>
+
+            {/* Simulation Submit Button */}
+            <button
+              onClick={handleOrderSimulation}
+              disabled={orderSimulated}
+              className={`w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all shadow-md ${
+                orderSimulated 
+                  ? 'bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed' 
+                  : 'bg-sky-600 hover:bg-sky-700 text-white hover:shadow-lg'
+              }`}
+            >
+              <span>{orderSimulated ? 'Bestelling Verwerken...' : 'Bestel Aanvraag Indienen'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Fabrieksmodellen catalogus */}
+          <div className="bg-white rounded-xl border border-slate-200 shadow-xs p-5 space-y-4">
+            <h3 className="font-extrabold text-slate-900 text-sm">Pre-configured Modellen</h3>
+            <div className="space-y-3">
+              {PRECONFIGURED_STICKS.map(st => (
+                <div key={st.id} className="p-3 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-between gap-3">
+                  <div className="min-w-0">
+                    <h4 className="font-extrabold text-slate-900 text-xs truncate" title={st.name}>{st.name}</h4>
+                    <p className="text-[10px] font-semibold text-slate-400 mt-0.5">{st.weight}g • {st.carbon}</p>
+                  </div>
+                  <span className="text-xs font-black text-sky-600 shrink-0">€{st.price.toFixed(2)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* CSGO Inspect Modal */}
+      {isInspecting && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-md">
+          {/* Close button */}
+          <button 
+            onClick={() => setIsInspecting(false)}
+            className="absolute top-6 right-6 p-3 text-slate-400 hover:text-white bg-slate-900/50 hover:bg-slate-800 rounded-full transition-all z-10"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Overlay UI (CSGO style info) */}
+          <div className="absolute bottom-12 left-12 z-10 pointer-events-none">
+            <h2 className="text-4xl font-black text-white tracking-tight">Blackout Custom</h2>
+            <div className="flex items-center space-x-4 mt-2">
+              <span className="px-3 py-1 bg-sky-500/20 border border-sky-500/50 text-sky-400 font-bold text-xs rounded-md uppercase tracking-widest">Factory New</span>
+              <span className="text-slate-400 font-bold text-sm">{config.carbon} • {config.flex} Flex • {config.curve}</span>
+            </div>
+            <p className="mt-4 text-slate-500 text-xs uppercase tracking-widest max-w-sm">
+              Use your mouse to drag and inspect the model. 
+            </p>
+          </div>
+
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-slate-800/20 font-black text-[12vw] pointer-events-none uppercase tracking-tighter whitespace-nowrap">
+            BLACKOUT
+          </div>
+
+          <div className="w-full h-full cursor-move">
+            <Canvas shadows camera={{ position: [0, 1.2, 1.5], fov: 45 }}>
+              <color attach="background" args={['#ffffff']} />
+              <Suspense fallback={null}>
+                <Environment preset="city" />
+                <ambientLight intensity={0.5} />
+                <spotLight position={[100, 100, 100]} angle={0.15} penumbra={1} intensity={1} />
+                
+                <Stage preset="soft" intensity={1} environment="city" adjustCamera={false} shadows={false}>
+                  <group rotation={[0, -Math.PI / 2, 0]}>
+                    <StickModel 
+                      isInspecting={isInspecting && !isAnimatingFlex} 
+                      shotTrigger={shotTrigger} 
+                      onFlexDone={() => setIsAnimatingFlex(false)}
+                      controlsRef={controlsRef}
+                      config={config}
+                    />
+                  </group>
+                </Stage>
+
+                <OrbitControls 
+                  ref={controlsRef}
+                  makeDefault 
+                />
+              </Suspense>
+            </Canvas>
+          </div>
+
+          {/* New physics buttons in the bottom right */}
+          <div className="absolute bottom-12 right-12 z-10 flex flex-col space-y-3">
+            <button 
+              onClick={() => {
+                setIsAnimatingFlex(true);
+                setShotTrigger(prev => ({ count: prev.count + 1, type: 'wristshot' }));
+              }}
+              disabled={isAnimatingFlex}
+              className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl uppercase tracking-widest text-sm flex items-center justify-center space-x-2 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] disabled:opacity-50"
+            >
+              <Zap className="w-5 h-5" />
+              <span>Slow-Mo Wristshot</span>
+            </button>
+            <button 
+              onClick={() => {
+                setIsAnimatingFlex(true);
+                setShotTrigger(prev => ({ count: prev.count + 1, type: 'slapshot' }));
+              }}
+              disabled={isAnimatingFlex}
+              className="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl uppercase tracking-widest text-sm flex items-center justify-center space-x-2 transition-all shadow-[0_0_20px_rgba(239,68,68,0.4)] disabled:opacity-50"
+            >
+              <Zap className="w-5 h-5" />
+              <span>Slow-Mo Slapshot</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+};
