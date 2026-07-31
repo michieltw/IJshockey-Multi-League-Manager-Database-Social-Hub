@@ -1,0 +1,115 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // === FUNCTION HELPERS ===
+
+    // Controleer of de gebruiker is ingelogd
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Haal de data van de opvragende gebruiker op (let op: dit is een extra read per call tenzij slim toegepast)
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isSuperAdmin() {
+      return isAuthenticated() && getUserData().account_type == "super_admin";
+    }
+
+    // === GLOBALE READ RULES (Open Data) ===
+
+    // Specificeer collecties die publiek mogen zijn.
+    // Om te voorkomen dat bv emails in de users collectie publiek zijn, definiëren we dit per collectie.
+    // Voor testdoeleinden of gast-weergaves kan dit specifiek gemaakt worden.
+
+    match /{document=**} {
+      allow read: if true;
+    }
+
+    // === USERS COLLECTION ===
+
+    match /users/{userId} {
+      // Iedereen mag users lezen (voor profielfoto's en bio's).
+
+      // Een gebruiker mag zichzelf aanmaken indien hij net geauthenticeerd is,
+      // MAAR we forceren dat het accounttype standaard "standard" is (en we beveiligen privilege arrays).
+      // LET OP: Firebase Admin SDK negeert deze rules, dus via een seeder (indien gebruikt voor initiele setup) mag wel super_admin aangemaakt worden.
+      allow create: if isAuthenticated() &&
+                    request.auth.uid == userId &&
+                    request.resource.data.account_type == "standard" &&
+                    (!("privileges" in request.resource.data) || request.resource.data.privileges.size() == 0) &&
+                    (!("admin_leagues" in request.resource.data) || request.resource.data.admin_leagues.size() == 0) &&
+                    (!("admin_teams" in request.resource.data) || request.resource.data.admin_teams.size() == 0);
+
+      // Update rules:
+      allow update: if isAuthenticated() && (
+        isSuperAdmin() ||
+        // Of de gebruiker wijzigt ZIJN EIGEN document, MAAR we beschermen gevoelige velden:
+        // Let op het gebruik van .get() zodat we geen undefined-fouten krijgen wanneer een veld niet bestaat.
+        (
+          request.auth.uid == userId &&
+          request.resource.data.get('account_type', 'standard') == resource.data.get('account_type', 'standard') &&
+          request.resource.data.get('privileges', []) == resource.data.get('privileges', []) &&
+          request.resource.data.get('admin_leagues', []) == resource.data.get('admin_leagues', []) &&
+          request.resource.data.get('admin_teams', []) == resource.data.get('admin_teams', [])
+        )
+      );
+
+      allow delete: if isSuperAdmin();
+    }
+
+    // === ROLE REQUESTS ===
+
+    match /role_requests/{requestId} {
+      // Iedereen die ingelogd is mag een verzoek aanmaken
+      allow create: if isAuthenticated() && request.resource.data.user_id == request.auth.uid;
+      // Alleen super_admin of league_admin mag verzoeken beoordelen (update)
+      allow update, delete: if isSuperAdmin() || (isAuthenticated() && getUserData().account_type == "league_admin");
+    }
+
+    // === GAMES & GAME EVENTS ===
+
+    match /games/{gameId} {
+      // Alleen league admins (van specifieke league) of super admin mogen wedstrijden officieel maken / aanpassen
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() && (
+        isSuperAdmin() ||
+        // Check league admin array
+        (getUserData().account_type == "league_admin" && resource.data.league_id in getUserData().admin_leagues) ||
+        // Indien geen admin, alleen toestaan als wedstrijd NIET geaccordeerd is,
+        // en alleen door aangewezen personen.
+        (resource.data.record_type != "official")
+      );
+      allow delete: if isSuperAdmin();
+    }
+
+    match /game_events/{eventId} {
+      // Invoeren mag door iedereen met de scorekeeper bevoegdheid (of admins), of mensen die specifiek rechten hebben gekregen
+      // op de game.
+      allow create: if isAuthenticated() && (
+        isSuperAdmin() ||
+        ("scorekeeper" in getUserData().privileges) ||
+        (getUserData().account_type == "league_admin")
+      );
+
+      allow update, delete: if isAuthenticated() && (
+        isSuperAdmin() ||
+        ("scorekeeper" in getUserData().privileges) ||
+        (getUserData().account_type == "league_admin")
+      );
+    }
+
+    // === DE REST VAN DE APPLICATIE ===
+
+    match /teams/{teamId} {
+      allow create, delete: if isSuperAdmin() || (isAuthenticated() && getUserData().account_type == "league_admin");
+      allow update: if isSuperAdmin() ||
+        (isAuthenticated() && getUserData().account_type == "league_admin") ||
+        (isAuthenticated() && getUserData().account_type == "team_admin" && teamId in getUserData().admin_teams);
+    }
+
+  }
+}

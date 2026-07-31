@@ -5074,6 +5074,39 @@
         }
       ]
     }
+
+,
+    {
+      "id": "CAT_ACCOUNT_TYPE",
+      "name": "Account Types",
+      "items": [
+        { "id": "super_admin", "label": "Super Admin" },
+        { "id": "league_admin", "label": "League Admin" },
+        { "id": "team_admin", "label": "Team Admin / Coach" },
+        { "id": "standard", "label": "Standaard Gebruiker" },
+        { "id": "fan", "label": "Fan" },
+        { "id": "guest", "label": "Gast" }
+      ]
+    },
+    {
+      "id": "CAT_PRIVILEGES",
+      "name": "Privileges",
+      "items": [
+        { "id": "verified_player", "label": "Geverifieerde Speler" },
+        { "id": "scorekeeper", "label": "Scorekeeper" },
+        { "id": "sponsor", "label": "Sponsor" }
+      ]
+    },
+    {
+      "id": "CAT_REQUEST_STATUS",
+      "name": "Aanvraag Status",
+      "items": [
+        { "id": "pending", "label": "In afwachting" },
+        { "id": "approved", "label": "Goedgekeurd" },
+        { "id": "rejected", "label": "Afgewezen" }
+      ]
+    }
+
   ],
   "records": {}
 }
