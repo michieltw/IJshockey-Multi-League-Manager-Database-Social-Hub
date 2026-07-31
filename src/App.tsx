@@ -6,12 +6,14 @@ import Scorekeeper from './pages/Scorekeeper';
 import Admin from './pages/Admin';
 import Statistieken from './pages/Statistieken';
 import Placeholder from './pages/Placeholder';
+import Configurator from './pages/Configurator';
 
 function App() {
   return (
     <Router>
       <Layout>
         <Routes>
+          <Route path="/configurator" element={<Configurator />} />
           <Route path="/" element={<Navigate to="/competitie/standen" replace />} />
 
           {/* Dashboard */}
