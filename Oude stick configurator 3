@@ -1,0 +1,30 @@
+import * as THREE from 'three';
+import { TessellateModifier } from 'three-stdlib';
+import fs from 'fs';
+
+const data = fs.readFileSync('public/gltf/HockeyStickBake.gltf', 'utf8');
+const gltf = JSON.parse(data);
+const bin = fs.readFileSync('public/gltf/HockeyStickBake.bin');
+
+const posAccessor = gltf.accessors[0];
+const posView = gltf.bufferViews[posAccessor.bufferView];
+const positions = new Float32Array(bin.buffer, bin.byteOffset + posView.byteOffset, posAccessor.count * 3);
+
+// We need an indexed geometry for the test or non-indexed?
+let geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+// Wait, the GLTF has indices
+const indAccessor = gltf.accessors[3];
+const indView = gltf.bufferViews[indAccessor.bufferView];
+const indices = new Uint16Array(bin.buffer, bin.byteOffset + indView.byteOffset, indAccessor.count);
+geometry.setIndex(new THREE.BufferAttribute(indices, 1));
+
+console.log("Original vertex count: ", geometry.attributes.position.count);
+
+geometry = geometry.toNonIndexed();
+
+const tessellateModifier = new TessellateModifier( 0.05, 6 );
+geometry = tessellateModifier.modify( geometry );
+
+console.log("Tessellated vertex count: ", geometry.attributes.position.count);
