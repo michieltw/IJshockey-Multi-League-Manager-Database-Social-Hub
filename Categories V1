@@ -5051,6 +5051,28 @@
           "label": "Deflection"
         }
       ]
+    },
+    {
+      "id": "CAT_GAME_DECISION",
+      "name": "Wedstrijd Beslissing",
+      "items": [
+        {
+          "id": "REG",
+          "label": "Reguliere Speeltijd"
+        },
+        {
+          "id": "OT",
+          "label": "Verlenging (Overtime)"
+        },
+        {
+          "id": "SO",
+          "label": "Shoot-out"
+        },
+        {
+          "id": "FORFEIT",
+          "label": "Reglementaire Uitslag (Forfeit)"
+        }
+      ]
     }
   ],
   "records": {}

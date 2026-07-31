@@ -1644,6 +1644,798 @@
         }
       ],
       "code": "ROST"
+    },
+    {
+      "id": "game_boxscores",
+      "name": "Wedstrijd Boxscores",
+      "group": "AGGREGATION",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Boxscore ID (bijv. BOXS_102)",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "game_id",
+          "name": "Wedstrijd ID",
+          "key": "game_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "games"
+        },
+        {
+          "id": "season_id",
+          "name": "Seizoen ID",
+          "key": "season_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "league_id",
+          "name": "Competitie ID",
+          "key": "league_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "competitions"
+        },
+        {
+          "id": "game_decision",
+          "name": "Beslissing in",
+          "key": "game_decision",
+          "type": "select",
+          "required": true,
+          "categoryListId": "CAT_GAME_DECISION"
+        },
+        {
+          "id": "home_team_id",
+          "name": "Thuisploeg ID",
+          "key": "home_team_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "away_team_id",
+          "name": "Uitploeg ID",
+          "key": "away_team_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "home_team_score",
+          "name": "Score Thuis",
+          "key": "home_team_score",
+          "type": "number",
+          "required": true
+        },
+        {
+          "id": "away_team_score",
+          "name": "Score Uit",
+          "key": "away_team_score",
+          "type": "number",
+          "required": true
+        },
+        {
+          "id": "home_team_stats",
+          "name": "Team Stats Thuis (JSON)",
+          "key": "home_team_stats",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "away_team_stats",
+          "name": "Team Stats Uit (JSON)",
+          "key": "away_team_stats",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "home_team_player_stats",
+          "name": "Spelersstatistieken Thuis (Array van Objecten)",
+          "key": "home_team_player_stats",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "away_team_player_stats",
+          "name": "Spelersstatistieken Uit (Array van Objecten)",
+          "key": "away_team_player_stats",
+          "type": "json_array",
+          "required": false
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "BOXS"
+    },
+    {
+      "id": "team_standings_season",
+      "name": "Team Standen per Seizoen",
+      "group": "AGGREGATION",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Stand ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "season_id",
+          "name": "Seizoen ID",
+          "key": "season_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "league_id",
+          "name": "Competitie ID",
+          "key": "league_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "competitions"
+        },
+        {
+          "id": "team_id",
+          "name": "Team ID",
+          "key": "team_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "current_rank",
+          "name": "Huidige Positie (Sort Order)",
+          "key": "current_rank",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "gp",
+          "name": "Games Played",
+          "key": "gp",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "w",
+          "name": "Wins",
+          "key": "w",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "l",
+          "name": "Losses",
+          "key": "l",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "ot",
+          "name": "OT/SO Losses",
+          "key": "ot",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pts",
+          "name": "Points",
+          "key": "pts",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pts_pct",
+          "name": "Points Percentage (P%)",
+          "key": "pts_pct",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "rw",
+          "name": "Regulation Wins (RW)",
+          "key": "rw",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "row",
+          "name": "Regulation + OT Wins (ROW)",
+          "key": "row",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "gf",
+          "name": "Goals For",
+          "key": "gf",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "ga",
+          "name": "Goals Against",
+          "key": "ga",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "diff",
+          "name": "Goal Differential",
+          "key": "diff",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "home_record",
+          "name": "Home Record (W-L-OT)",
+          "key": "home_record",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "away_record",
+          "name": "Away Record (W-L-OT)",
+          "key": "away_record",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "so_record",
+          "name": "Shootout Record",
+          "key": "so_record",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "streak",
+          "name": "Streak",
+          "key": "streak",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "last_10",
+          "name": "Last 10",
+          "key": "last_10",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "STND"
+    },
+    {
+      "id": "team_stats_all_time",
+      "name": "Team Historische Statistieken (All-Time)",
+      "group": "AGGREGATION",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Historische Stats ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "team_id",
+          "name": "Team ID",
+          "key": "team_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "total_championships",
+          "name": "Kampioenschappen",
+          "key": "total_championships",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "playoff_appearances",
+          "name": "Play-off Deelnames",
+          "key": "playoff_appearances",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "gp",
+          "name": "Games Played",
+          "key": "gp",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "w",
+          "name": "Wins",
+          "key": "w",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "l",
+          "name": "Losses",
+          "key": "l",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "ot",
+          "name": "OT/SO Losses",
+          "key": "ot",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pts",
+          "name": "Points",
+          "key": "pts",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pts_pct",
+          "name": "Points Percentage (P%)",
+          "key": "pts_pct",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "rw",
+          "name": "Regulation Wins (RW)",
+          "key": "rw",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "row",
+          "name": "Regulation + OT Wins (ROW)",
+          "key": "row",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "gf",
+          "name": "Goals For",
+          "key": "gf",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "ga",
+          "name": "Goals Against",
+          "key": "ga",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "diff",
+          "name": "Goal Differential",
+          "key": "diff",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "all_time_penalty_minutes",
+          "name": "All-Time PIM",
+          "key": "all_time_penalty_minutes",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "TSTA"
+    },
+    {
+      "id": "player_stats_season",
+      "name": "Spelersstatistieken per Seizoen",
+      "group": "AGGREGATION",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Speler Seizoen Stats ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "season_id",
+          "name": "Seizoen ID",
+          "key": "season_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "league_id",
+          "name": "Competitie ID",
+          "key": "league_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "competitions"
+        },
+        {
+          "id": "team_ids",
+          "name": "Team IDs (Trades oplossen)",
+          "key": "team_ids",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "team_id_primary",
+          "name": "Primair Team ID",
+          "key": "team_id_primary",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "person_id",
+          "name": "Persoon ID",
+          "key": "person_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "is_goalie",
+          "name": "Is Goalie?",
+          "key": "is_goalie",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "id": "is_total_record",
+          "name": "Is Totaal (TOT) Record?",
+          "key": "is_total_record",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "id": "gp",
+          "name": "Games Played",
+          "key": "gp",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "goals",
+          "name": "Goals (Skater)",
+          "key": "goals",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "assists",
+          "name": "Assists (Skater)",
+          "key": "assists",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "points",
+          "name": "Points (Skater)",
+          "key": "points",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pim",
+          "name": "Penalty Minutes",
+          "key": "pim",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "plus_minus",
+          "name": "Plus/Minus (Skater)",
+          "key": "plus_minus",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shots",
+          "name": "Shots (Skater)",
+          "key": "shots",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shooting_pct",
+          "name": "Shooting % (Skater)",
+          "key": "shooting_pct",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "faceoff_win_pct",
+          "name": "Face-off Win % (Skater)",
+          "key": "faceoff_win_pct",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "ppg",
+          "name": "Powerplay Goals",
+          "key": "ppg",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shg",
+          "name": "Shorthanded Goals",
+          "key": "shg",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "gwg",
+          "name": "Game Winning Goals",
+          "key": "gwg",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "wins",
+          "name": "Wins (Goalie)",
+          "key": "wins",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "losses",
+          "name": "Losses (Goalie)",
+          "key": "losses",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "ot_losses",
+          "name": "OT Losses (Goalie)",
+          "key": "ot_losses",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "sv_pct",
+          "name": "Save Percentage (Goalie)",
+          "key": "sv_pct",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "gaa",
+          "name": "Goals Against Average (Goalie)",
+          "key": "gaa",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shutouts",
+          "name": "Shutouts (Goalie)",
+          "key": "shutouts",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shots_faced",
+          "name": "Shots Faced (Goalie)",
+          "key": "shots_faced",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "goals_allowed",
+          "name": "Goals Allowed (Goalie)",
+          "key": "goals_allowed",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "saves",
+          "name": "Saves (Goalie)",
+          "key": "saves",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "minutes_played",
+          "name": "Minutes Played",
+          "key": "minutes_played",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "PSTS"
+    },
+    {
+      "id": "player_stats_career",
+      "name": "Speler Carrière Statistieken (All-Time)",
+      "group": "AGGREGATION",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Speler Carrière Stats ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "person_id",
+          "name": "Persoon ID",
+          "key": "person_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "persons"
+        },
+        {
+          "id": "is_goalie",
+          "name": "Is Goalie?",
+          "key": "is_goalie",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "id": "gp",
+          "name": "Games Played",
+          "key": "gp",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "goals",
+          "name": "Goals (Skater)",
+          "key": "goals",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "assists",
+          "name": "Assists (Skater)",
+          "key": "assists",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "points",
+          "name": "Points (Skater)",
+          "key": "points",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pim",
+          "name": "Penalty Minutes",
+          "key": "pim",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "plus_minus",
+          "name": "Plus/Minus (Skater)",
+          "key": "plus_minus",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shots",
+          "name": "Shots (Skater)",
+          "key": "shots",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shooting_pct",
+          "name": "Shooting % (Skater)",
+          "key": "shooting_pct",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "faceoff_win_pct",
+          "name": "Face-off Win % (Skater)",
+          "key": "faceoff_win_pct",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "ppg",
+          "name": "Powerplay Goals",
+          "key": "ppg",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shg",
+          "name": "Shorthanded Goals",
+          "key": "shg",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "gwg",
+          "name": "Game Winning Goals",
+          "key": "gwg",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "wins",
+          "name": "Wins (Goalie)",
+          "key": "wins",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "losses",
+          "name": "Losses (Goalie)",
+          "key": "losses",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "ot_losses",
+          "name": "OT Losses (Goalie)",
+          "key": "ot_losses",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "sv_pct",
+          "name": "Save Percentage (Goalie)",
+          "key": "sv_pct",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "gaa",
+          "name": "Goals Against Average (Goalie)",
+          "key": "gaa",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shutouts",
+          "name": "Shutouts (Goalie)",
+          "key": "shutouts",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shots_faced",
+          "name": "Shots Faced (Goalie)",
+          "key": "shots_faced",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "goals_allowed",
+          "name": "Goals Allowed (Goalie)",
+          "key": "goals_allowed",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "saves",
+          "name": "Saves (Goalie)",
+          "key": "saves",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "minutes_played",
+          "name": "Minutes Played",
+          "key": "minutes_played",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "PSTC"
     }
   ]
 }
