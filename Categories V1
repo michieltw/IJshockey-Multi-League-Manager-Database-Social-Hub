@@ -5073,40 +5073,129 @@
           "label": "Reglementaire Uitslag (Forfeit)"
         }
       ]
-    }
-
-,
+    },
     {
       "id": "CAT_ACCOUNT_TYPE",
       "name": "Account Types",
       "items": [
-        { "id": "super_admin", "label": "Super Admin" },
-        { "id": "league_admin", "label": "League Admin" },
-        { "id": "team_admin", "label": "Team Admin / Coach" },
-        { "id": "standard", "label": "Standaard Gebruiker" },
-        { "id": "fan", "label": "Fan" },
-        { "id": "guest", "label": "Gast" }
+        {
+          "id": "super_admin",
+          "label": "Super Admin"
+        },
+        {
+          "id": "league_admin",
+          "label": "League Admin"
+        },
+        {
+          "id": "team_admin",
+          "label": "Team Admin / Coach"
+        },
+        {
+          "id": "standard",
+          "label": "Standaard Gebruiker"
+        },
+        {
+          "id": "fan",
+          "label": "Fan"
+        },
+        {
+          "id": "guest",
+          "label": "Gast"
+        }
       ]
     },
     {
       "id": "CAT_PRIVILEGES",
       "name": "Privileges",
       "items": [
-        { "id": "verified_player", "label": "Geverifieerde Speler" },
-        { "id": "scorekeeper", "label": "Scorekeeper" },
-        { "id": "sponsor", "label": "Sponsor" }
+        {
+          "id": "verified_player",
+          "label": "Geverifieerde Speler"
+        },
+        {
+          "id": "scorekeeper",
+          "label": "Scorekeeper"
+        },
+        {
+          "id": "sponsor",
+          "label": "Sponsor"
+        }
       ]
     },
     {
       "id": "CAT_REQUEST_STATUS",
       "name": "Aanvraag Status",
       "items": [
-        { "id": "pending", "label": "In afwachting" },
-        { "id": "approved", "label": "Goedgekeurd" },
-        { "id": "rejected", "label": "Afgewezen" }
+        {
+          "id": "pending",
+          "label": "In afwachting"
+        },
+        {
+          "id": "approved",
+          "label": "Goedgekeurd"
+        },
+        {
+          "id": "rejected",
+          "label": "Afgewezen"
+        }
+      ]
+    },
+    {
+      "id": "CAT_POST_TYPE",
+      "name": "Type Bericht (Post)",
+      "items": [
+        {
+          "id": "0",
+          "label": "Nieuws"
+        },
+        {
+          "id": "1",
+          "label": "Highlight"
+        },
+        {
+          "id": "2",
+          "label": "Match Discussion"
+        },
+        {
+          "id": "3",
+          "label": "General"
+        }
+      ]
+    },
+    {
+      "id": "CAT_TARGET_TYPE",
+      "name": "Doel Type (Target)",
+      "items": [
+        {
+          "id": "0",
+          "label": "Team"
+        },
+        {
+          "id": "1",
+          "label": "Person (Speler/Staf)"
+        },
+        {
+          "id": "2",
+          "label": "Competition (Competitie)"
+        },
+        {
+          "id": "3",
+          "label": "User (Gebruiker)"
+        },
+        {
+          "id": "4",
+          "label": "Custom Group"
+        },
+        {
+          "id": "5",
+          "label": "Post"
+        },
+        {
+          "id": "6",
+          "label": "Comment"
+        }
       ]
     }
-
   ],
   "records": {}
 }
