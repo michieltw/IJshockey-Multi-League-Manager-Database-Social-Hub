@@ -2436,8 +2436,7 @@
       ],
       "firestore_strategy": "Root Collection",
       "code": "PSTC"
-    }
-    ,
+    },
     {
       "id": "users",
       "name": "Systeemgebruikers",
@@ -2521,6 +2520,35 @@
           "key": "preferences",
           "type": "json_array",
           "required": false
+        },
+        {
+          "id": "banner_url",
+          "name": "Banner URL",
+          "key": "banner_url",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "favorite_team_id",
+          "name": "Favoriete Team ID",
+          "key": "favorite_team_id",
+          "type": "relation",
+          "required": false,
+          "targetSchemaId": "teams"
+        },
+        {
+          "id": "followers_count",
+          "name": "Aantal Volgers",
+          "key": "followers_count",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "following_count",
+          "name": "Aantal Volgend",
+          "key": "following_count",
+          "type": "number",
+          "required": false
         }
       ],
       "firestore_strategy": "Root Collection",
@@ -2585,6 +2613,238 @@
       ],
       "firestore_strategy": "Root Collection",
       "code": "RREQ"
+    },
+    {
+      "id": "posts",
+      "name": "Social Posts",
+      "group": "SOCIAL",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Post ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "author_user_id",
+          "name": "Auteur User ID",
+          "key": "author_user_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "users"
+        },
+        {
+          "id": "content_text",
+          "name": "Inhoud (Tekst)",
+          "key": "content_text",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "media_urls",
+          "name": "Media URLs",
+          "key": "media_urls",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "post_type",
+          "name": "Type Bericht",
+          "key": "post_type",
+          "type": "select",
+          "required": true,
+          "categoryListId": "CAT_POST_TYPE"
+        },
+        {
+          "id": "tagged_entity_ids",
+          "name": "Getagde Entiteit ID's",
+          "key": "tagged_entity_ids",
+          "type": "json_array",
+          "required": false
+        },
+        {
+          "id": "likes_count",
+          "name": "Aantal Likes",
+          "key": "likes_count",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "comments_count",
+          "name": "Aantal Reacties",
+          "key": "comments_count",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "shares_count",
+          "name": "Aantal Shares",
+          "key": "shares_count",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "created_at",
+          "name": "Aangemaakt op",
+          "key": "created_at",
+          "type": "datetime",
+          "required": true
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "POST"
+    },
+    {
+      "id": "comments",
+      "name": "Reacties",
+      "group": "SOCIAL",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Comment ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "author_user_id",
+          "name": "Auteur User ID",
+          "key": "author_user_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "users"
+        },
+        {
+          "id": "target_id",
+          "name": "Doel ID (Post ID of Game ID)",
+          "key": "target_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "parent_comment_id",
+          "name": "Parent Comment ID (Voor Threads)",
+          "key": "parent_comment_id",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "content_text",
+          "name": "Inhoud (Tekst)",
+          "key": "content_text",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "likes_count",
+          "name": "Aantal Likes",
+          "key": "likes_count",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "created_at",
+          "name": "Aangemaakt op",
+          "key": "created_at",
+          "type": "datetime",
+          "required": true
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "COMM"
+    },
+    {
+      "id": "likes",
+      "name": "Likes",
+      "group": "SOCIAL",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Like ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "user_id",
+          "name": "User ID",
+          "key": "user_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "users"
+        },
+        {
+          "id": "target_id",
+          "name": "Doel ID",
+          "key": "target_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "target_type",
+          "name": "Doel Type",
+          "key": "target_type",
+          "type": "select",
+          "required": true,
+          "categoryListId": "CAT_TARGET_TYPE"
+        },
+        {
+          "id": "created_at",
+          "name": "Aangemaakt op",
+          "key": "created_at",
+          "type": "datetime",
+          "required": true
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "LIKE"
+    },
+    {
+      "id": "follows",
+      "name": "Volgers",
+      "group": "SOCIAL",
+      "fields": [
+        {
+          "id": "id",
+          "name": "Follow ID",
+          "key": "id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "follower_user_id",
+          "name": "Volger User ID",
+          "key": "follower_user_id",
+          "type": "relation",
+          "required": true,
+          "targetSchemaId": "users"
+        },
+        {
+          "id": "target_id",
+          "name": "Doel ID",
+          "key": "target_id",
+          "type": "text",
+          "required": true
+        },
+        {
+          "id": "target_type",
+          "name": "Doel Type",
+          "key": "target_type",
+          "type": "select",
+          "required": true,
+          "categoryListId": "CAT_TARGET_TYPE"
+        },
+        {
+          "id": "created_at",
+          "name": "Aangemaakt op",
+          "key": "created_at",
+          "type": "datetime",
+          "required": true
+        }
+      ],
+      "firestore_strategy": "Root Collection",
+      "code": "FOLW"
     }
   ]
 }
