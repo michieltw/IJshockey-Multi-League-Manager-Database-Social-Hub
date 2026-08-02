@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import PageHeader from '../components/layout/PageHeader';
+import DataManager from '../components/admin/DataManager';
+import { Database, Settings } from 'lucide-react';
 
 export default function Admin() {
+  const [activeTab, setActiveTab] = useState<'settings' | 'data'>('data');
   const [settings, setSettings] = useState({
     pointsForWin: 2,
     pointsForLoss: 0,
@@ -23,7 +26,7 @@ export default function Admin() {
           setSettings(snap.data().settings);
         }
       } catch (err) {
-        console.error(err);
+        console.error("Firebase err:", err);
       } finally {
         setLoading(false);
       }
@@ -45,18 +48,11 @@ export default function Admin() {
     }
   };
 
-  if (loading) return <div className="p-8">Loading settings...</div>;
-
-  return (
-    <div className="h-full flex flex-col">
-      <PageHeader
-        title="Admin Settings"
-        subtitle="Competitie instellingen en rekenregels"
-        navItems={[{ label: 'Algemeen', to: '/admin' }]}
-      />
-      <div className="p-8">
-        <div className="bg-white rounded-xl border border-gray-200 p-6 max-w-2xl">
-          <h2 className="text-xl font-bold mb-6">Puntentelling (Rekenregels)</h2>
+  const renderSettings = () => (
+    loading ? <div className="p-8">Loading settings...</div> :
+    <div className="p-8">
+      <div className="bg-white rounded-xl border border-gray-200 p-6 max-w-2xl">
+        <h2 className="text-xl font-bold mb-6">Puntentelling (Rekenregels)</h2>
 
           <div className="space-y-4">
             <div>
@@ -89,17 +85,61 @@ export default function Admin() {
               />
             </div>
 
-            <div className="pt-4 border-t border-gray-100">
-               <button
-                  onClick={handleSave}
-                  disabled={saving}
-                  className="px-6 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 disabled:opacity-50"
-               >
-                  {saving ? 'Opslaan...' : 'Opslaan'}
-               </button>
-            </div>
+          <div className="pt-4 border-t border-gray-100">
+            <button
+              onClick={handleSave}
+              disabled={saving}
+              className="px-6 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 disabled:opacity-50"
+            >
+              {saving ? 'Opslaan...' : 'Opslaan'}
+            </button>
           </div>
         </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="h-full flex flex-col">
+      <PageHeader
+        title="Admin"
+        subtitle="Beheer data en instellingen"
+        navItems={[{ label: 'Admin', to: '/admin' }]}
+      />
+
+      <div className="border-b border-gray-200 bg-white">
+        <nav className="flex space-x-8 px-8" aria-label="Tabs">
+          <button
+            onClick={() => setActiveTab('data')}
+            className={`
+              whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2
+              ${activeTab === 'data'
+                ? 'border-blue-500 text-blue-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }
+            `}
+          >
+            <Database className="w-4 h-4" />
+            Data Manager
+          </button>
+          <button
+            onClick={() => setActiveTab('settings')}
+            className={`
+              whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2
+              ${activeTab === 'settings'
+                ? 'border-blue-500 text-blue-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }
+            `}
+          >
+            <Settings className="w-4 h-4" />
+            Competitie Instellingen
+          </button>
+        </nav>
+      </div>
+
+      <div className="flex-1 overflow-auto bg-gray-50">
+        {activeTab === 'data' ? <DataManager /> : renderSettings()}
       </div>
     </div>
   );
