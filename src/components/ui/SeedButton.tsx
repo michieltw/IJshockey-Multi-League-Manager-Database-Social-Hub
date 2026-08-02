@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { seedDatabase } from '../lib/seed';
+import { seedDatabase } from '../../lib/seed';
 import { Database } from 'lucide-react';
 
 export default function SeedButton() {

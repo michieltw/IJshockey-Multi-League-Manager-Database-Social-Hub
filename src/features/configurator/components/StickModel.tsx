@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { TessellateModifier, mergeVertices } from 'three-stdlib';
 import * as THREE from 'three';
-import type { StickConfig } from './types';
+import type { StickConfig } from '../../../types/index';
 
 export interface StickModelProps {
   isInspecting: boolean;

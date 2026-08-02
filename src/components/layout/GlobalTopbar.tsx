@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { db } from '../../lib/firebase';
 
 interface GlobalTopbarProps {
   toggleSidebar: () => void;

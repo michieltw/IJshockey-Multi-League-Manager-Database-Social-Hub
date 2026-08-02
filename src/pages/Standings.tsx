@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import PageHeader from '../components/PageHeader';
+import PageHeader from '../components/layout/PageHeader';
 import { Search, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
-import SeedButton from '../components/SeedButton';
+import SeedButton from '../components/ui/SeedButton';
 
 type Team = { id: string; name: string; division: string; color: string; team_logo_url?: string };
 type Game = { homeTeamId: string; awayTeamId: string; homeScore: number; awayScore: number; isOvertime: boolean };

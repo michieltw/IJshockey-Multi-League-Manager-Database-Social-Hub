@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls, Stage } from '@react-three/drei';
 import StickModel from './StickModel';
-import type { StickConfig } from './types';
+import type { StickConfig } from '../../../types/index';
 
 interface Configurator3DProps {
   config: StickConfig;

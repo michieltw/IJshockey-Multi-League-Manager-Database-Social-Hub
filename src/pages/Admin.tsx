@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import PageHeader from '../components/PageHeader';
+import PageHeader from '../components/layout/PageHeader';
 
 export default function Admin() {
   const [settings, setSettings] = useState({

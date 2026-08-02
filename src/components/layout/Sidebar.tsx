@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { collection, getDocs, limit, query } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { db } from '../../lib/firebase';
 import {
   LayoutDashboard, Trophy, Settings, FileText, Lock,
   Archive, Users, Shield, LogOut, Bell, MessageSquare,
   ChevronDown, ChevronRight
 } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 type NavItemProps = {
   icon?: React.ReactNode;
