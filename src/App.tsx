@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './components/Layout';
+import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
 import Standings from './pages/Standings';
 import Scorekeeper from './pages/Scorekeeper';
@@ -20,17 +20,23 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
 
           {/* Competitie */}
-          <Route path="/competitie/house-league" element={<Placeholder title="GIJS House League" />} />
-          <Route path="/competitie/uitslagen" element={<Placeholder title="Uitslagen" />} />
-          <Route path="/competitie/speelschema" element={<Placeholder title="Speelschema" />} />
-          <Route path="/competitie/standen" element={<Standings />} />
-          <Route path="/competitie/evenementen" element={<Placeholder title="Evenementen" />} />
-          <Route path="/competitie/player-draft" element={<Placeholder title="Player Draft" />} />
-          <Route path="/competitie/statistieken" element={<Statistieken />} />
-          <Route path="/competitie/teams" element={<Placeholder title="Teams" />} />
-          <Route path="/competitie/spelers" element={<Placeholder title="Spelers" />} />
-          <Route path="/competitie/berichten" element={<Placeholder title="Berichten" />} />
-          <Route path="/competitie/reglementen" element={<Placeholder title="Reglementen" />} />
+          {/* Updated dynamic routes to support multiple leagues and context */}
+          <Route path="/competitie/:leagueId" element={<Placeholder title="League Home" />} />
+          <Route path="/competitie/:leagueId/uitslagen" element={<Placeholder title="Uitslagen" />} />
+          <Route path="/competitie/:leagueId/speelschema" element={<Placeholder title="Speelschema" />} />
+          <Route path="/competitie/:leagueId/standen" element={<Standings />} />
+          <Route path="/competitie/:leagueId/evenementen" element={<Placeholder title="Evenementen" />} />
+          <Route path="/competitie/:leagueId/player-draft" element={<Placeholder title="Player Draft" />} />
+          <Route path="/competitie/:leagueId/statistieken" element={<Statistieken />} />
+          <Route path="/competitie/:leagueId/teams" element={<Placeholder title="Teams" />} />
+          <Route path="/competitie/:leagueId/spelers" element={<Placeholder title="Spelers" />} />
+          <Route path="/competitie/:leagueId/berichten" element={<Placeholder title="Berichten" />} />
+          <Route path="/competitie/:leagueId/reglementen" element={<Placeholder title="Reglementen" />} />
+
+          {/* Fallbacks for backward compatibility / defaults */}
+          <Route path="/competitie/house-league" element={<Navigate to="/competitie/ghl/standen" replace />} />
+          <Route path="/competitie/standen" element={<Navigate to="/competitie/ghl/standen" replace />} />
+          <Route path="/competitie/statistieken" element={<Navigate to="/competitie/ghl/statistieken" replace />} />
 
           {/* Modules */}
           <Route path="/modules/referee" element={<Placeholder title="Referee" />} />

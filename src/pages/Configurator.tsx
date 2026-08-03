@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Configurator3D } from './Configurator3D';
-import { ConfiguratorUI } from './ConfiguratorUI';
-import type { StickConfig } from './types';
-import { INITIAL_CONFIG } from './types';
+import { Configurator3D } from '../features/configurator/components/Configurator3D';
+import { ConfiguratorUI } from '../features/configurator/components/ConfiguratorUI';
+import type { StickConfig } from '../types/index';
+import { INITIAL_CONFIG } from '../types/index';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 

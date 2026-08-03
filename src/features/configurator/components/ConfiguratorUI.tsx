@@ -1,5 +1,5 @@
 import React from 'react';
-import type { StickConfig } from './types';
+import type { StickConfig } from '../../../types/index';
 import { Plus, Zap, Check, ShoppingCart } from 'lucide-react';
 
 interface ConfiguratorUIProps {

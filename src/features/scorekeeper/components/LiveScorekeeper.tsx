@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import IceRink from './components/IceRink';
-import ActionBar from './components/ActionBar';
-import StoppageMenu from './components/StoppageMenu';
-import FaceoffOverlay from './components/FaceoffOverlay';
-import GoalForm from './components/GoalForm';
-import PenaltyForm from './components/PenaltyForm';
-import GameLog, { type GameEvent } from './components/GameLog';
+import IceRink from './IceRink';
+import ActionBar from './ActionBar';
+import StoppageMenu from './StoppageMenu';
+import FaceoffOverlay from './FaceoffOverlay';
+import GoalForm from './GoalForm';
+import PenaltyForm from './PenaltyForm';
+import GameLog, { type GameEvent } from './GameLog';
 import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
+import { db } from '../../../lib/firebase';
 
 type Props = {
   gameId: string;

@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
-
-type Team = { id: string; name: string; org_id: string };
+import { useState } from 'react';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../../lib/firebase';
+import { useTeams } from '../../../hooks/useTeams';
 
 type Props = {
   onStartGame: (gameId: string) => void;
@@ -10,25 +9,17 @@ type Props = {
 
 export default function Overview({ onStartGame }: Props) {
   const [showSetup, setShowSetup] = useState(false);
-  const [teams, setTeams] = useState<Team[]>([]);
+  const { teams, loading: teamsLoading, error: teamsError } = useTeams();
   const [homeTeam, setHomeTeam] = useState('');
   const [awayTeam, setAwayTeam] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    async function loadTeams() {
-      const snap = await getDocs(collection(db, 'teams'));
-      setTeams(snap.docs.map(d => ({ id: d.id, ...d.data() } as Team)));
-    }
-    loadTeams();
-  }, []);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleStart = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!homeTeam || !awayTeam) return alert('Selecteer beide teams');
     if (homeTeam === awayTeam) return alert('Thuis en uit team kunnen niet hetzelfde zijn');
 
-    setLoading(true);
+    setSubmitting(true);
     try {
       const newGameRef = await addDoc(collection(db, 'games'), {
         season_id: 'SZN_CURRENT',
@@ -48,7 +39,7 @@ export default function Overview({ onStartGame }: Props) {
       console.error(err);
       alert('Fout bij aanmaken wedstrijd');
     } finally {
-      setLoading(false);
+      setSubmitting(false);
     }
   };
 
@@ -92,27 +83,39 @@ export default function Overview({ onStartGame }: Props) {
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-zinc-400 mb-2">Thuisploeg</label>
-                  <select
-                    className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl text-white focus:ring-2 focus:ring-[#FFEFD5]"
-                    value={homeTeam}
-                    onChange={e => setHomeTeam(e.target.value)}
-                    required
-                  >
-                    <option value="">Selecteer thuisteam...</option>
-                    {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
-                  </select>
+                  {teamsLoading ? (
+                    <div className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl text-zinc-500 animate-pulse">Laden...</div>
+                  ) : teamsError ? (
+                    <div className="w-full p-4 bg-zinc-900 border border-red-500/50 rounded-xl text-red-400">Fout bij laden teams</div>
+                  ) : (
+                    <select
+                      className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl text-white focus:ring-2 focus:ring-[#FFEFD5]"
+                      value={homeTeam}
+                      onChange={e => setHomeTeam(e.target.value)}
+                      required
+                    >
+                      <option value="">Selecteer thuisteam...</option>
+                      {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+                    </select>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-zinc-400 mb-2">Uitploeg</label>
-                  <select
-                    className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl text-white focus:ring-2 focus:ring-[#FFEFD5]"
-                    value={awayTeam}
-                    onChange={e => setAwayTeam(e.target.value)}
-                    required
-                  >
-                    <option value="">Selecteer uitteam...</option>
-                    {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
-                  </select>
+                  {teamsLoading ? (
+                    <div className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl text-zinc-500 animate-pulse">Laden...</div>
+                  ) : teamsError ? (
+                    <div className="w-full p-4 bg-zinc-900 border border-red-500/50 rounded-xl text-red-400">Fout bij laden teams</div>
+                  ) : (
+                    <select
+                      className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl text-white focus:ring-2 focus:ring-[#FFEFD5]"
+                      value={awayTeam}
+                      onChange={e => setAwayTeam(e.target.value)}
+                      required
+                    >
+                      <option value="">Selecteer uitteam...</option>
+                      {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+                    </select>
+                  )}
                 </div>
               </div>
               <div className="flex space-x-4 pt-4">
@@ -125,10 +128,10 @@ export default function Overview({ onStartGame }: Props) {
                 </button>
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={submitting || teamsLoading}
                   className="flex-1 py-4 bg-[#FFEFD5] text-zinc-900 font-bold rounded-xl hover:bg-yellow-100 transition-colors disabled:opacity-50"
                 >
-                  {loading ? 'Bezig met laden...' : 'Start Wedstrijd'}
+                  {submitting ? 'Aanmaken...' : 'Start Wedstrijd'}
                 </button>
               </div>
             </form>

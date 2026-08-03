@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Overview from './Scorekeeper/Overview';
-import LiveScorekeeper from './Scorekeeper/LiveScorekeeper';
+import Overview from '../features/scorekeeper/components/Overview';
+import LiveScorekeeper from '../features/scorekeeper/components/LiveScorekeeper';
 
 export default function ScorekeeperRoute() {
   const [activeGameId, setActiveGameId] = useState<string | null>(null);
